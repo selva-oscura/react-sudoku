@@ -1,7 +1,8 @@
 import React from 'react';
+import './Intro.css';
 
 const Intro = () => (
-	<div className="Intro">
+	<div className="intro">
     <p className="App-intro">
       Will eventually want to display directions here for
     </p>
@@ -11,6 +12,6 @@ const Intro = () => (
       <li>setting and unsetting pencil marks</li>
     </ol>
 	</div>
-)
+);
 
 export default Intro;
