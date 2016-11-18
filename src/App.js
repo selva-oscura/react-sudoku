@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Intro from './Intro';
 
 const App = React.createClass({
   getInitialState(){
-    let board = [];
-    board = this.createBoard();
+    let row = this.createBaseRow();
+    let board = this.createBasicBoard(row);
     board.forEach((row)=>{
       console.log(row.join(' '));
     });
@@ -36,11 +37,6 @@ const App = React.createClass({
     board.push(row.slice(8,9).concat(row.slice(0,8)));
     return board;
   },
-  createBoard(){
-    let row = this.createBaseRow();
-    let board = this.createBasicBoard(row);
-    return board;
-  },
   render() {
     console.log("state", this.state);
     return (
@@ -48,14 +44,7 @@ const App = React.createClass({
         <div className="App-header">
           <h2>Welcome to Sudoku</h2>
         </div>
-        <p className="App-intro">
-          Will eventually want to display directions here for
-        </p>
-        <ol> 
-          <li>basic play</li>
-          <li>setting and changing a square</li>
-          <li>setting and unsetting pencil marks</li>
-        </ol>
+        <Intro />
       </div>
     );
   }
