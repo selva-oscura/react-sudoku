@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Header from './Header';
 import Intro from './Intro';
 
 const App = React.createClass({
@@ -41,9 +42,7 @@ const App = React.createClass({
     console.log("state", this.state);
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Welcome to Sudoku</h2>
-        </div>
+        <Header />
         <Intro />
       </div>
     );
