@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
+import Board from './Board';
 
 const App = React.createClass({
   getInitialState(){
@@ -39,11 +40,12 @@ const App = React.createClass({
     return board;
   },
   render() {
-    console.log("state", this.state);
+    const state = this.state;
     return (
-      <div className="App">
+      <div className="app">
         <Header />
         <Intro />
+        <Board board={state.board} />
       </div>
     );
   }
