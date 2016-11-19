@@ -1,18 +1,19 @@
 .board{
 	border:4px solid black;
-	margin: 0 auto;
 }
 
 @media (orientation: landscape){
   .board{
-    height: 90vh;
-    width: 90vh;
+    height: 81vh;
+    width: 81vh;
+		margin: 4vh auto 0;
   }
 }
 
 @media (orientation: portrait){
   .board{
-    height: 90vw;
-    width: 90vw;
+    height: 81vw;
+    width: 81vw;
+    margin: 4vw auto 0;
   }
 }
