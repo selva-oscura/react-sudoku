@@ -1,4 +1,15 @@
-.App {
+.app {
   text-align: center;
 }
 
+@media (orientation: landscape){
+  .app{
+    font-size: 4vh;
+  }
+}
+
+@media (orientation: portrait){
+  .app{
+    font-size: 4vw;
+  }
+}
