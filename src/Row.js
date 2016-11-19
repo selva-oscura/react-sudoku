@@ -1,4 +1,5 @@
 import React from 'react';
+import './Row.css';
 
 const Row = ({row}) => {
 	console.log('row', row);
