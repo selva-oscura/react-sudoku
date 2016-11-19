@@ -14,6 +14,7 @@ const App = React.createClass({
     return{
       board:      board,
       messages:   "",
+      displayIntro: false,
     }
   },
   createBaseRow(){
@@ -41,11 +42,16 @@ const App = React.createClass({
   },
   render() {
     const state = this.state;
+    var mainDisplay;
+    if(state.displayIntro){
+      mainDisplay = <Intro />;
+    }else{
+      mainDisplay = <Board board={state.board} />
+    }
     return (
       <div className="app">
         <Header />
-        <Intro />
-        <Board board={state.board} />
+        {mainDisplay}
       </div>
     );
   }
