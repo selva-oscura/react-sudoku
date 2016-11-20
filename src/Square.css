@@ -1,0 +1,27 @@
+.square{
+  font-size: 5vh;
+  display: inline-block;
+}
+
+@media (orientation: landscape){
+  .square{
+		border: .5vh solid silver;
+    height: 8vh;
+    width: 8vh;
+  }
+  .square p{
+    margin: 1.5vh 0 0 0;
+  }
+}
+
+@media (orientation: portrait){
+  .square{
+		border: .5vw solid silver;
+    height: 8vw;
+    width: 8vw;
+  }
+  .square p{
+    margin: 1.5vw 0 0 0;
+  }
+
+}
