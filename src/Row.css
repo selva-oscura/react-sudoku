@@ -3,18 +3,14 @@
 
 @media (orientation: landscape){
   .row{
-		border-top: .5vh solid silver;
-		border-bottom: .5vh solid silver;
-    height: 8vh;
-    width: 81vh;
+/*    height: 9vh;
+    width: 81vh;*/
   }
 }
 
 @media (orientation: portrait){
   .row{
-		border-top: .5vw solid silver;
-		border-bottom: .5vw solid silver;
-    height: 8vw;
-    width: 81vw;
+/*    height: 9vw;
+    width: 81vw;*/
   }
 }
