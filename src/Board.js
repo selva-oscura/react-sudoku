@@ -4,8 +4,13 @@ import './Board.css';
 
 const Board = ({board}) => {
 	console.log('board', board);
-	board.forEach((row) => console.log('row', row.join(', ')))
-	const rows = board.map((row, i) => <Row key={i} i={i} row={row} />);
+	const rows = board.map((row, i) => (
+		<Row 
+			key={i} 
+			rowNumber={i+1} 
+			rowData={row} 
+		/>
+	));
 	return (
 		<div className="board">
 			{rows}
