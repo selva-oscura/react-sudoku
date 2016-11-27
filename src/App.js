@@ -8,6 +8,7 @@ const App = React.createClass({
   getInitialState(){
     let row = this.createBaseRow();
     let board = this.createBasicBoard(row);
+    board = this.shuffleBoard(board);
     return{
       board:      board,
       messages:   "",
@@ -30,6 +31,29 @@ const App = React.createClass({
     board.push(row);
     offsets.forEach(function(offset){
       board.push(row.slice(offset, 9).concat(row.slice(0, offset)));
+    });
+    return board;
+  },
+  shuffleBoard(board){
+    let shuffleAlternatives = [[0,1],[0,2],[1,2]];
+    for(let shuffles=0; shuffles<50; shuffles++){
+      let alt = Math.floor(Math.random()*3);
+      let group = Math.floor(Math.random()*3);
+      if(shuffles%2===0){
+        board = this.swapCols(board, group, shuffleAlternatives[alt]);
+      }else{
+        board = this.swapRows(board, group, shuffleAlternatives[alt]);
+      }
+    }
+    return board;
+  },
+  swapRows(board, rowGroup, shuffleAlternative){
+    [board[rowGroup*3+shuffleAlternative[0]], board[rowGroup*3+shuffleAlternative[1]]] = [board[rowGroup*3+shuffleAlternative[1]], board[rowGroup*3+shuffleAlternative[0]]]
+    return board;
+  },
+  swapCols(board, colGroup, shuffleAlternative){
+    board.forEach(function(row){
+      [row[colGroup*3+shuffleAlternative[0]],row[colGroup*3+shuffleAlternative[1]]] = [row[colGroup*3+shuffleAlternative[1]],row[colGroup*3+shuffleAlternative[0]]]
     });
     return board;
   },
