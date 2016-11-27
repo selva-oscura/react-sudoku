@@ -1,5 +1,5 @@
 .square{
-  font-size: 5vh;
+/*  font-size: 5vh;*/
   display: inline-block;
 }
 
@@ -10,6 +10,7 @@
     width: 8vh;
   }
   .square p{
+    font-size: 5vh;
     margin: 1.5vh 0 0 0;
   }
 }
@@ -21,6 +22,7 @@
     width: 8vw;
   }
   .square p{
+    font-size: 5vw;
     margin: 1.5vw 0 0 0;
   }
 
