@@ -4,26 +4,73 @@
 }
 
 @media (orientation: landscape){
-  .square{
-		border: .5vh solid silver;
-    height: 8vh;
-    width: 8vh;
-  }
   .square p{
     font-size: 5vh;
     margin: 1.5vh 0 0 0;
   }
+  .square{
+    border: .5vh solid silver;
+    height: 8vh;
+    width: 8vh;
+  }
+  .row-divider-left{
+    border-left: .5vh solid #666362;
+  }
+  .row-divider-right{
+    border-right: .5vh solid #666362;
+  }
+  .row-divider-top{
+    border-top: .5vh solid #666362;
+  }
+  .row-divider-bottom{
+    border-bottom: .5vh solid #666362;
+  }
+  .board-left{
+    border-left: 1vh solid black;
+  }
+  .board-right{
+    border-right: 1vh solid black;
+  }
+  .board-top{
+    border-top: 1vh solid black;
+  }
+  .board-bottom{
+    border-bottom: 1vh solid black;
+  }
 }
 
 @media (orientation: portrait){
-  .square{
-		border: .5vw solid silver;
-    height: 8vw;
-    width: 8vw;
-  }
   .square p{
     font-size: 5vw;
     margin: 1.5vw 0 0 0;
   }
-
+  .square{
+    border: .5vw solid silver;
+    height: 8vw;
+    width: 8vw;
+  }
+  .row-divider-left{
+    border-left: .5vw solid #666362;
+  }
+  .row-divider-right{
+    border-right: .5vw solid #666362;
+  }
+  .row-divider-top{
+    border-top: .5vw solid #666362;
+  }
+  .row-divider-bottom{
+    border-bottom: .5vw solid #666362;
+  }
+  .board-left{
+    border-left: 1vw solid black;
+  }
+  .board-right{
+    border-right: 1vw solid black;
+  }
+  .board-top{
+    border-top: 1vw solid black;
+  }
+  .board-bottom{
+    border-bottom: 1vw solid black;
+  }
 }
