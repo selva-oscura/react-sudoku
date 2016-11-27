@@ -3,7 +3,6 @@ import Row from './Row';
 import './Board.css';
 
 const Board = ({board}) => {
-	console.log('board', board);
 	const rows = board.map((row, i) => (
 		<Row 
 			key={i} 

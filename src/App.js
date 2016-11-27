@@ -8,9 +8,6 @@ const App = React.createClass({
   getInitialState(){
     let row = this.createBaseRow();
     let board = this.createBasicBoard(row);
-    board.forEach((row)=>{
-      console.log(row.join(' '));
-    });
     return{
       board:      board,
       messages:   "",
