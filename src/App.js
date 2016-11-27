@@ -26,15 +26,11 @@ const App = React.createClass({
   },
   createBasicBoard(row){
     let board = [];
+    let offsets = [3,6,1,4,7,2,5,8];
     board.push(row);
-    board.push(row.slice(3,9).concat(row.slice(0,3)));
-    board.push(row.slice(6,9).concat(row.slice(0,6)));
-    board.push(row.slice(1,9).concat(row.slice(0,1)));
-    board.push(row.slice(4,9).concat(row.slice(0,4)));
-    board.push(row.slice(7,9).concat(row.slice(0,7)));
-    board.push(row.slice(2,9).concat(row.slice(0,2)));
-    board.push(row.slice(5,9).concat(row.slice(0,5)));
-    board.push(row.slice(8,9).concat(row.slice(0,8)));
+    offsets.forEach(function(offset){
+      board.push(row.slice(offset, 9).concat(row.slice(0, offset)));
+    });
     return board;
   },
   render() {
