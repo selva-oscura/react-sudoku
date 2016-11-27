@@ -1,15 +1,15 @@
 @media (orientation: landscape){
   .board{
     height: 81vh;
-    width: 81vh;
-		margin: 4vh auto 0;
+    width: 84vh;
+		margin: 8vh auto 0;
   }
 }
 
 @media (orientation: portrait){
   .board{
     height: 81vw;
-    width: 81vw;
-    margin: 4vw auto 0;
+    width: 84vw;
+    margin: 8vw auto 0;
   }
 }
