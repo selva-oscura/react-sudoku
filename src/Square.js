@@ -21,7 +21,6 @@ const Square = ({rowNumber, colNumber, value}) => {
 	}else if(colNumber===4 || colNumber===7){
 		squareStyle+=" row-divider-left";
 	}
-
 	return (
 		<div className={squareStyle}>
 			<p>{value}</p>
