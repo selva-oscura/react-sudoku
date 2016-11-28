@@ -64,6 +64,9 @@ const App = React.createClass({
     });
     return board;
   },
+  selectSquare(square, rowIndex, colIndex){
+    console.log('square', square, 'rowIndex', rowIndex, 'colIndex', colIndex);
+  },
   updateInkMark(inkMark){
     console.log("inkMark", inkMark);
   },
@@ -75,8 +78,13 @@ const App = React.createClass({
     }else{
       mainDisplay = (
         <div className="gameBody">
-          <InkChoices updateInkMark={this.updateInkMark} />
-          <Board board={state.board} />
+          <InkChoices 
+            updateInkMark={this.updateInkMark} 
+          />
+          <Board 
+            board={state.board} 
+            selectSquare={this.selectSquare}
+          />
         </div>
       )
     }
