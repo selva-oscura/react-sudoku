@@ -1,12 +1,16 @@
 import React from 'react';
 import './InkChoice.css';
 
-const InkChoice = ({inkChoice}) => {
+const InkChoice = ({inkChoice, updateInkMark}) => {
 	return (
-		<div className="inkChoice">
+		<div className="inkChoice"
+			onClick={() => {
+				updateInkMark(inkChoice);
+			}
+		}>
 			<p>{inkChoice}</p>
 		</div>
 	)
 }
 
-export default InkChoice;
+export default InkChoice;	
