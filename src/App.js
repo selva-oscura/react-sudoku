@@ -5,6 +5,7 @@ import Intro from './Intro';
 import InkChoices from './InkChoices';
 import PencilChoices from './PencilChoices';
 import Board from './Board';
+import Message from './Message';
 
 const App = React.createClass({
   getInitialState(){
@@ -13,7 +14,7 @@ const App = React.createClass({
     board = this.shuffleBoard(board);
     return{
       board:      board,
-      messages:   "",
+      message:    "blah",
       displayIntro: false,
       selectedSquare: null,
     }
@@ -110,6 +111,9 @@ const App = React.createClass({
           <Board 
             board={state.board} 
             selectSquare={this.selectSquare}
+          />
+          <Message 
+            message={state.message}
           />
         </div>
       )
