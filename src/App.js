@@ -81,6 +81,14 @@ const App = React.createClass({
   },
   updateInkMark(inkMark){
     console.log("inkMark", inkMark);
+    let state = this.state;
+    if(state.selectedSquare){
+      let row = state.selectedSquare[0];
+      let col = state.selectedSquare[1];
+      state.board[row][col].inkMark = inkMark;
+      console.log('inkmark?', state.board[row][col]);
+    }
+    this.setState(state);
   },
   updatePencilMarks(pencilMark){
     console.log("pencilMark", pencilMark);
