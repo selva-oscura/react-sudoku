@@ -69,7 +69,15 @@ const App = React.createClass({
     return board;
   },
   selectSquare(square, rowIndex, colIndex){
-    console.log('square', square, 'rowIndex', rowIndex, 'colIndex', colIndex)
+    let state = this.state;
+    if(state.selectedSquare){
+      let row = state.selectedSquare[0];
+      let col = state.selectedSquare[1];
+      state.board[row][col].selected = false;
+    }
+    state.selectedSquare = [rowIndex, colIndex];
+    state.board[rowIndex][colIndex].selected = true;
+    this.setState(state);
   },
   updateInkMark(inkMark){
     console.log("inkMark", inkMark);
