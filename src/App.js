@@ -28,6 +28,7 @@ const App = React.createClass({
         inkMark: null,
         pencilMarks: [],
         display: true,
+        selected: false,
       });
       numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
@@ -38,7 +39,9 @@ const App = React.createClass({
     let offsets = [3,6,1,4,7,2,5,8];
     board.push(row);
     offsets.forEach(function(offset){
-      board.push(row.slice(offset, 9).concat(row.slice(0, offset)));
+      let offsetRow = row.slice(offset, 9).concat(row.slice(0, offset));
+      let deepCloneOffsetRow = JSON.parse(JSON.stringify(offsetRow))
+      board.push(deepCloneOffsetRow);
     });
     return board;
   },
@@ -66,7 +69,7 @@ const App = React.createClass({
     return board;
   },
   selectSquare(square, rowIndex, colIndex){
-    console.log('square', square, 'rowIndex', rowIndex, 'colIndex', colIndex);
+    console.log('square', square, 'rowIndex', rowIndex, 'colIndex', colIndex)
   },
   updateInkMark(inkMark){
     console.log("inkMark", inkMark);
