@@ -68,7 +68,7 @@ const App = React.createClass({
     });
     return board;
   },
-  selectSquare(square, rowIndex, colIndex){
+  selectSquare(rowIndex, colIndex){
     let state = this.state;
     if(state.selectedSquare){
       let row = state.selectedSquare[0];

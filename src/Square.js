@@ -28,7 +28,7 @@ const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 		<div 
 			className={squareStyle}
 			onClick={() => {
-				selectSquare(square, rowNumber-1, colNumber-1)
+				selectSquare(rowNumber-1, colNumber-1)
 			}
 		}>
 			<p>{square.value}</p>
