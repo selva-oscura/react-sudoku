@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
+import InkChoices from './InkChoices';
 import Board from './Board';
 
 const App = React.createClass({
@@ -68,7 +69,12 @@ const App = React.createClass({
     if(state.displayIntro){
       mainDisplay = <Intro />;
     }else{
-      mainDisplay = <Board board={state.board} />
+      mainDisplay = (
+        <div className="gameBody">
+          <InkChoices />
+          <Board board={state.board} />
+        </div>
+      )
     }
     return (
       <div className="app">
