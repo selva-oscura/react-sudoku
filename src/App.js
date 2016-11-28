@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import Intro from './Intro';
 import InkChoices from './InkChoices';
+import PencilChoices from './PencilChoices';
 import Board from './Board';
 
 const App = React.createClass({
@@ -70,6 +71,9 @@ const App = React.createClass({
   updateInkMark(inkMark){
     console.log("inkMark", inkMark);
   },
+  updatePencilMarks(pencilMark){
+    console.log("pencilMark", pencilMark);
+  },  
   render() {
     const state = this.state;
     var mainDisplay;
@@ -80,6 +84,9 @@ const App = React.createClass({
         <div className="gameBody">
           <InkChoices 
             updateInkMark={this.updateInkMark} 
+          />
+          <PencilChoices 
+            updatePencilMarks={this.updatePencilMarks} 
           />
           <Board 
             board={state.board} 
