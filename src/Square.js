@@ -1,7 +1,7 @@
 import React from 'react';
 import './Square.css';
 
-const Square = ({rowNumber, colNumber, value}) => {
+const Square = ({rowNumber, colNumber, square}) => {
 	let squareStyle="square";
 	if(rowNumber===1){
 		squareStyle+=" board-top";
@@ -23,7 +23,7 @@ const Square = ({rowNumber, colNumber, value}) => {
 	}
 	return (
 		<div className={squareStyle}>
-			<p>{value}</p>
+			<p>{square.value}</p>
 		</div>
 	)
 }

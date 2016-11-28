@@ -20,7 +20,12 @@ const App = React.createClass({
     let numbers = [1,2,3,4,5,6,7,8,9];
     while(numbers.length>0){
       let n =Math.floor(Math.random()*numbers.length);
-      row.push(numbers[n]);
+      row.push({
+        value: numbers[n],
+        guess: null,
+        pencilMarks: null,
+        display:true,
+      });
       numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
     return row;

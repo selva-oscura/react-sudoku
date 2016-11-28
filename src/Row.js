@@ -3,12 +3,12 @@ import Square from './Square';
 import './Row.css';
 
 const Row = ({rowNumber, rowData}) => {
-	const squares = rowData.map((value, i)=>(
+	const squares = rowData.map((square, i)=>(
 		<Square 
 			key={i} 
 			rowNumber={rowNumber} 
 			colNumber={i+1} 
-			value={value}
+			square={square}
 		 />
 	));
 	return(
