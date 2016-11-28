@@ -14,7 +14,7 @@ const App = React.createClass({
     board = this.shuffleBoard(board);
     return{
       board:      board,
-      message:    "blah",
+      message:    "",
       displayIntro: false,
       selectedSquare: null,
     }
