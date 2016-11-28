@@ -1,0 +1,15 @@
+@media (orientation: landscape){
+  .pencilChoices{
+    height: 9vh;
+    width: 84vh;
+    margin: 2vh auto 0;
+  }
+}
+
+@media (orientation: portrait){
+  .pencilChoices{
+    height: 9vw;
+    width: 84vw;
+    margin: 2vw auto 0;
+  }
+}

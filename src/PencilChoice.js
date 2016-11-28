@@ -1,4 +1,5 @@
 import React from 'react';
+import './PencilChoice.css';
 
 const PencilChoice = ({pencilChoice, updatePencilMarks}) => {
 	return (

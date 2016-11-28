@@ -1,0 +1,35 @@
+.pencilChoice{
+  display: inline-block;
+  background-color: white;
+  color: grey;
+  border-radius: 50%;
+}
+.pencilChoice p{
+  text-align: center;
+}
+
+@media (orientation: landscape){
+  .pencilChoice p{
+    font-size: 5vh;
+    margin: 1vh 0 0 0;
+  }
+  .pencilChoice{
+    border: .5vh solid grey;
+    height: 7vh;
+    width: 7vh;
+    margin: 0 .5vh;
+  }
+}
+
+@media (orientation: portrait){
+  .pencilChoice p{
+    font-size: 5vw;
+     margin: 1vw 0 0 0;
+  }
+  .pencilChoice{
+    border: .5vw solid grey;
+    height: 7vw;
+    width: 7vw;
+    margin: 0 .5vw;
+  }
+}
