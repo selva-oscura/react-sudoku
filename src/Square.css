@@ -3,6 +3,10 @@
   display: inline-block;
 }
 
+.selected{
+  background-color: silver;
+}
+
 @media (orientation: landscape){
   .square p{
     font-size: 5vh;
