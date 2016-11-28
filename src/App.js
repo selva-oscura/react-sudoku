@@ -87,12 +87,31 @@ const App = React.createClass({
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
       state.board[row][col].inkMark = inkMark;
+      state.message = "";
       console.log('inkmark?', state.board[row][col]);
+    }else{
+      state.message = "Please select a square before selecting your choice."
     }
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
     console.log("pencilMark", pencilMark);
+    let state = this.state;
+    if(state.selectedSquare){
+      let row = state.selectedSquare[0];
+      let col = state.selectedSquare[1];
+      if(state.board[row][col].pencilMarks.length===0){
+        state.board[row][col].pencilMarks = new Array(9).fill(false);
+        state.board[row][col].pencilMarks[pencilMark-1] = true;
+      }else{
+        state.board[row][col].pencilMarks[pencilMark-1] = !state.board[row][col].pencilMarks[pencilMark-1];
+      }
+      state.message = "";
+      console.log('pencilmark?', state.board[row][col]);
+    }else{
+      state.message = "Please select a square before adding pencil marks."
+    }
+    this.setState(state);
   },  
   render() {
     const state = this.state;
