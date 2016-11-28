@@ -1,4 +1,5 @@
 import React from 'react';
+import './InkChoice.css';
 
 const InkChoice = ({inkChoice}) => {
 	return (

@@ -1,0 +1,36 @@
+.inkChoice{
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+}
+.inkChoice p{
+  text-align: center;
+}
+
+@media (orientation: landscape){
+  .inkChoice p{
+    font-size: 5vh;
+    margin: 1vh 0 0 0;
+  }
+  .inkChoice{
+    border: .5vh solid black;
+    height: 7vh;
+    width: 7vh;
+    margin: 0 .5vh;
+  }
+}
+
+@media (orientation: portrait){
+  .inkChoice p{
+    font-size: 5vw;
+     margin: 1vw 0 0 0;
+  }
+  .inkChoice{
+    border: .5vw solid black;
+    height: 7vw;
+    width: 7vw;
+    margin: 0 .5vw;
+  }
+}
+

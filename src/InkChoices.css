@@ -1,0 +1,16 @@
+@media (orientation: landscape){
+  .inkChoices{
+    height: 9vh;
+    width: 84vh;
+    margin: 4vh auto 0;
+  }
+}
+
+@media (orientation: portrait){
+  .inkChoices{
+    height: 9vw;
+    width: 84vw;
+    margin: 4vw auto 0;
+  }
+}
+
