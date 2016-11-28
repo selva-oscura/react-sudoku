@@ -2,7 +2,7 @@
   .board{
     height: 81vh;
     width: 84vh;
-		margin: 8vh auto 0;
+		margin: 4vh auto 0;
   }
 }
 
@@ -10,6 +10,6 @@
   .board{
     height: 81vw;
     width: 84vw;
-    margin: 8vw auto 0;
+    margin: 4vw auto 0;
   }
 }
