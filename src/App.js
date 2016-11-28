@@ -14,6 +14,7 @@ const App = React.createClass({
       board:      board,
       messages:   "",
       displayIntro: false,
+      selectedSquare: null,
     }
   },
   createBaseRow(){
@@ -23,7 +24,7 @@ const App = React.createClass({
       let n =Math.floor(Math.random()*numbers.length);
       row.push({
         value: numbers[n],
-        guess: null,
+        inkMark: null,
         pencilMarks: [],
         display: true,
       });
@@ -63,6 +64,9 @@ const App = React.createClass({
     });
     return board;
   },
+  updateInkMark(inkMark){
+    console.log("inkMark", inkMark);
+  },
   render() {
     const state = this.state;
     var mainDisplay;
@@ -71,7 +75,7 @@ const App = React.createClass({
     }else{
       mainDisplay = (
         <div className="gameBody">
-          <InkChoices />
+          <InkChoices updateInkMark={this.updateInkMark} />
           <Board board={state.board} />
         </div>
       )
