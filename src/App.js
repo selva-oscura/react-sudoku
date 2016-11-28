@@ -23,8 +23,8 @@ const App = React.createClass({
       row.push({
         value: numbers[n],
         guess: null,
-        pencilMarks: null,
-        display:true,
+        pencilMarks: [],
+        display: true,
       });
       numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
