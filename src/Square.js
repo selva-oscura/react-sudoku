@@ -1,7 +1,7 @@
 import React from 'react';
 import './Square.css';
 
-const Square = ({rowNumber, colNumber, square}) => {
+const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 	let squareStyle="square";
 	if(rowNumber===1){
 		squareStyle+=" board-top";
@@ -22,7 +22,12 @@ const Square = ({rowNumber, colNumber, square}) => {
 		squareStyle+=" row-divider-left";
 	}
 	return (
-		<div className={squareStyle}>
+		<div 
+			className={squareStyle}
+			onClick={() => {
+				selectSquare(square, rowNumber-1, colNumber-1)
+			}
+		}>
 			<p>{square.value}</p>
 		</div>
 	)
