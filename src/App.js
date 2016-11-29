@@ -44,7 +44,57 @@ const App = React.createClass({
       let deepCloneOffsetRow = JSON.parse(JSON.stringify(offsetRow))
       board.push(deepCloneOffsetRow);
     });
-    return board;
+    if(this.isValidBoard(board)){
+      return board;
+    }else{
+      console.log('error in creating board', board);
+    }
+  },
+  isValidBoard(board){
+    // check all rows are valid
+    for(let row = 0; row<9; row++){
+      let hash = {};
+      for(let col = 0; col<9; col++){
+        if(!hash[board[row][col].value]){
+          hash[board[row][col].value] = 1;
+        }
+      }
+      if(Object.keys(hash).length!==9){
+        console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
+        return false;
+      }
+    }
+    // check all columns are valid
+    for(let col = 0; col<9; col++){
+      let hash = {};
+      for(let row = 0; row<9; row++){
+        if(!hash[board[row][col].value]){
+          hash[board[row][col].value] = 1;
+        }
+      }
+      if(Object.keys(hash).length!==9){
+        console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
+        return false;
+      }
+    }
+    // check all boxes are valid
+    for(let boxRow = 0; boxRow<3; boxRow++){
+      for(let boxCol = 0; boxCol<3; boxCol++){
+        let hash = {};
+        for(let row = 0; row<3; row++){
+          for(let col = 0; col<3; col++){
+            if(!hash[board[boxRow*3+row][boxCol*3+col].value]){
+              hash[board[boxRow*3+row][boxCol*3+col].value] = 1;
+            }
+          }
+        }
+        if(Object.keys(hash).length!==9){
+          console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
+          return false;
+        }
+      }
+    }
+    return true;
   },
   shuffleBoard(board){
     let shuffleAlternatives = [[0,1],[0,2],[1,2]];
