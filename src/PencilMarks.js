@@ -1,4 +1,5 @@
 import React from 'react';
+import './PencilMarks.css';
 
 const PencilMarks = ({pencilMarks}) => {
 	let pencilmarks = pencilMarks.map((checked, index) => {

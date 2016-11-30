@@ -1,0 +1,38 @@
+.pencil-marks div{
+	float:left;
+}
+
+.pencil-mark{
+	color:grey;
+}
+
+.pencil-mark-selected{
+	color: black;
+}
+
+@media (orientation: landscape){
+	.pencil-mark{
+    padding: .2vh;
+    width: 2vh;
+    height: 2vh;
+	}
+  .pencil-mark h6{
+    font-size: 2vh;
+    margin:0;
+    padding:0;
+  }
+}
+
+@media (orientation: portrait){
+	.pencil-mark{
+    padding: .2vw;
+    margin: 0;
+    width: 2vw;
+    height: 2vw;
+	}
+  .pencil-mark h6{
+    font-size: 2vw;
+    margin:0;
+    padding:0;
+  }
+}
