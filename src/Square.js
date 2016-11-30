@@ -34,12 +34,16 @@ const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 		squareContent = (
 			<p className="inkmark">{square.inkMark}</p>
 		)		
-	}else{
+	}else if(square.pencilMarks.indexOf(true)>-1){
 		squareContent = (
 			<PencilMarks 
 				pencilMarks={square.pencilMarks}
 			/>
 		)
+	}else{
+		squareContent = (
+			<p>&nbsp;</p>
+		);
 	}
 	return (
 		<div 
