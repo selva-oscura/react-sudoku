@@ -12,13 +12,7 @@ const App = React.createClass({
     let row = this.createBaseRow();
     let board = this.createBasicBoard(row);
     board = this.shuffleBoard(board);
-    board.forEach((row, i) => {
-      row.forEach((square, j) => {
-        if(!board[i][j].display){
-          this.isDeterminableByOneChoice(board, i, j);
-        }
-      })
-    })
+    board = this.removeNumbers(board);
     return{
       board:           board,
       message:         "",
@@ -31,22 +25,11 @@ const App = React.createClass({
     let numbers = [1,2,3,4,5,6,7,8,9];
     while(numbers.length>0){
       let n=Math.floor(Math.random()*numbers.length);
-      if(n<4){
-        row.push({
-          value:       numbers[n],
-          display:     true,
-          selected:    false,
-        });
-      }else{
-        let pencilMarks = new Array(9).fill(false)
-        row.push({
-          value:       numbers[n],
-          inkMark:     null,
-          pencilMarks: pencilMarks,
-          display:     false,
-          selected:    false,
-        });        
-      }
+      row.push({
+        value:       numbers[n],
+        display:     true,
+        selected:    false,
+      });
       numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
     return row;
@@ -168,7 +151,7 @@ const App = React.createClass({
         }
       }
     }
-    console.log('hash', hash)
+    console.log('col', col, 'row', row, 'hash', hash)
     if(Object.keys(hash).length===8){
       console.log("true");
       return true;
@@ -224,6 +207,29 @@ const App = React.createClass({
     return board;
   },
   swapBoxRowAcrossBoxes(board, colGroup, targetRow, shuffleAlternative){
+    return board;
+  },
+  removeNumbers(board){
+    for(let row=0; row<9; row++){
+      for(let col=0; col<5; col++){
+        let counterpartRow=8-row;
+        let counterpartCol=8-col;
+        if(this.isDeterminableByOneChoice(board, row, col) && this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
+          let pencilMarks = new Array(9).fill(false);
+          board[row][col].display = false;
+          board[row][col].inkMark = null;
+          board[row][col].pencilMarks = pencilMarks;
+          pencilMarks = new Array(9).fill(false);
+          board[counterpartRow][counterpartCol].display = false;
+          board[counterpartRow][counterpartCol].inkMark = null;
+          board[counterpartRow][counterpartCol].pencilMarks = pencilMarks;
+          if(col<7){
+            let skip = Math.floor(Math.random()*2);
+            if(skip) col +=1; 
+          }
+        }
+      }
+    }
     return board;
   },
   selectSquare(rowIndex, colIndex){
