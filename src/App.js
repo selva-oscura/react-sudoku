@@ -98,13 +98,32 @@ const App = React.createClass({
   },
   shuffleBoard(board){
     let shuffleAlternatives = [[0,1],[0,2],[1,2]];
-    for(let shuffles=0; shuffles<50; shuffles++){
+    for(let shuffles=0; shuffles<40; shuffles++){
       let alt = Math.floor(Math.random()*3);
       let group = Math.floor(Math.random()*3);
-      if(shuffles%2===0){
-        board = this.swapCols(board, group, shuffleAlternatives[alt]);
+      let target = Math.floor(Math.random()*3);
+      if(shuffles%4===0){
+        board = this.swapBoxColAcrossBoxes(board, group, target, shuffleAlternatives[alt]);
+      }else if(shuffles%4===2){
+        // board = this.swapBoxRowAcrossBoxes(board, group, target, shuffleAlternatives[alt]);
+      }else if(shuffles%4===3){
+          board = this.swapCols(board, group, shuffleAlternatives[alt]);
       }else{
         board = this.swapRows(board, group, shuffleAlternatives[alt]);
+      }
+      if(!this.isValidBoard(board)){
+        console.log('errk, mistake has been made');
+        if(shuffles%4===0){ 
+          console.log('failure on swapBoxRowAcrossBoxes, group, target, shuffleAlternatives[alt]', group, target, shuffleAlternatives[alt])
+        }else if(shuffles%4===2){
+          console.log('failure on swapBoxColAcrossBoxes, group, target, shuffleAlternatives[alt]', group, target, shuffleAlternatives[alt])
+        }else if(shuffles%4===3){
+            console.log('failure on swapCols, group, shuffleAlternatives[alt]', group, shuffleAlternatives[alt]);
+        }else{
+          console.log('failure on swapRows, group, shuffleAlternatives[alt]', group, shuffleAlternatives[alt]);
+        }
+
+        return board;
       }
     }
     return board;
@@ -117,6 +136,46 @@ const App = React.createClass({
     board.forEach(function(row){
       [row[colGroup*3+shuffleAlternative[0]],row[colGroup*3+shuffleAlternative[1]]] = [row[colGroup*3+shuffleAlternative[1]],row[colGroup*3+shuffleAlternative[0]]]
     });
+    return board;
+  },
+  swapBoxColAcrossBoxes(board, rowGroup, targetCol, shuffleAlternative){
+    let boxColValues = [];
+    let boxColValuesForCounterpart = [];
+    for(let i = 0; i<3; i++){
+      boxColValues.push(board[rowGroup*3+i][shuffleAlternative[0]*3+targetCol].value);
+    }
+    let counterpartCol;
+    for(let i = 0; i<3; i++){    
+      if(boxColValues.indexOf(board[rowGroup*3][shuffleAlternative[1]*3+i].value)>-1){
+        counterpartCol = i;
+        break;
+      }
+    }
+    let validSwap = true;
+    for(let i = 0; i<3; i++){
+      boxColValuesForCounterpart.push(board[rowGroup*3+i][shuffleAlternative[1]*3+counterpartCol].value)
+      if(boxColValues.indexOf(board[rowGroup*3+i][shuffleAlternative[1]*3+counterpartCol].value)<0){
+        validSwap = false;
+      }
+    }
+    if(validSwap){
+      for(let i = 0; i<3; i++){
+        [board[rowGroup*3+i][shuffleAlternative[0]*3+targetCol], board[rowGroup*3+i][shuffleAlternative[1]*3+counterpartCol]] = [board[rowGroup*3+i][shuffleAlternative[1]*3+counterpartCol],board[rowGroup*3+i][shuffleAlternative[0]*3+targetCol]]
+      }
+    }else{
+      console.log("problem in swapBoxColAcrossBoxes: board at this point:")
+      board.forEach((row) => {
+        let rowContents = "";
+        row.forEach((square) => rowContents += " "+ square.value);
+        console.log(rowContents);
+      })
+      console.log("rowGroup, targetCol, shuffleAlternative", board, rowGroup, targetCol, shuffleAlternative);
+      console.log('shuffleAlternative[1]', shuffleAlternative[1], 'countpartCol is', counterpartCol);
+      console.log('validSwap?', validSwap, boxColValues, boxColValuesForCounterpart)
+    }
+    return board;
+  },
+  swapBoxRowAcrossBoxes(board, colGroup, targetRow, shuffleAlternative){
     return board;
   },
   selectSquare(rowIndex, colIndex){
