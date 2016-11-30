@@ -215,14 +215,8 @@ const App = React.createClass({
         let counterpartRow=8-row;
         let counterpartCol=8-col;
         if(this.isDeterminableByOneChoice(board, row, col) && this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
-          let pencilMarks = new Array(9).fill(false);
-          board[row][col].display = false;
-          board[row][col].inkMark = null;
-          board[row][col].pencilMarks = pencilMarks;
-          pencilMarks = new Array(9).fill(false);
-          board[counterpartRow][counterpartCol].display = false;
-          board[counterpartRow][counterpartCol].inkMark = null;
-          board[counterpartRow][counterpartCol].pencilMarks = pencilMarks;
+          board = this.removeSquare(board, row, col);
+          board = this.removeSquare(board, counterpartRow, counterpartCol);
           if(col<7){
             let skip = Math.floor(Math.random()*2);
             if(skip) col +=1; 
@@ -230,6 +224,13 @@ const App = React.createClass({
         }
       }
     }
+    return board;
+  },
+  removeSquare(board, row, col){
+    let pencilMarks = new Array(9).fill(false);
+    board[row][col].display = false;
+    board[row][col].inkMark = null;
+    board[row][col].pencilMarks = pencilMarks;
     return board;
   },
   selectSquare(rowIndex, colIndex){
