@@ -10,26 +10,26 @@
 
 @media (orientation: landscape){
   .pencilChoice p{
-    font-size: 5vh;
+    font-size: 4vh;
     margin: 1vh 0 0 0;
   }
   .pencilChoice{
     border: .5vh solid grey;
-    height: 7vh;
-    width: 7vh;
+    height: 6vh;
+    width: 6vh;
     margin: 0 .5vh;
   }
 }
 
 @media (orientation: portrait){
   .pencilChoice p{
-    font-size: 5vw;
+    font-size: 4vw;
      margin: 1vw 0 0 0;
   }
   .pencilChoice{
     border: .5vw solid grey;
-    height: 7vw;
-    width: 7vw;
+    height: 6vw;
+    width: 6vw;
     margin: 0 .5vw;
   }
 }
