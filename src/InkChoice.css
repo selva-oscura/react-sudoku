@@ -10,26 +10,26 @@
 
 @media (orientation: landscape){
   .inkChoice p{
-    font-size: 5vh;
+    font-size: 4vh;
     margin: 1vh 0 0 0;
   }
   .inkChoice{
     border: .5vh solid black;
-    height: 7vh;
-    width: 7vh;
+    height: 6vh;
+    width: 6vh;
     margin: 0 .5vh;
   }
 }
 
 @media (orientation: portrait){
   .inkChoice p{
-    font-size: 5vw;
+    font-size: 4vw;
      margin: 1vw 0 0 0;
   }
   .inkChoice{
     border: .5vw solid black;
-    height: 7vw;
-    width: 7vw;
+    height: 6vw;
+    width: 6vw;
     margin: 0 .5vw;
   }
 }
