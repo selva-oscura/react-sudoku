@@ -267,8 +267,11 @@ const App = React.createClass({
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
-      state.board[row][col].pencilMarks[pencilMark-1] = !state.board[row][col].pencilMarks[pencilMark-1];
-
+      if(pencilMark==="X"){
+        state.board[row][col].pencilMarks = new Array(9).fill(false);
+      }else{
+        state.board[row][col].pencilMarks[pencilMark-1] = !state.board[row][col].pencilMarks[pencilMark-1];
+      }
       state.message = "";
     }else{
       state.message = "Please select a square before adding pencil marks."
