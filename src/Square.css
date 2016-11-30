@@ -7,6 +7,10 @@
   background-color: silver;
 }
 
+.square p.inkmark{
+  color: blue;
+}
+
 @media (orientation: landscape){
   .square p{
     font-size: 5vh;
