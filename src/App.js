@@ -12,11 +12,18 @@ const App = React.createClass({
     let row = this.createBaseRow();
     let board = this.createBasicBoard(row);
     board = this.shuffleBoard(board);
+    board.forEach((row, i) => {
+      row.forEach((square, j) => {
+        if(!board[i][j].display){
+          this.isDeterminableByOneChoice(board, i, j);
+        }
+      })
+    })
     return{
-      board:      board,
-      message:    "",
-      displayIntro: false,
-      selectedSquare: null,
+      board:           board,
+      message:         "",
+      displayIntro:    false,
+      selectedSquare:  null,
     }
   },
   createBaseRow(){
@@ -26,18 +33,18 @@ const App = React.createClass({
       let n=Math.floor(Math.random()*numbers.length);
       if(n<4){
         row.push({
-          value: numbers[n],
-          display: true,
-          selected: false,
+          value:       numbers[n],
+          display:     true,
+          selected:    false,
         });
       }else{
         let pencilMarks = new Array(9).fill(false)
         row.push({
-          value: numbers[n],
-          inkMark: null,
+          value:       numbers[n],
+          inkMark:     null,
           pencilMarks: pencilMarks,
-          display: false,
-          selected: false,
+          display:     false,
+          selected:    false,
         });        
       }
       numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
@@ -137,6 +144,38 @@ const App = React.createClass({
     }
     return board;
   },
+  isDeterminableByOneChoice(board, row, col){
+    let hash = {};
+    // check row
+    for(let i = 0; i<9; i++){
+      if(i!==col && board[row][i].display){
+        hash[board[row][i].value]=1;
+      }
+    }
+    // check column
+    for(let i = 0; i<9; i++){
+      if(i!==row && board[i][col].display){
+        hash[board[i][col].value]=1;
+      }
+    }
+    // check box
+    let boxRow = Math.floor(row/3);
+    let boxCol = Math.floor(col/3);
+    for(let r=0; r<3; r++){
+      for(let c = 0; c<3; c++){
+        if((boxRow*3+r!==row) && (boxCol*3+c!==col) && (board[boxRow*3+r][boxCol*3+c].display)){
+          hash[board[boxRow*3+r][boxCol*3+c].value]=1;
+        }
+      }
+    }
+    console.log('hash', hash)
+    if(Object.keys(hash).length===8){
+      console.log("true");
+      return true;
+    }
+    console.log("false");
+    return false;
+  },
   swapRows(board, rowGroup, shuffleAlternative){
     [board[rowGroup*3+shuffleAlternative[0]], board[rowGroup*3+shuffleAlternative[1]]] = [board[rowGroup*3+shuffleAlternative[1]], board[rowGroup*3+shuffleAlternative[0]]]
     return board;
@@ -206,7 +245,6 @@ const App = React.createClass({
       let col = state.selectedSquare[1];
       state.board[row][col].inkMark = inkMark;
       state.message = "";
-      console.log('inkmark?', state.board[row][col]);
     }else{
       state.message = "Please select a square before selecting your choice."
     }
@@ -220,7 +258,6 @@ const App = React.createClass({
       let col = state.selectedSquare[1];
       state.board[row][col].pencilMarks[pencilMark-1] = !state.board[row][col].pencilMarks[pencilMark-1];
       state.message = "";
-      console.log('pencilmark?', state.board[row][col]);
     }else{
       state.message = "Please select a square before adding pencil marks."
     }
