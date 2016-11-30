@@ -1,4 +1,5 @@
 import React from 'react';
+import './PencilMark.css';
 
 const PencilMark = ({pencilMark, pencilStyle}) => (
 	<div 
