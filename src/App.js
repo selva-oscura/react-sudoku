@@ -23,14 +23,23 @@ const App = React.createClass({
     let row = [];
     let numbers = [1,2,3,4,5,6,7,8,9];
     while(numbers.length>0){
-      let n =Math.floor(Math.random()*numbers.length);
-      row.push({
-        value: numbers[n],
-        inkMark: null,
-        pencilMarks: [],
-        display: true,
-        selected: false,
-      });
+      let n=Math.floor(Math.random()*numbers.length);
+      if(n<4){
+        row.push({
+          value: numbers[n],
+          display: true,
+          selected: false,
+        });
+      }else{
+        let pencilMarks = new Array(9).fill(false)
+        row.push({
+          value: numbers[n],
+          inkMark: null,
+          pencilMarks: pencilMarks,
+          display: false,
+          selected: false,
+        });        
+      }
       numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
     return row;
@@ -209,12 +218,7 @@ const App = React.createClass({
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
-      if(state.board[row][col].pencilMarks.length===0){
-        state.board[row][col].pencilMarks = new Array(9).fill(false);
-        state.board[row][col].pencilMarks[pencilMark-1] = true;
-      }else{
-        state.board[row][col].pencilMarks[pencilMark-1] = !state.board[row][col].pencilMarks[pencilMark-1];
-      }
+      state.board[row][col].pencilMarks[pencilMark-1] = !state.board[row][col].pencilMarks[pencilMark-1];
       state.message = "";
       console.log('pencilmark?', state.board[row][col]);
     }else{
