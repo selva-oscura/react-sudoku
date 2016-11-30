@@ -1,5 +1,6 @@
 import React from 'react';
 import './Square.css';
+import PencilMarks from './PencilMarks';
 
 const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 	let squareStyle="square";
@@ -24,6 +25,22 @@ const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 	if(square.selected){
 		squareStyle += " selected";
 	}
+	let squareContent;
+	if(square.display){
+		squareContent = (
+			<p>{square.value}</p>
+		)
+	}else if(square.inkMark){
+		squareContent = (
+			<p className="inkmark">{square.inkMark}</p>
+		)		
+	}else{
+		squareContent = (
+			<PencilMarks 
+				pencilMarks={square.pencilMarks}
+			/>
+		)
+	}
 	return (
 		<div 
 			className={squareStyle}
@@ -31,7 +48,7 @@ const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 				selectSquare(rowNumber-1, colNumber-1)
 			}
 		}>
-			<p>{square.value}</p>
+			{squareContent}
 		</div>
 	)
 }
