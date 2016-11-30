@@ -1,4 +1,5 @@
 import React from 'react';
+import PencilMark from './PencilMark';
 import './PencilMarks.css';
 
 const PencilMarks = ({pencilMarks}) => {
@@ -8,11 +9,11 @@ const PencilMarks = ({pencilMarks}) => {
 			pencilStyle+=" pencil-mark-selected";
 		}
 		return (
-			<div className={pencilStyle}
+			<PencilMark 
 				key={index}
-			>
-				<h6>{index+1}</h6>
-			</div>
+				pencilMark={index+1}
+				pencilStyle={pencilStyle}
+			/>
 		)
 	})
 	return (
