@@ -159,6 +159,93 @@ const App = React.createClass({
     console.log("false");
     return false;
   },
+  isDeterminableByElimination(board, row, col){
+    console.log('checking isDeterminableByElimination for row', row, 'col', col);
+    let isDeterminable = true;
+    // check row
+    let emptySpaces = [];
+    for(let i = 0; i<9; i++){
+      if(!board[row][i].display && col!==i){
+        emptySpaces.push([row, i]);
+      }
+    }
+    console.log("emptySpaces in that row", emptySpaces);
+    emptySpaces.forEach((emptySpace)=>{
+      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
+        isDeterminable = false;
+      }
+    });
+    if(isDeterminable){ return true; }
+    // check col
+    isDeterminable = true;
+    emptySpaces = [];
+    for(let i = 0; i<9; i++){
+      if(!board[i][col].display && row!==i){
+        emptySpaces.push([i, col]);
+      }
+    }
+    console.log("emptySpaces in that col", emptySpaces);
+    emptySpaces.forEach((emptySpace)=>{
+      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
+        isDeterminable = false;
+      }
+    });
+    if(isDeterminable){ return true; }
+    // check box
+    isDeterminable = true;
+    emptySpaces = [];
+    let boxRow = Math.floor(row/3);
+    let boxCol = Math.floor(col/3);
+    for(let r = 0; r<3; r++){
+      for(let c = 0; c<3; c++){
+        if(!board[boxRow*3+r][boxCol*3+c].display){
+          if(!(boxRow*3+r===row && boxCol*3+c===col)){
+            emptySpaces.push([boxRow*3+r, boxCol*3+c]);
+          }
+        }
+      }
+    }
+    console.log("emptySpaces in that box", emptySpaces);
+    emptySpaces.forEach((emptySpace)=>{
+      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
+        isDeterminable = false;
+      }
+    });
+    return isDeterminable;
+  },
+  isNotAllowedInSpace(board, value, excludeRow, excludeCol, row, col){
+    console.log("checking if", value, "not allowed in row", row, "col", col)
+    // check row
+    console.log("checking its row")
+    for(let i = 0; i<9; i++){
+      if(board[row][i].value===value && board[row][i].display && !(row===excludeRow && i===excludeCol)){
+        console.log("not allowed in space")
+        return true;
+      }
+    }
+    // check col
+    console.log("checking its col");
+    for(let i = 0; i<9; i++){
+      if(board[i][col].value===value && board[i][col].display && !(i===excludeRow && col===excludeCol)){
+        console.log("not allowed in space")
+        return true;
+      }
+    }
+    // check box
+    console.log("checking its box");
+    let boxRow = Math.floor(row/3);
+    let boxCol = Math.floor(col/3);
+    for(let r = 0; r<3; r++){
+      for(let c = 0; c<3; c++){
+        if(board[boxRow*3+r][boxCol*3+c].display && board[boxRow*3+r][boxCol*3+c].value===value && !(boxRow*3+r===excludeRow && boxCol*3+c===excludeCol)){
+          console.log("not allowed in space")
+          return true;
+        }
+      }
+    }
+    console.log('return false on isNotAllowedInSpace');
+    return false;
+  },
   swapRows(board, rowGroup, shuffleAlternative){
     [board[rowGroup*3+shuffleAlternative[0]], board[rowGroup*3+shuffleAlternative[1]]] = [board[rowGroup*3+shuffleAlternative[1]], board[rowGroup*3+shuffleAlternative[0]]]
     return board;
@@ -210,16 +297,33 @@ const App = React.createClass({
     return board;
   },
   removeNumbers(board){
-    for(let row=0; row<9; row++){
-      for(let col=0; col<5; col++){
+    for(let row=0; row<5; row++){
+      for(let col=0; col<9; col++){
         let counterpartRow=8-row;
         let counterpartCol=8-col;
-        if(this.isDeterminableByOneChoice(board, row, col) && this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
-          board = this.removeSquare(board, row, col);
-          board = this.removeSquare(board, counterpartRow, counterpartCol);
-          if(col<7){
-            let skip = Math.floor(Math.random()*2);
-            if(skip) col +=1; 
+        if(this.isDeterminableByOneChoice(board, row, col)){
+          board[row][col].display = false;
+          if(this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
+            board = this.removeSquare(board, row, col);
+            board = this.removeSquare(board, counterpartRow, counterpartCol);
+            if(col<7){
+              let skip = Math.floor(Math.random()*2);
+              if(skip) col +=1; 
+            }
+          }else{
+            board[row][col].display = true;
+          }
+        }else if(this.isDeterminableByElimination(board, row, col)){
+          board[row][col].display = false;
+          if(this.isDeterminableByElimination(board, counterpartRow, counterpartCol)){
+            board = this.removeSquare(board, row, col);
+            board = this.removeSquare(board, counterpartRow, counterpartCol);
+            if(col<7){
+              let skip = Math.floor(Math.random()*2);
+              if(skip) col +=1; 
+            }            
+          }else{
+            board[row][col].display = true;
           }
         }
       }
