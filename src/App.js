@@ -110,11 +110,9 @@ const App = React.createClass({
       }
       if(!this.isValidBoard(board)){
         console.log('errk, mistake has been made');
-        if(shuffles%4===0){ 
+        if(shuffles%3===0){ 
           console.log('failure on swapBoxRowAcrossBoxes, group, target, shuffleAlternatives[alt]', group, target, shuffleAlternatives[alt])
-        }else if(shuffles%4===2){
-          console.log('failure on swapBoxColAcrossBoxes, group, target, shuffleAlternatives[alt]', group, target, shuffleAlternatives[alt])
-        }else if(shuffles%4===3){
+        }else if(shuffles%3===1){
             console.log('failure on swapCols, group, shuffleAlternatives[alt]', group, shuffleAlternatives[alt]);
         }else{
           console.log('failure on swapRows, group, shuffleAlternatives[alt]', group, shuffleAlternatives[alt]);
