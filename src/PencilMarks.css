@@ -1,3 +1,19 @@
-.pencil-marks div{
-	float:left;
+p.pencil-marks{
+  margin:0;
+  padding:0;
+}
+
+
+@media (orientation: landscape){
+  p.pencil-marks{
+    font-size: 2vh;
+    line-height: 2.2vh;
+  }
+}
+
+@media (orientation: portrait){
+  p.pencil-marks{
+    font-size: 2vw;
+    line-height: 2.2vw;
+  }
 }

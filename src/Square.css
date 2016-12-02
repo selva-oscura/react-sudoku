@@ -12,14 +12,15 @@
 }
 
 @media (orientation: landscape){
-  .square p{
-    font-size: 5vh;
-    margin: 1.5vh 0 0 0;
-  }
   .square{
     border: .5vh solid silver;
     height: 8vh;
     width: 8vh;
+  }
+  .square p{
+    font-size: 5vh;
+    margin: 1.5vh 0 0 0;
+    text-align: baseline;
   }
   .row-divider-left{
     border-left: .5vh solid #666362;
@@ -48,14 +49,15 @@
 }
 
 @media (orientation: portrait){
-  .square p{
-    font-size: 5vw;
-    margin: 1.5vw 0 0 0;
-  }
   .square{
     border: .5vw solid silver;
     height: 8vw;
     width: 8vw;
+  }
+  .square p{
+    font-size: 5vw;
+    margin: 1.5vw 0 0 0;
+    text-align: baseline;
   }
   .row-divider-left{
     border-left: .5vw solid #666362;

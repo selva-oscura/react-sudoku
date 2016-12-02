@@ -17,9 +17,9 @@ const PencilMarks = ({pencilMarks}) => {
 		)
 	})
 	return (
-		<div className="pencil-marks">
+		<p className="pencil-marks">
 			{pencilmarks}
-		</div>
+		</p>
 	)
 }
 

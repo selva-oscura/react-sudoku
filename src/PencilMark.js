@@ -2,11 +2,11 @@ import React from 'react';
 import './PencilMark.css';
 
 const PencilMark = ({pencilMark, pencilStyle}) => (
-	<div 
+	<span 
 		className={pencilStyle}
 	>
-		<h6>{pencilMark}</h6>
-	</div>
+		{pencilMark}
+	</span>
 
 )
 export default PencilMark;
