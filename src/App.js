@@ -101,11 +101,9 @@ const App = React.createClass({
       let alt = Math.floor(Math.random()*3);
       let group = Math.floor(Math.random()*3);
       let target = Math.floor(Math.random()*3);
-      if(shuffles%4===0){
+      if(shuffles%3===0){
         board = this.swapBoxColAcrossBoxes(board, group, target, shuffleAlternatives[alt]);
-      }else if(shuffles%4===2){
-        // board = this.swapBoxRowAcrossBoxes(board, group, target, shuffleAlternatives[alt]);
-      }else if(shuffles%4===3){
+      }else if(shuffles%3===1){
           board = this.swapCols(board, group, shuffleAlternatives[alt]);
       }else{
         board = this.swapRows(board, group, shuffleAlternatives[alt]);
@@ -291,9 +289,6 @@ const App = React.createClass({
       console.log('shuffleAlternative[1]', shuffleAlternative[1], 'countpartCol is', counterpartCol);
       console.log('validSwap?', validSwap, boxColValues, boxColValuesForCounterpart)
     }
-    return board;
-  },
-  swapBoxRowAcrossBoxes(board, colGroup, targetRow, shuffleAlternative){
     return board;
   },
   removeNumbers(board){
