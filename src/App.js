@@ -49,52 +49,6 @@ const App = React.createClass({
       console.log('error in creating board', board);
     }
   },
-  isValidBoard(board){
-    // check all rows are valid
-    for(let row = 0; row<9; row++){
-      let hash = {};
-      for(let col = 0; col<9; col++){
-        if(!hash[board[row][col].value]){
-          hash[board[row][col].value] = 1;
-        }
-      }
-      if(Object.keys(hash).length!==9){
-        console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
-        return false;
-      }
-    }
-    // check all columns are valid
-    for(let col = 0; col<9; col++){
-      let hash = {};
-      for(let row = 0; row<9; row++){
-        if(!hash[board[row][col].value]){
-          hash[board[row][col].value] = 1;
-        }
-      }
-      if(Object.keys(hash).length!==9){
-        console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
-        return false;
-      }
-    }
-    // check all boxes are valid
-    for(let boxRow = 0; boxRow<3; boxRow++){
-      for(let boxCol = 0; boxCol<3; boxCol++){
-        let hash = {};
-        for(let row = 0; row<3; row++){
-          for(let col = 0; col<3; col++){
-            if(!hash[board[boxRow*3+row][boxCol*3+col].value]){
-              hash[board[boxRow*3+row][boxCol*3+col].value] = 1;
-            }
-          }
-        }
-        if(Object.keys(hash).length!==9){
-          console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
-          return false;
-        }
-      }
-    }
-    return true;
-  },
   shuffleBoard(board){
     let shuffleAlternatives = [[0,1],[0,2],[1,2]];
     for(let shuffles=0; shuffles<40; shuffles++){
@@ -122,125 +76,6 @@ const App = React.createClass({
       }
     }
     return board;
-  },
-  isDeterminableByOneChoice(board, row, col){
-    let hash = {};
-    // check row
-    for(let i = 0; i<9; i++){
-      if(i!==col && board[row][i].display){
-        hash[board[row][i].value]=1;
-      }
-    }
-    // check column
-    for(let i = 0; i<9; i++){
-      if(i!==row && board[i][col].display){
-        hash[board[i][col].value]=1;
-      }
-    }
-    // check box
-    let boxRow = Math.floor(row/3);
-    let boxCol = Math.floor(col/3);
-    for(let r=0; r<3; r++){
-      for(let c = 0; c<3; c++){
-        if((boxRow*3+r!==row) && (boxCol*3+c!==col) && (board[boxRow*3+r][boxCol*3+c].display)){
-          hash[board[boxRow*3+r][boxCol*3+c].value]=1;
-        }
-      }
-    }
-    console.log('col', col, 'row', row, 'hash', hash)
-    if(Object.keys(hash).length===8){
-      console.log("true");
-      return true;
-    }
-    console.log("false");
-    return false;
-  },
-  isDeterminableByElimination(board, row, col){
-    console.log('checking isDeterminableByElimination for row', row, 'col', col);
-    let isDeterminable = true;
-    // check row
-    let emptySpaces = [];
-    for(let i = 0; i<9; i++){
-      if(!board[row][i].display && col!==i){
-        emptySpaces.push([row, i]);
-      }
-    }
-    console.log("emptySpaces in that row", emptySpaces);
-    emptySpaces.forEach((emptySpace)=>{
-      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
-        isDeterminable = false;
-      }
-    });
-    if(isDeterminable){ return true; }
-    // check col
-    isDeterminable = true;
-    emptySpaces = [];
-    for(let i = 0; i<9; i++){
-      if(!board[i][col].display && row!==i){
-        emptySpaces.push([i, col]);
-      }
-    }
-    console.log("emptySpaces in that col", emptySpaces);
-    emptySpaces.forEach((emptySpace)=>{
-      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
-        isDeterminable = false;
-      }
-    });
-    if(isDeterminable){ return true; }
-    // check box
-    isDeterminable = true;
-    emptySpaces = [];
-    let boxRow = Math.floor(row/3);
-    let boxCol = Math.floor(col/3);
-    for(let r = 0; r<3; r++){
-      for(let c = 0; c<3; c++){
-        if(!board[boxRow*3+r][boxCol*3+c].display){
-          if(!(boxRow*3+r===row && boxCol*3+c===col)){
-            emptySpaces.push([boxRow*3+r, boxCol*3+c]);
-          }
-        }
-      }
-    }
-    console.log("emptySpaces in that box", emptySpaces);
-    emptySpaces.forEach((emptySpace)=>{
-      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
-        isDeterminable = false;
-      }
-    });
-    return isDeterminable;
-  },
-  isNotAllowedInSpace(board, value, excludeRow, excludeCol, row, col){
-    console.log("checking if", value, "not allowed in row", row, "col", col)
-    // check row
-    console.log("checking its row")
-    for(let i = 0; i<9; i++){
-      if(board[row][i].value===value && board[row][i].display && !(row===excludeRow && i===excludeCol)){
-        console.log("not allowed in space")
-        return true;
-      }
-    }
-    // check col
-    console.log("checking its col");
-    for(let i = 0; i<9; i++){
-      if(board[i][col].value===value && board[i][col].display && !(i===excludeRow && col===excludeCol)){
-        console.log("not allowed in space")
-        return true;
-      }
-    }
-    // check box
-    console.log("checking its box");
-    let boxRow = Math.floor(row/3);
-    let boxCol = Math.floor(col/3);
-    for(let r = 0; r<3; r++){
-      for(let c = 0; c<3; c++){
-        if(board[boxRow*3+r][boxCol*3+c].display && board[boxRow*3+r][boxCol*3+c].value===value && !(boxRow*3+r===excludeRow && boxCol*3+c===excludeCol)){
-          console.log("not allowed in space")
-          return true;
-        }
-      }
-    }
-    console.log('return false on isNotAllowedInSpace');
-    return false;
   },
   swapRows(board, rowGroup, shuffleAlternative){
     [board[rowGroup*3+shuffleAlternative[0]], board[rowGroup*3+shuffleAlternative[1]]] = [board[rowGroup*3+shuffleAlternative[1]], board[rowGroup*3+shuffleAlternative[0]]]
@@ -288,6 +123,156 @@ const App = React.createClass({
       console.log('validSwap?', validSwap, boxColValues, boxColValuesForCounterpart)
     }
     return board;
+  },
+  isValidBoard(board){
+    // check all rows are valid
+    for(let row = 0; row<9; row++){
+      let hash = {};
+      for(let col = 0; col<9; col++){
+        if(!hash[board[row][col].value]){
+          hash[board[row][col].value] = 1;
+        }
+      }
+      if(Object.keys(hash).length!==9){
+        console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
+        return false;
+      }
+    }
+    // check all columns are valid
+    for(let col = 0; col<9; col++){
+      let hash = {};
+      for(let row = 0; row<9; row++){
+        if(!hash[board[row][col].value]){
+          hash[board[row][col].value] = 1;
+        }
+      }
+      if(Object.keys(hash).length!==9){
+        console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
+        return false;
+      }
+    }
+    // check all boxes are valid
+    for(let boxRow = 0; boxRow<3; boxRow++){
+      for(let boxCol = 0; boxCol<3; boxCol++){
+        let hash = {};
+        for(let row = 0; row<3; row++){
+          for(let col = 0; col<3; col++){
+            if(!hash[board[boxRow*3+row][boxCol*3+col].value]){
+              hash[board[boxRow*3+row][boxCol*3+col].value] = 1;
+            }
+          }
+        }
+        if(Object.keys(hash).length!==9){
+          console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
+          return false;
+        }
+      }
+    }
+    return true;
+  },
+  isDeterminableByOneChoice(board, row, col){
+    let hash = {};
+    // check row
+    for(let i = 0; i<9; i++){
+      if(i!==col && board[row][i].display){
+        hash[board[row][i].value]=1;
+      }
+    }
+    // check column
+    for(let i = 0; i<9; i++){
+      if(i!==row && board[i][col].display){
+        hash[board[i][col].value]=1;
+      }
+    }
+    // check box
+    let boxRow = Math.floor(row/3);
+    let boxCol = Math.floor(col/3);
+    for(let r=0; r<3; r++){
+      for(let c = 0; c<3; c++){
+        if((boxRow*3+r!==row) && (boxCol*3+c!==col) && (board[boxRow*3+r][boxCol*3+c].display)){
+          hash[board[boxRow*3+r][boxCol*3+c].value]=1;
+        }
+      }
+    }
+    if(Object.keys(hash).length===8){
+      return true;
+    }
+    return false;
+  },
+  isDeterminableByElimination(board, row, col){
+    // check row
+    let isDeterminable = true;
+    let emptySpaces = [];
+    for(let i = 0; i<9; i++){
+      if(!board[row][i].display && col!==i){
+        emptySpaces.push([row, i]);
+      }
+    }
+    emptySpaces.forEach((emptySpace)=>{
+      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
+        isDeterminable = false;
+      }
+    });
+    if(isDeterminable){ return true; }
+    // check col
+    isDeterminable = true;
+    emptySpaces = [];
+    for(let i = 0; i<9; i++){
+      if(!board[i][col].display && row!==i){
+        emptySpaces.push([i, col]);
+      }
+    }
+    emptySpaces.forEach((emptySpace)=>{
+      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
+        isDeterminable = false;
+      }
+    });
+    if(isDeterminable){ return true; }
+    // check box
+    isDeterminable = true;
+    emptySpaces = [];
+    let boxRow = Math.floor(row/3);
+    let boxCol = Math.floor(col/3);
+    for(let r = 0; r<3; r++){
+      for(let c = 0; c<3; c++){
+        if(!board[boxRow*3+r][boxCol*3+c].display){
+          if(!(boxRow*3+r===row && boxCol*3+c===col)){
+            emptySpaces.push([boxRow*3+r, boxCol*3+c]);
+          }
+        }
+      }
+    }
+    emptySpaces.forEach((emptySpace)=>{
+      if(!this.isNotAllowedInSpace(board, board[row][col].value, row, col, emptySpace[0], emptySpace[1])){
+        isDeterminable = false;
+      }
+    });
+    return isDeterminable;
+  },
+  isNotAllowedInSpace(board, value, excludeRow, excludeCol, row, col){
+    // check row
+    for(let i = 0; i<9; i++){
+      if(board[row][i].value===value && board[row][i].display && !(row===excludeRow && i===excludeCol)){
+        return true;
+      }
+    }
+    // check col
+    for(let i = 0; i<9; i++){
+      if(board[i][col].value===value && board[i][col].display && !(i===excludeRow && col===excludeCol)){
+        return true;
+      }
+    }
+    // check box
+    let boxRow = Math.floor(row/3);
+    let boxCol = Math.floor(col/3);
+    for(let r = 0; r<3; r++){
+      for(let c = 0; c<3; c++){
+        if(board[boxRow*3+r][boxCol*3+c].display && board[boxRow*3+r][boxCol*3+c].value===value && !(boxRow*3+r===excludeRow && boxCol*3+c===excludeCol)){
+          return true;
+        }
+      }
+    }
+    return false;
   },
   removeNumbers(board){
     for(let row=0; row<5; row++){
