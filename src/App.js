@@ -14,6 +14,7 @@ const App = React.createClass({
     console.log('remainingToBeFilled', remainingToBeFilled);
     return{
       board:           board,
+      gameStatus:      "inProgress",
       message:         "",
       displayIntro:    false,
       selectedSquare:  null,
@@ -31,6 +32,17 @@ const App = React.createClass({
     board = this.shuffleBoard(board);
     board = this.removeNumbers(board);
     return board;
+  },
+  newGame(){
+    let state = this.state;
+    let board = this.newBoard();
+    let remainingToBeFilled = this.removedNumbersCount(board);
+    state.board = board;
+    state.gameStatus = "inProgress";
+    state.message = "";
+    state.selectedSquare = null;
+    state.remainingToBeFilled = remainingToBeFilled;
+    this.setState(state); 
   },
   createBaseRow(){
     let row = [];
@@ -431,6 +443,8 @@ const App = React.createClass({
           />
           <Message 
             message={state.message}
+            gameStatus={state.gameStatus}
+            newGame={this.newGame}
           />
         </div>
       )
