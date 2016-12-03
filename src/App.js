@@ -45,6 +45,7 @@ const App = React.createClass({
     state.selectedSquare = null;
     state.timer = 0;
     this.setState(state); 
+    this.timer = setInterval(() => this.tick(), 1000);
   },
   createBaseRow(){
     let row = [];
@@ -438,6 +439,41 @@ const App = React.createClass({
   },
   componentDidMount(){
     this.timer = setInterval(() => this.tick(), 1000);
+    window.addEventListener('keyup', (e) => {
+      var keyCode = (window.Event) ? e.which: e.keyCode;
+      var isShift = !!e.shiftKey;
+      if(isShift){
+        console.log('shift +', keyCode);
+        console.log('no shift, but', keyCode);
+        if(keyCode===48 || keyCode===88){
+          this.updatePencilMarks("X");
+        }else if(keyCode>=49 && keyCode<=57){
+          this.updatePencilMarks(keyCode-48);
+        }else{
+          let message = "Please click only 1-9 to make your choice (or clear your choice by hitting 0 or X).";
+          this.setState({message});
+        }
+
+      }else{
+        console.log('no shift, but', keyCode);
+        if(keyCode===48 || keyCode===88){
+          this.updateInkMark("X");
+        }else if(keyCode>=49 && keyCode<=57){
+          this.updateInkMark(keyCode-48);
+        }else{
+          let message = "Please click only 1-9 to make your choice (or clear your choice by hitting 0 or X).";
+          this.setState({message});
+        }
+      }
+    });
+    // 0=> 48
+    // 1=> 49
+    // 9=> 57
+    // x=> 88
+    // window.addEventListener('keyup', (e) => {
+    //   var keyCode = (window.Event) ? e.which : e.keyCode;
+    //   this.processKeyInput(keyCode);
+    // });
   },
   componentWillUnmount(){
     clearInterval(this.timer);
