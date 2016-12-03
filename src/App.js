@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
+import Timer from './Timer';
 import InkChoices from './InkChoices';
 import PencilChoices from './PencilChoices';
 import Board from './Board';
@@ -14,16 +15,16 @@ const App = React.createClass({
     console.log('remainingToBeFilled', remainingToBeFilled);
     return{
       board:           board,
+      displayIntro:    false,
       gameStatus:      "inProgress",
       message:         "",
-      displayIntro:    false,
-      selectedSquare:  null,
       remainingToBeFilled: remainingToBeFilled,
       scores: {
         won: 0,
-        lost: 0,
         bestScore: null,
-      }
+      },
+      selectedSquare:  null,
+      timer: 0,
     }
   },
   newBoard(){
@@ -40,8 +41,9 @@ const App = React.createClass({
     state.board = board;
     state.gameStatus = "inProgress";
     state.message = "";
-    state.selectedSquare = null;
     state.remainingToBeFilled = remainingToBeFilled;
+    state.selectedSquare = null;
+    state.timer = 0;
     this.setState(state); 
   },
   createBaseRow(){
@@ -354,6 +356,7 @@ const App = React.createClass({
   },
   selectSquare(rowIndex, colIndex){
     let state = this.state;
+    if(state.gameStatus==="gameOver"){ return; }
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
@@ -364,8 +367,8 @@ const App = React.createClass({
     this.setState(state);
   },
   updateInkMark(inkMark){
-    console.log("inkMark", inkMark);
     let state = this.state;
+    if(state.gameStatus==="gameOver"){ return; }
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
@@ -395,8 +398,13 @@ const App = React.createClass({
         state.board[row][col].inkMark = inkMark;
       }
       if(state.remainingToBeFilled===0){
+        clearInterval(this.timer);
         state.message = "Congratulations you won!";
         state.gameStatus = "gameOver";
+        state.scores.won += 1;
+        if(state.scores.bestScore===null || state.scores.bestScore>state.timer){
+          state.scores.bestScore=state.timer;
+        }
       }else{
         state.message = "";
       }
@@ -404,11 +412,12 @@ const App = React.createClass({
       state.message = "Please select a square before selecting your choice."
     }
     console.log('remainingToBeFilled', state.remainingToBeFilled);
+    console.log('timer', this.state.timer);
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
-    console.log("pencilMark", pencilMark);
     let state = this.state;
+    if(state.gameStatus==="gameOver"){ return; }
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
@@ -422,7 +431,17 @@ const App = React.createClass({
       state.message = "Please select a square before adding pencil marks."
     }
     this.setState(state);
-  },  
+  },
+  tick(){
+    console.log('tick');
+    this.setState({timer: this.state.timer+1});
+  },
+  componentDidMount(){
+    this.timer = setInterval(() => this.tick(), 1000);
+  },
+  componentWillUnmount(){
+    clearInterval(this.timer);
+  },
   render() {
     const state = this.state;
     var mainDisplay;
@@ -431,6 +450,9 @@ const App = React.createClass({
     }else{
       mainDisplay = (
         <div className="gameBody">
+          <Timer 
+            timer={state.timer}
+          />
           <InkChoices 
             updateInkMark={this.updateInkMark} 
           />
