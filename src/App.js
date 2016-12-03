@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
-import Timer from './Timer';
+import Stats from './Stats';
 import InkChoices from './InkChoices';
 import PencilChoices from './PencilChoices';
 import Board from './Board';
@@ -450,8 +450,9 @@ const App = React.createClass({
     }else{
       mainDisplay = (
         <div className="gameBody">
-          <Timer 
+          <Stats 
             timer={state.timer}
+            scores={state.scores}
           />
           <InkChoices 
             updateInkMark={this.updateInkMark} 
