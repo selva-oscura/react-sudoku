@@ -9,10 +9,7 @@ import Message from './Message';
 
 const App = React.createClass({
   getInitialState(){
-    let row = this.createBaseRow();
-    let board = this.createBasicBoard(row);
-    board = this.shuffleBoard(board);
-    board = this.removeNumbers(board);
+    let board = this.newBoard();
     let remainingToBeFilled = this.removedNumbersCount(board);
     console.log('remainingToBeFilled', remainingToBeFilled);
     return{
@@ -27,6 +24,13 @@ const App = React.createClass({
         bestScore: null,
       }
     }
+  },
+  newBoard(){
+    let row = this.createBaseRow();
+    let board = this.createBasicBoard(row);
+    board = this.shuffleBoard(board);
+    board = this.removeNumbers(board);
+    return board;
   },
   createBaseRow(){
     let row = [];
@@ -380,6 +384,7 @@ const App = React.createClass({
       }
       if(state.remainingToBeFilled===0){
         state.message = "Congratulations you won!";
+        state.gameStatus = "gameOver";
       }else{
         state.message = "";
       }
