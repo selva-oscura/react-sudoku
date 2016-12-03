@@ -13,11 +13,19 @@ const App = React.createClass({
     let board = this.createBasicBoard(row);
     board = this.shuffleBoard(board);
     board = this.removeNumbers(board);
+    let remainingToBeFilled = this.removedNumbersCount(board);
+    console.log('remainingToBeFilled', remainingToBeFilled);
     return{
       board:           board,
       message:         "",
       displayIntro:    false,
       selectedSquare:  null,
+      remainingToBeFilled: remainingToBeFilled,
+      scores: {
+        won: 0,
+        lost: 0,
+        bestScore: null,
+      }
     }
   },
   createBaseRow(){
@@ -279,29 +287,31 @@ const App = React.createClass({
       for(let col=0; col<9; col++){
         let counterpartRow=8-row;
         let counterpartCol=8-col;
-        if(this.isDeterminableByOneChoice(board, row, col)){
-          board[row][col].display = false;
-          if(this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
-            board = this.removeSquare(board, row, col);
-            board = this.removeSquare(board, counterpartRow, counterpartCol);
-            if(col<7){
-              let skip = Math.floor(Math.random()*2);
-              if(skip) col +=1; 
+        if(board[row][col].display && board[counterpartRow][counterpartCol].display){        
+          if(this.isDeterminableByOneChoice(board, row, col)){
+            board[row][col].display = false;
+            if(this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
+              board = this.removeSquare(board, row, col);
+              board = this.removeSquare(board, counterpartRow, counterpartCol);
+              if(col<7){
+                let skip = Math.floor(Math.random()*2);
+                if(skip) col +=1; 
+              }
+            }else{
+              board[row][col].display = true;
             }
-          }else{
-            board[row][col].display = true;
-          }
-        }else if(this.isDeterminableByElimination(board, row, col)){
-          board[row][col].display = false;
-          if(this.isDeterminableByElimination(board, counterpartRow, counterpartCol)){
-            board = this.removeSquare(board, row, col);
-            board = this.removeSquare(board, counterpartRow, counterpartCol);
-            if(col<7){
-              let skip = Math.floor(Math.random()*2);
-              if(skip) col +=1; 
-            }            
-          }else{
-            board[row][col].display = true;
+          }else if(this.isDeterminableByElimination(board, row, col)){
+            board[row][col].display = false;
+            if(this.isDeterminableByElimination(board, counterpartRow, counterpartCol)){
+              board = this.removeSquare(board, row, col);
+              board = this.removeSquare(board, counterpartRow, counterpartCol);
+              if(col<7){
+                let skip = Math.floor(Math.random()*2);
+                if(skip) col +=1; 
+              }            
+            }else{
+              board[row][col].display = true;
+            }
           }
         }
       }
@@ -314,6 +324,17 @@ const App = React.createClass({
     board[row][col].inkMark = null;
     board[row][col].pencilMarks = pencilMarks;
     return board;
+  },
+  removedNumbersCount(board){
+    let removed = 0;
+    board.forEach((row) => {
+      row.forEach((square) => {
+        if(!square.display){
+          removed+=1;
+        }
+      });
+    });
+    return removed;
   },
   selectSquare(rowIndex, colIndex){
     let state = this.state;
@@ -332,15 +353,40 @@ const App = React.createClass({
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
+      let accurateExAnte;
+      if(state.board[row][col].value===state.board[row][col].inkMark){
+        accurateExAnte = true;
+      }else{
+        accurateExAnte = false;
+      }
       if(inkMark==="X"){
         state.board[row][col].inkMark = null;
+        if(accurateExAnte){
+          state.remainingToBeFilled += 1;
+        }
       }else{
+        let accurateExPost;
+        if(state.board[row][col].value===inkMark){
+          accurateExPost = true;
+        }else{
+          accurateExPost = false;
+        }
+        if(accurateExAnte && !accurateExPost){
+          state.remainingToBeFilled +=1;
+        }else if(!accurateExAnte && accurateExPost){
+          state.remainingToBeFilled -= 1;
+        }
         state.board[row][col].inkMark = inkMark;
       }
-      state.message = "";
+      if(state.remainingToBeFilled===0){
+        state.message = "Congratulations you won!";
+      }else{
+        state.message = "";
+      }
     }else{
       state.message = "Please select a square before selecting your choice."
     }
+    console.log('remainingToBeFilled', state.remainingToBeFilled);
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
