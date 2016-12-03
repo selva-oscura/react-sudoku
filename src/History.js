@@ -1,4 +1,5 @@
 import React from 'react';
+import './History.css';
 
 const History = ({scores}) => {
 	let bestTime;
