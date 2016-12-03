@@ -21,7 +21,7 @@ const App = React.createClass({
       remainingToBeFilled: remainingToBeFilled,
       scores: {
         won: 0,
-        bestScore: null,
+        bestTime: null,
       },
       selectedSquare:  null,
       timer: 0,
@@ -402,8 +402,8 @@ const App = React.createClass({
         state.message = "Congratulations you won!";
         state.gameStatus = "gameOver";
         state.scores.won += 1;
-        if(state.scores.bestScore===null || state.scores.bestScore>state.timer){
-          state.scores.bestScore=state.timer;
+        if(state.scores.bestTime===null || state.scores.bestTime>state.timer){
+          state.scores.bestTime=state.timer;
         }
       }else{
         state.message = "";
