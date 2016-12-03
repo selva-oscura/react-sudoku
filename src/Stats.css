@@ -1,0 +1,9 @@
+.stats{
+	width: 81vw;
+	margin: 0 auto;
+}
+.stats div{
+	width: 40vw;
+	display: inline-block;
+	vertical-align: top;
+}
