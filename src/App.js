@@ -358,14 +358,17 @@ const App = React.createClass({
   selectSquare(rowIndex, colIndex){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
+    console.log('state.selectedSquare before if check', state.selectedSquare)
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
       state.board[row][col].selected = false;
     }
+    console.log('state.selectedSquare after if check', state.selectedSquare)
     state.selectedSquare = [rowIndex, colIndex];
     state.board[rowIndex][colIndex].selected = true;
     this.setState(state);
+    console.log('state.selectedSquare after setState', state.selectedSquare)
   },
   updateInkMark(inkMark){
     let state = this.state;
@@ -460,12 +463,28 @@ const App = React.createClass({
           this.updateInkMark("X");
         }else if(keyCode>=49 && keyCode<=57){
           this.updateInkMark(keyCode-48);
+        }else if(keyCode>=37 && keyCode<=40){
+          let selectedSquare = this.state.selectedSquare.slice(0);
+          if(keyCode===37){
+            selectedSquare[1] = (selectedSquare[1]>0) ? selectedSquare[1]-=1 : 0;
+          }else if(keyCode===39){
+            selectedSquare[1] = (selectedSquare[1]<8) ? selectedSquare[1]+=1 : 8;
+          }else if(keyCode===38){
+            selectedSquare[0] = (selectedSquare[0]>0) ? selectedSquare[0]-=1 : 0;
+          }else if(keyCode===40){
+            selectedSquare[0] = (selectedSquare[0]<8) ? selectedSquare[0]+=1 : 8;
+          }
+          this.selectSquare(selectedSquare[0], selectedSquare[1]);
         }else{
           let message = "Please click only 1-9 to make your choice (or clear your choice by hitting 0 or X).";
           this.setState({message});
         }
       }
     });
+    // left => 37
+    // up => 38
+    // right=> 39
+    // down => 40
     // 0=> 48
     // 1=> 49
     // 9=> 57
