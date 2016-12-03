@@ -12,7 +12,6 @@ const App = React.createClass({
   getInitialState(){
     let board = this.newBoard();
     let remainingToBeFilled = this.removedNumbersCount(board);
-    console.log('remainingToBeFilled', remainingToBeFilled);
     return{
       board:           board,
       displayIntro:    false,
@@ -358,17 +357,14 @@ const App = React.createClass({
   selectSquare(rowIndex, colIndex){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
-    console.log('state.selectedSquare before if check', state.selectedSquare)
     if(state.selectedSquare){
       let row = state.selectedSquare[0];
       let col = state.selectedSquare[1];
       state.board[row][col].selected = false;
     }
-    console.log('state.selectedSquare after if check', state.selectedSquare)
     state.selectedSquare = [rowIndex, colIndex];
     state.board[rowIndex][colIndex].selected = true;
     this.setState(state);
-    console.log('state.selectedSquare after setState', state.selectedSquare)
   },
   updateInkMark(inkMark){
     let state = this.state;
@@ -415,8 +411,6 @@ const App = React.createClass({
     }else{
       state.message = "Please select a square before selecting your choice."
     }
-    console.log('remainingToBeFilled', state.remainingToBeFilled);
-    console.log('timer', this.state.timer);
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
@@ -437,7 +431,6 @@ const App = React.createClass({
     this.setState(state);
   },
   tick(){
-    console.log('tick');
     this.setState({timer: this.state.timer+1});
   },
   componentDidMount(){
@@ -446,8 +439,6 @@ const App = React.createClass({
       var keyCode = (window.Event) ? e.which: e.keyCode;
       var isShift = !!e.shiftKey;
       if(isShift){
-        console.log('shift +', keyCode);
-        console.log('no shift, but', keyCode);
         if(keyCode===48 || keyCode===88){
           this.updatePencilMarks("X");
         }else if(keyCode>=49 && keyCode<=57){
@@ -458,7 +449,6 @@ const App = React.createClass({
         }
 
       }else{
-        console.log('no shift, but', keyCode);
         if(keyCode===48 || keyCode===88){
           this.updateInkMark("X");
         }else if(keyCode>=49 && keyCode<=57){
@@ -481,18 +471,6 @@ const App = React.createClass({
         }
       }
     });
-    // left => 37
-    // up => 38
-    // right=> 39
-    // down => 40
-    // 0=> 48
-    // 1=> 49
-    // 9=> 57
-    // x=> 88
-    // window.addEventListener('keyup', (e) => {
-    //   var keyCode = (window.Event) ? e.which : e.keyCode;
-    //   this.processKeyInput(keyCode);
-    // });
   },
   componentWillUnmount(){
     clearInterval(this.timer);
