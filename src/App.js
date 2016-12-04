@@ -139,16 +139,20 @@ const App = React.createClass({
       }
     }else{
       console.log("problem in swapBoxColAcrossBoxes: board at this point:")
-      board.forEach((row) => {
-        let rowContents = "";
-        row.forEach((square) => rowContents += " "+ square.value);
-        console.log(rowContents);
-      })
-      console.log("rowGroup, targetCol, shuffleAlternative", board, rowGroup, targetCol, shuffleAlternative);
+      this.consoleLogBoard(board);
+      console.log("rowGroup, targetCol, shuffleAlternative", rowGroup, targetCol, shuffleAlternative);
       console.log('shuffleAlternative[1]', shuffleAlternative[1], 'countpartCol is', counterpartCol);
       console.log('validSwap?', validSwap, boxColValues, boxColValuesForCounterpart)
     }
     return board;
+  },
+  consoleLogBoard(board){
+    board.forEach((row) => {
+      let rowContents = "";
+      row.forEach((square) => rowContents += " "+ square.value);
+      console.log(rowContents);
+    });
+    return;
   },
   isValidBoard(board){
     // check all rows are valid
