@@ -165,6 +165,7 @@ const App = React.createClass({
       }
       if(Object.keys(hash).length!==9){
         console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
+        this.consoleLogBoard(board);
         return false;
       }
     }
@@ -178,6 +179,7 @@ const App = React.createClass({
       }
       if(Object.keys(hash).length!==9){
         console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
+        this.consoleLogBoard(board);
         return false;
       }
     }
@@ -194,6 +196,7 @@ const App = React.createClass({
         }
         if(Object.keys(hash).length!==9){
           console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
+          this.consoleLogBoard(board);
           return false;
         }
       }
