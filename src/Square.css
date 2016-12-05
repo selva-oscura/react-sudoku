@@ -8,7 +8,11 @@
 }
 
 .square p.inkmark{
-  color: blue;
+  color: #0147FA;
+}
+
+.square p.inkmark.error{
+  color: #CD214F;
 }
 
 @media (orientation: landscape){
@@ -22,6 +26,7 @@
     margin: 1.5vh 0 0 0;
     text-align: baseline;
   }
+
   .row-divider-left{
     border-left: .5vh solid #666362;
   }
