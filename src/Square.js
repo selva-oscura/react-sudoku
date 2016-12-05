@@ -2,7 +2,8 @@ import React from 'react';
 import './Square.css';
 import PencilMarks from './PencilMarks';
 
-const Square = ({rowNumber, colNumber, square, selectSquare}) => {
+
+const Square = ({rowNumber, colNumber, square, selectSquare, showErrors}) => {
 	let squareStyle="square";
 	if(rowNumber===1){
 		squareStyle += " board-top";
@@ -31,8 +32,9 @@ const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 			<p>{square.value}</p>
 		)
 	}else if(square.inkMark){
+		console.log('showErrors from square.js', showErrors)
 		let inkStyle = "inkmark";
-		if(square.value!==square.inkMark){
+		if(showErrors && square.value!==square.inkMark){
 			inkStyle += " error";
 		}
 		squareContent = (
