@@ -31,8 +31,12 @@ const Square = ({rowNumber, colNumber, square, selectSquare}) => {
 			<p>{square.value}</p>
 		)
 	}else if(square.inkMark){
+		let inkStyle = "inkmark";
+		if(square.value!==square.inkMark){
+			inkStyle += " error";
+		}
 		squareContent = (
-			<p className="inkmark">{square.inkMark}</p>
+			<p className={inkStyle}>{square.inkMark}</p>
 		)		
 	}else if(square.pencilMarks.indexOf(true)>-1){
 		squareContent = (
