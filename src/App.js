@@ -461,8 +461,7 @@ const App = React.createClass({
     this.setState(state);
   },
   toggleShowErrors(){
-    let showErrors = this.state.showErrors;
-    this.setState({showErrors: !showErrors});
+    this.setState({showErrors: !this.state.showErrors});
   },
   tick(){
     this.setState({timer: this.state.timer+1});
@@ -534,6 +533,7 @@ const App = React.createClass({
           <Board 
             board={state.board} 
             selectSquare={this.selectSquare}
+            showErrors={state.showErrors}
           />
           <Message 
             message={state.message}
