@@ -1,3 +1,17 @@
 .message{
-	color: fuchsia;
+	color: #CD214F;
+}
+
+@media (orientation: landscape){
+  .message{
+    width: 81vh;
+		margin: 4vh auto 0;
+  }
+}
+
+@media (orientation: portrait){
+  .message{
+    width: 81vw;
+    margin: 4vw auto 0;
+  }
 }
