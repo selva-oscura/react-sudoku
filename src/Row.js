@@ -2,7 +2,7 @@ import React from 'react';
 import Square from './Square';
 import './Row.css';
 
-const Row = ({rowNumber, rowData, selectSquare}) => {
+const Row = ({rowNumber, rowData, selectSquare, showErrors}) => {
 	const squares = rowData.map((square, i)=>(
 		<Square 
 			key={i} 
@@ -10,6 +10,7 @@ const Row = ({rowNumber, rowData, selectSquare}) => {
 			colNumber={i+1} 
 			square={square}
 			selectSquare={selectSquare}
+			showErrors={showErrors}
 		 />
 	));
 	return(
