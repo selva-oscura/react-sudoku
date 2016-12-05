@@ -14,17 +14,18 @@ const App = React.createClass({
     let board = this.newBoard();
     let remainingToBeFilled = this.removedNumbersCount(board);
     return{
-      board:           board,
-      displayIntro:    false,
-      gameStatus:      "inProgress",
-      message:         "",
+      board:            board,
+      displayIntro:     false,
+      gameStatus:       "inProgress",
+      message:          "",
       remainingToBeFilled: remainingToBeFilled,
       scores: {
-        won: 0,
-        bestTime: null,
+        won:            0,
+        bestTime:       null,
       },
-      selectedSquare:  null,
-      timer: 0,
+      selectedSquare:   null,
+      showErrors:       false,
+      timer:            0,
     }
   },
   newBoard(){
@@ -459,6 +460,10 @@ const App = React.createClass({
     }
     this.setState(state);
   },
+  toggleShowErrors(){
+    let showErrors = this.state.showErrors;
+    this.setState({showErrors: !showErrors});
+  },
   tick(){
     this.setState({timer: this.state.timer+1});
   },
@@ -522,7 +527,10 @@ const App = React.createClass({
           <PencilChoices 
             updatePencilMarks={this.updatePencilMarks} 
           />
-          <ShowErrorToggle />
+          <ShowErrorToggle 
+            showErrors={state.showErrors}
+            toggleShowErrors={this.toggleShowErrors}
+          />
           <Board 
             board={state.board} 
             selectSquare={this.selectSquare}
