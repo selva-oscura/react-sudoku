@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
-import Stats from './Stats';
+import GamesInfo from './GamesInfo';
 import InkChoices from './InkChoices';
 import PencilChoices from './PencilChoices';
-import ShowErrorToggle from './ShowErrorToggle';
+
 import Board from './Board';
 import Message from './Message';
 
@@ -515,31 +515,35 @@ const App = React.createClass({
       mainDisplay = <Intro />;
     }else{
       mainDisplay = (
-        <div className="gameBody">
-          <Stats 
-            timer={state.timer}
-            scores={state.scores}
-          />
-          <InkChoices 
-            updateInkMark={this.updateInkMark} 
-          />
-          <PencilChoices 
-            updatePencilMarks={this.updatePencilMarks} 
-          />
-          <ShowErrorToggle 
-            showErrors={state.showErrors}
-            toggleShowErrors={this.toggleShowErrors}
-          />
-          <Board 
-            board={state.board} 
-            selectSquare={this.selectSquare}
-            showErrors={state.showErrors}
-          />
-          <Message 
-            message={state.message}
-            gameStatus={state.gameStatus}
-            newGame={this.newGame}
-          />
+        <div className="body">
+          <div className="right">
+            <GamesInfo 
+              timer={state.timer}
+              scores={state.scores}
+              showErrors={state.showErrors}
+              toggleShowErrors={this.toggleShowErrors}
+            />
+            <InkChoices 
+              updateInkMark={this.updateInkMark} 
+            />
+            <PencilChoices 
+              updatePencilMarks={this.updatePencilMarks} 
+            />
+          </div>
+          <div className="left">
+            <Board 
+              board={state.board} 
+              selectSquare={this.selectSquare}
+              showErrors={state.showErrors}
+            />
+          </div>
+          <div className="right">
+            <Message 
+              message={state.message}
+              gameStatus={state.gameStatus}
+              newGame={this.newGame}
+            />
+          </div>
         </div>
       )
     }
