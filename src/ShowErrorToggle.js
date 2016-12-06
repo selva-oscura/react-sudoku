@@ -1,4 +1,5 @@
 import React from 'react';
+import './ShowErrorToggle.css';
 
 const ShowErrorToggle = ({showErrors, toggleShowErrors}) => {
 	return (
