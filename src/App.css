@@ -13,3 +13,57 @@
     font-size: 4vw;
   }
 }
+
+@media(max-aspect-ratio:9/16){
+	.app{
+		background-color:red;
+		font-size: 4vh;
+	}
+}
+
+@media(min-aspect-ratio:9/16){
+	.app{
+		background-color:orange;
+		font-size: 3vh;
+	}
+}
+
+@media(min-aspect-ratio:3/4){
+	.app{
+		background-color:yellow;
+	}
+}
+
+@media(min-aspect-ratio:1/1){
+	.app{
+		background-color:green;
+	}
+}
+
+@media(min-aspect-ratio:4/3){
+	.app{
+		background-color:blue;
+	}
+	.left{
+		float: left;
+    width: 66vw;
+	}
+	.right{
+		float: right;
+    width: 33vw;
+	}
+}
+
+@media(min-aspect-ratio:16/9){
+	.app{
+		background-color:purple;
+	}
+	.left{
+		float: left;
+    width: 50vw;
+	}
+	.right{
+		float: right;
+    width: 50vw;
+	}
+}
