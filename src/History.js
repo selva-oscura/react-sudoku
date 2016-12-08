@@ -9,12 +9,10 @@ const History = ({scores}) => {
 		bestTime = "pending"
 	}
 	return(
-	<div className="history">
-		<p>
+		<p className="history">
 			Best Time: {bestTime}<br />
 			Games Won: {scores.won}
 		</p>
-	</div>
 )}
 
 export default History;
