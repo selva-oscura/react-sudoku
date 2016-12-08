@@ -13,3 +13,53 @@
     margin: 4vw auto 0;
   }
 }
+
+@media (orientation: landscape){
+  .board{
+    font-size: 4vh;
+  }
+}
+
+@media (orientation: portrait){
+  .board{
+    font-size: 4vw;
+  }
+}
+
+@media(max-aspect-ratio:9/16){
+  .board{
+    font-size: 4vh;
+  }
+}
+
+@media(min-aspect-ratio:9/16){
+  .board{
+    font-size: 3vh;
+  }
+}
+
+@media(min-aspect-ratio:3/4){
+  .board{
+  }
+}
+
+@media(min-aspect-ratio:1/1){
+  .board{
+    height: 49vw;
+    width: 49vw;
+  }
+}
+
+@media(min-aspect-ratio:4/3){
+  .board{
+    height: 49vw;
+    width: 49vw;
+  }
+}
+
+@media(min-aspect-ratio:16/9){
+  .board{
+    height: 49vw;
+    width: 49vw;
+  }
+}
