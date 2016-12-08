@@ -38,6 +38,14 @@
 	.app{
 		background-color:green;
 	}
+	.left{
+		float: left;
+    width: 66vw;
+	}
+	.right{
+		float: right;
+    width: 33vw;
+	}
 }
 
 @media(min-aspect-ratio:4/3){
