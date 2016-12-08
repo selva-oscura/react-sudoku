@@ -32,7 +32,6 @@ const Square = ({rowNumber, colNumber, square, selectSquare, showErrors}) => {
 			<p>{square.value}</p>
 		)
 	}else if(square.inkMark){
-		console.log('showErrors from square.js', showErrors)
 		let inkStyle = "inkmark";
 		if(showErrors && square.value!==square.inkMark){
 			inkStyle += " error";
