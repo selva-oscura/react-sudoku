@@ -12,6 +12,14 @@
   }
 }
 
+@media(min-aspect-ratio:1/1){
+  .inkChoices{
+    width: 30vw;
+    margin: 2vw 1vw;
+  }
+}
+
+
 @media(min-aspect-ratio:4/3){
   .inkChoices{
     width: 30vw;

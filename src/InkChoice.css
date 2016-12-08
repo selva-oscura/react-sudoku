@@ -34,6 +34,19 @@
   }
 }
 
+@media(min-aspect-ratio:1/1){
+  .inkChoice p{
+    font-size: 4vw;
+     margin: .5vw 0 0 0;
+  }
+  .inkChoice{
+    border: .5vw solid black;
+    height: 5vw;
+    width: 5vw;
+    margin: .75vw .75vw 0;
+  }
+}
+
 @media(min-aspect-ratio:4/3){
   .inkChoice p{
     font-size: 2vw;

@@ -47,6 +47,20 @@
   }
 }
 */
+
+@media(min-aspect-ratio:1/1){
+  .pencilChoice p{
+    font-size: 4vw;
+     margin: .5vw 0 0 0;
+  }
+  .pencilChoice{
+    border: .5vw solid grey;
+    height: 5vw;
+    width: 5vw;
+    margin: .75vw .75vw 0;
+  }
+}
+
 @media(min-aspect-ratio:4/3){
   .pencilChoice p{
     font-size: 2vw;
