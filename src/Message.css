@@ -16,7 +16,7 @@
   }
 }
 
-@media(min-aspect-ratio:4/3){
+@media(min-aspect-ratio:1/1){
   .message{
     width: 30vw;
     margin: 2vw 1vw;
