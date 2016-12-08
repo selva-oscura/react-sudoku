@@ -1,6 +1,5 @@
 @media (orientation: landscape){
   .inkChoices{
-    height: 9vh;
     width: 84vh;
     margin: 4vh auto 0;
   }
@@ -8,9 +7,22 @@
 
 @media (orientation: portrait){
   .inkChoices{
-    height: 9vw;
     width: 84vw;
     margin: 4vw auto 0;
   }
 }
 
+@media(min-aspect-ratio:4/3){
+  .inkChoices{
+    width: 30vw;
+    margin: 2vw 1vw;
+  }
+}
+
+
+@media(min-aspect-ratio:16/9){
+  .inkChoices{
+    width: 45vw;
+    margin: 2vw 1vw;
+  }
+}

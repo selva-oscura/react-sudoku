@@ -24,12 +24,51 @@
 @media (orientation: portrait){
   .pencilChoice p{
     font-size: 4vw;
-     margin: 1vw 0 0 0;
+    margin: 1vw 0 0 0;
   }
   .pencilChoice{
     border: .5vw solid grey;
     height: 6vw;
     width: 6vw;
     margin: 0 .5vw;
+  }
+}
+
+/*@media(min-aspect-ratio:16/9){
+  .pencilChoice p{
+    font-size: 2vw;
+     margin: .33vw 0 0 0;
+  }
+  .pencilChoice{
+    border: .25vw solid grey;
+    height: 3vw;
+    width: 3vw;
+    margin: .25vw;
+  }
+}
+*/
+@media(min-aspect-ratio:4/3){
+  .pencilChoice p{
+    font-size: 2vw;
+     margin: .75vw 0 0 0;
+  }
+  .pencilChoice{
+    border: .25vw solid grey;
+    height: 3.5vw;
+    width: 3.5vw;
+    margin: .75vw .75vw 0;
+  }
+}
+
+@media(min-aspect-ratio:16/9){
+  .pencilChoice p{
+    font-size: 2vw;
+     margin: .4vw 0 0 0;
+  }
+  .pencilChoice{
+    border: .25vw solid grey;
+    height: 3vw;
+    width: 3vw;
+    margin: .25vw;
   }
 }
