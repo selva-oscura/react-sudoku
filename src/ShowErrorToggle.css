@@ -1,9 +1,17 @@
-.showErrorToggle label{
+.showErrorToggle{
 	display: block;
 	text-align: right;
+	margin: 0;
+}
+.showErrorToggle label{
+	display: inline-block;
 }
 .showErrorToggle input{
-	float:right;
+	vertical-align: middle;
+}
+
+.showErrorToggle p{
+	text-align: right;
 }
 
 @media(min-aspect-ratio:16/9){

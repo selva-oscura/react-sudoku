@@ -6,10 +6,9 @@
 	width: 40vw;
 	display: inline-block;
 	vertical-align: top;
-  float:right;
 }
 .gamesInfo div:first-child{
-	float:left;
+	/*float:left;*/
 }
 
 @media(max-aspect-ratio:9/16){
@@ -30,12 +29,22 @@
 	}
 }
 
+
+@media(min-aspect-ratio:4/3){
+  .gamesInfo{
+    width: 30vw;
+		margin: 2vw 1vw;
+  }
+  .gamesInfo div{
+  	width: 15vw;
+  }
+}
+
+
 @media(min-aspect-ratio:16/9){
   .gamesInfo{
     width: 45vw;
-    height: 18vh;
-    margin: 4vh 2vh;
-    float: right;
+		margin: 2vw 1vw;
   }
   .gamesInfo div{
   	width: 22vw;

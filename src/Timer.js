@@ -2,9 +2,7 @@ import React from 'react';
 import './Timer.css';
 
 const Timer = ({timer}) => (
-	<div className="timer">
-		<p>{timer} seconds</p>
-	</div>
+	<p className="timer">{timer} seconds</p>
 );
 
 export default Timer;

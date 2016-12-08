@@ -1,3 +1,24 @@
 .timer{
 	text-align: right;
+	margin:0;
 }
+
+/*@media(max-aspect-ratio:9/16){
+	.timer p{
+		font-size: 2vw;
+	}
+}
+
+@media(min-aspect-ratio:9/16){
+	.timer p{
+		font-size: 1.5vw;
+	}
+}
+
+@media(max-aspect-ratio:3/4){
+	.timer p{
+		margin: .5vh 0 0 0;
+	}
+}
+
+*/

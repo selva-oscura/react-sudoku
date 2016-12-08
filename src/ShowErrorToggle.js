@@ -3,8 +3,12 @@ import './ShowErrorToggle.css';
 
 const ShowErrorToggle = ({showErrors, toggleShowErrors}) => {
 	return (
-		<div className="showErrorToggle">
-			<label htmlFor="show-errors">Show Errors
+		<span
+			className="showErrorToggle"
+		>
+			<label 
+				htmlFor="show-errors"
+				>
 				<input 
 					type="checkbox" 
 					name="show-errors"
@@ -13,9 +17,13 @@ const ShowErrorToggle = ({showErrors, toggleShowErrors}) => {
 						toggleShowErrors()
 					}
 				}/>
+				Show Errors
 			</label>
-		</div>
+		</span>
 	)
 }
 
 export default ShowErrorToggle;
+		// <div className="showErrorToggle">
+		// <p>stand in</p>
+		// </div>

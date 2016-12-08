@@ -6,16 +6,20 @@ import './GamesInfo.css';
 
 const GamesInfo = ({timer, scores, showErrors, toggleShowErrors}) => (
 	<div className="gamesInfo">
-		<History 
-			scores={scores}
-		/>
-		<Timer 
-			timer={timer}
-		/>
-		<ShowErrorToggle 
-		  showErrors={showErrors}
-		  toggleShowErrors={toggleShowErrors}
-		/>
+		<div>		
+			<History 
+				scores={scores}
+			/>
+		</div>
+		<div>		
+			<Timer 
+				timer={timer}
+			/>
+			<ShowErrorToggle 
+			  showErrors={showErrors}
+			  toggleShowErrors={toggleShowErrors}
+			/>
+		</div>
 	</div>
 );
 
