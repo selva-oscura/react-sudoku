@@ -15,3 +15,18 @@
     margin: 4vw auto 0;
   }
 }
+
+@media(min-aspect-ratio:4/3){
+  .message{
+    width: 30vw;
+    margin: 2vw 1vw;
+  }
+}
+
+@media(min-aspect-ratio:16/9){
+  .message{
+    width: 45vw;
+    margin: 2vw 1vw;
+    float: right;
+  }
+}
