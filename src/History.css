@@ -5,13 +5,11 @@
 
 /*@media(max-aspect-ratio:9/16){
 	.history p{
-		font-size: 2vw;
 	}
 }
 
 @media(min-aspect-ratio:9/16){
 	.history p{
-		font-size: 1.5vw;
 	}
 }
 
