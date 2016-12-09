@@ -8,7 +8,7 @@ const PencilChoice = ({pencilChoice, updatePencilMarks}) => {
 				updatePencilMarks(pencilChoice);
 			}
 		}>
-			<p>{pencilChoice}</p>
+			<h4>{pencilChoice}</h4>
 		</div>
 	)
 }

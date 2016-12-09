@@ -8,7 +8,7 @@ const InkChoice = ({inkChoice, updateInkMark}) => {
 				updateInkMark(inkChoice);
 			}
 		}>
-			<p>{inkChoice}</p>
+			<h4>{inkChoice}</h4>
 		</div>
 	)
 }
