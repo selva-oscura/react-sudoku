@@ -1,10 +1,19 @@
 .square{
-/*  font-size: 5vh;*/
+  font-size: 4.5vw;
   display: inline-block;
 }
 
 .selected{
   background-color: silver;
+}
+
+.square p{
+  display: block;
+  margin:0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
 }
 
 .square p.inkmark{
@@ -22,9 +31,8 @@
     width: 8vh;
   }
   .square p{
-    font-size: 5vh;
     margin: 1.5vh 0 0 0;
-    text-align: baseline;
+    text-align: center;
   }
 
   .row-divider-left{
@@ -60,7 +68,6 @@
     width: 8vw;
   }
   .square p{
-    font-size: 5vw;
     margin: 1.5vw 0 0 0;
     text-align: baseline;
   }
@@ -87,5 +94,15 @@
   }
   .board-bottom{
     border-bottom: 1vw solid black;
+  }
+}
+
+@media(min-aspect-ratio:1/1){
+  .square{
+    height: 5vw;
+    width: 5vw;
+  }
+  .square p{
+    margin: .5vw;
   }
 }
