@@ -6,10 +6,27 @@
   margin:0;
 }
 
+@media(max-aspect-ratio:9/16){
+  .header h2{
+    font-size: 3vh;
+  }
+}
+
+@media(min-aspect-ratio:9/16){
+  .header h2{
+    font-size: 6vw;
+  }
+}
+
+@media(min-aspect-ratio:3/4){
+  .header h2{
+    font-size: 5vh;
+  }
+}
+
 
 @media (orientation: landscape){
   .header{
-    height: 10vh;
     padding: .5vh;
   }
   .header h2{
@@ -19,10 +36,8 @@
 }
 
 @media (orientation: portrait){
-  .header{
-    height: 10vw;
-  }
   .header h2{
     padding: 1vw;
   }
 }
+
