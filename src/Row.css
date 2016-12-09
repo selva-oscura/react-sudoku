@@ -1,16 +1,17 @@
-.row{
-}
-
-@media (orientation: landscape){
+/*@media (orientation: landscape){
   .row{
-/*    height: 9vh;
-    width: 81vh;*/
+    max-height: 8vh;
+  }
+}
+*/
+@media (orientation: portrait){
+  .row{
+    max-height: 9vw;
   }
 }
 
-@media (orientation: portrait){
+@media(min-aspect-ratio:1/1){
   .row{
-/*    height: 9vw;
-    width: 81vw;*/
+    max-height: 5vw;
   }
 }
