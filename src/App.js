@@ -537,13 +537,11 @@ const App = React.createClass({
               showErrors={state.showErrors}
             />
           </div>
-          <div className="right">
-            <Message 
-              message={state.message}
-              gameStatus={state.gameStatus}
-              newGame={this.newGame}
-            />
-          </div>
+          <Message 
+            message={state.message}
+            gameStatus={state.gameStatus}
+            newGame={this.newGame}
+          />
         </div>
       )
     }
