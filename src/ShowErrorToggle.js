@@ -24,6 +24,3 @@ const ShowErrorToggle = ({showErrors, toggleShowErrors}) => {
 }
 
 export default ShowErrorToggle;
-		// <div className="showErrorToggle">
-		// <p>stand in</p>
-		// </div>
