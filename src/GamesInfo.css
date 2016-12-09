@@ -1,34 +1,40 @@
 .gamesInfo{
 	width: 81vw;
-	margin: 0 auto;
+	margin: 2vh auto;
 }
 .gamesInfo div{
 	width: 40vw;
 	display: inline-block;
 	vertical-align: top;
 }
-.gamesInfo div:first-child{
-	/*float:left;*/
-}
 
 @media(max-aspect-ratio:9/16){
 	.gamesInfo p, .gamesInfo label{
-		font-size: 3vw;
+/*		font-size: 3vw;*/
 	}
 }
 
 @media(min-aspect-ratio:9/16){
 	.gamesInfo p, .gamesInfo label{
-		font-size: 2.5vh;
+/*		font-size: 2.5vh;*/
 	}
 }
 
-@media(max-aspect-ratio:3/4){
+@media(min-aspect-ratio:3/4){
 	.gamesInfo p{
 		margin: .5vh 0 0 0;
 	}
 }
 
+@media(min-aspect-ratio:1/1){
+  .gamesInfo{
+		margin: 4vh auto;
+    width: 30vw;
+  }
+  .gamesInfo div{
+  	width: 30vw;
+  }
+}
 
 @media(min-aspect-ratio:4/3){
   .gamesInfo{
