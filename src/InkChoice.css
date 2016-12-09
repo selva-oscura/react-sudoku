@@ -4,13 +4,13 @@
   color: black;
   border-radius: 50%;
 }
-.inkChoice p{
+.inkChoice h4{
   text-align: center;
+  margin: .5vw 0 0 0;
 }
 
-@media (orientation: landscape){
-  .inkChoice p{
-    font-size: 4vh;
+/*@media (orientation: landscape){
+  .inkChoice h4{
     margin: 1vh 0 0 0;
   }
   .inkChoice{
@@ -19,13 +19,9 @@
     width: 6vh;
     margin: 0 .5vh;
   }
-}
+}*/
 
 @media (orientation: portrait){
-  .inkChoice p{
-    font-size: 4vw;
-     margin: 1vw 0 0 0;
-  }
   .inkChoice{
     border: .5vw solid black;
     height: 6vw;
@@ -35,25 +31,25 @@
 }
 
 @media(min-aspect-ratio:1/1){
-  .inkChoice p{
-    font-size: 4vw;
-     margin: .5vw 0 0 0;
+  .inkChoice h4{
+    font-size: 3.5vw;
+     margin: 0;
   }
   .inkChoice{
     border: .5vw solid black;
-    height: 5vw;
-    width: 5vw;
-    margin: .75vw .75vw 0;
+    height: 4vw;
+    width: 4vw;
+    margin: .5vw .5vw 0;
   }
 }
 
 @media(min-aspect-ratio:4/3){
-  .inkChoice p{
-    font-size: 2vw;
-     margin: .75vw 0 0 0;
+  .inkChoice h4{
+    font-size: 3vw;
+     margin: .1vw 0 0 0;
   }
   .inkChoice{
-    border: .25vw solid black;
+    border: .3vw solid black;
     height: 3.5vw;
     width: 3.5vw;
     margin: .75vw .75vw 0;
@@ -61,7 +57,7 @@
 }
 
 @media(min-aspect-ratio:16/9){
-  .inkChoice p{
+  .inkChoice h4{
     font-size: 2vw;
      margin: .4vw 0 0 0;
   }
