@@ -1,31 +1,39 @@
 .app {
   text-align: center;
+  height: 100vh;
 }
 
-
-.app h4{
-	font-size: 4.5vw;
+.app h4, .app p, .app label{
+	font-size: 4vw;
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
 }
 
-.app .right p, .app .right label{
-	font-size: 4vw;
+.game-space, .non-board-space, .message-space{
+	width: 90vw;
+	margin: 2vw auto 0;
 }
 
 @media(max-aspect-ratio:9/16){
-	.app h4{
+	.app{
 		background-color:red;
-		font-size: 4.5vw;
+	}
+	.game-space, .non-board-space, .message-space{
+		width: 90vw;
 	}
 }
 
 @media(min-aspect-ratio:9/16){
 	.app{
 		background-color:orange;
-		font-size: 4.5vw;
+	}
+	.app p, .app label{
+		font-size: 3vw;
+	}
+	.game-space, .non-board-space, .message-space{
+		width: 81vw;
 	}
 }
 
@@ -33,27 +41,33 @@
 	.app{
 		background-color:yellow;
 	}
+	.game-space, .non-board-space, .message-space{
+		width: 72vw;
+		margin: 1vw auto 0;
+	}
 }
 
-@media(min-aspect-ratio:1/1){
+@media(min-aspect-ratio:9/10){
 	.app{
 		background-color:green;
 	}
 	.app p{
-		font-size: 3.5vw;
+		font-size: 4vh;
 	}
-	.app .right p, .app .right label{
-		font-size: 2.5vw;
-	}
-	.left{
+	.game-space{
+		width: 66vw;
+		height: 60vh;
+		margin: 2vw auto 0;
 		float: left;
-    width: 66vw;
-    height: 60vw;
 	}
-	.right{
+	.non-board-space{
+		width: 30vw;
+		height: 60vh;
+		margin: 2vw auto 0;
 		float: right;
-    width: 33vw;
-    height: 60vw;
+	}
+	.message-space{
+		width: 100vw;
 	}
 }
 
@@ -61,27 +75,34 @@
 	.app{
 		background-color:blue;
 	}
-	.left{
-		float: left;
-    width: 66vw;
+	.game-space, .non-board-space, .message-space{
+		height: inherit;
 	}
-	.right{
+	.game-space{
+		width: 60vw;
+	}
+	.non-board-space, .message-space{
+		margin: 2vw auto 0;
+		width: 36vw;
 		float: right;
-    width: 33vw;
-    height:inherit;
 	}
+
 }
 
 @media(min-aspect-ratio:16/9){
 	.app{
 		background-color:purple;
 	}
-	.left{
-		float: left;
-    width: 50vw;
+	.game-space, .non-board-space, .message-space{
+		width: 50vw;
+		height: 50vw;
+		margin: 2vw auto 0;
 	}
-	.right{
+	.game-space{
+		float:left;
+	}
+	.non-board-space, .message-space{
 		float: right;
-    width: 50vw;
+		height: inherit;
 	}
 }
