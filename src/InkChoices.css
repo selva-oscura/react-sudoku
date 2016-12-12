@@ -1,20 +1,30 @@
-@media (orientation: landscape){
+.inkChoices{
+  margin: 4vw auto 0;
+}
+
+@media(max-aspect-ratio:9/16){
   .inkChoices{
-    width: 84vh;
-    margin: 4vh auto 0;
+    width: 90vw;
   }
 }
 
-@media (orientation: portrait){
+
+@media(min-aspect-ratio:9/16){
   .inkChoices{
-    width: 84vw;
-    margin: 4vw auto 0;
+    width: 81vw;
   }
 }
 
-@media(min-aspect-ratio:1/1){
+@media(min-aspect-ratio:3/4){
   .inkChoices{
-    width: 30vw;
+    width: 72vw;
+  }
+}
+
+
+@media(min-aspect-ratio:9/10){
+  .inkChoices{
+    width: 25vw;
     margin: 2vw 1vw;
   }
 }
