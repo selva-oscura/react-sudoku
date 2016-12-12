@@ -1,23 +1,5 @@
-@media (orientation: landscape){
-  .board{
-    height: 81vh;
-    width: 84vh;
-		margin: 4vh auto 0;
-  }
-}
-
-@media (orientation: portrait){
-  .board{
-    height: 81vw;
-    width: 84vw;
-    margin: 4vw auto 0;
-  }
-}
-
-@media (orientation: landscape){
-  .board{
-    font-size: 4vh;
-  }
+.board{
+  margin: 4vw auto 0;
 }
 
 @media (orientation: portrait){
@@ -29,36 +11,47 @@
 @media(max-aspect-ratio:9/16){
   .board{
     font-size: 4vh;
+    max-height: 90vw;
+    max-width: 90vw;
   }
 }
 
 @media(min-aspect-ratio:9/16){
   .board{
-    font-size: 3vh;
+    font-size: 4vh;
+    max-height: 81vw;
+    max-width: 81vw;
   }
 }
 
 @media(min-aspect-ratio:3/4){
   .board{
+    margin: 2vw auto 0;
+    font-size: 3vh;
+    max-height: 72vw;
+    max-width: 72vw;
   }
 }
 
-@media(min-aspect-ratio:1/1){
+@media(min-aspect-ratio:9/10){
   .board{
-    width: 66vw;
+    margin: 4vw auto 0;
+    height: 64vw;
+    padding-left: 4vw;
   }
 }
 
-/*@media(min-aspect-ratio:4/3){
+@media(min-aspect-ratio:4/3){
   .board{
-    height: 49vw;
-    width: 49vw;
+    width: 63vw;
+    height: 63vw;
   }
 }
+
 
 @media(min-aspect-ratio:16/9){
   .board{
-    height: 49vw;
-    width: 49vw;
+    height: 54vw;
+    width: 54vw;
   }
-}*/
+}
