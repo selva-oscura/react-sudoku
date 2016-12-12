@@ -516,7 +516,7 @@ const App = React.createClass({
     }else{
       mainDisplay = (
         <div className="body">
-          <div className="right">
+          <div className="non-board-space">
             <GamesInfo 
               timer={state.timer}
               scores={state.scores}
@@ -530,18 +530,20 @@ const App = React.createClass({
               updatePencilMarks={this.updatePencilMarks} 
             />
           </div>
-          <div className="left">
+          <div className="game-space">
             <Board 
               board={state.board} 
               selectSquare={this.selectSquare}
               showErrors={state.showErrors}
             />
           </div>
-          <Message 
-            message={state.message}
-            gameStatus={state.gameStatus}
-            newGame={this.newGame}
-          />
+          <div className="message-space">
+            <Message 
+              message={state.message}
+              gameStatus={state.gameStatus}
+              newGame={this.newGame}
+            />
+          </div>
         </div>
       )
     }
