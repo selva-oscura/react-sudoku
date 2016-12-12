@@ -1,9 +1,5 @@
-.gamesInfo{
-	width: 81vw;
-	margin: 2vh auto;
-}
 .gamesInfo div{
-	width: 40vw;
+	width: 50%;
 	display: inline-block;
 	vertical-align: top;
 }
@@ -26,14 +22,16 @@
 	}
 }
 
-@media(min-aspect-ratio:1/1){
+@media(min-aspect-ratio:9/10){
   .gamesInfo{
 		margin: 4vh auto;
-    width: 30vw;
   }
   .gamesInfo div{
-  	width: 30vw;
+  	width: 25vw;
   }
+	.gamesInfo p, .gamesInfo label{
+		font-size: 3vh;
+	}
 }
 
 @media(min-aspect-ratio:4/3){
