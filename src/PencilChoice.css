@@ -4,52 +4,47 @@
   color: grey;
   border-radius: 50%;
 }
-.pencilChoice h4{
-  text-align: center;
-}
 
-@media (orientation: landscape){
-  .pencilChoice h4{
-    /*font-size: 4vh;*/
-    margin: 1vh 0 0 0;
-  }
+@media(max-aspect-ratio:9/16){
   .pencilChoice{
-    border: .5vh solid grey;
-    height: 6vh;
-    width: 6vh;
-    margin: 0 .5vh;
+    border: .5vw solid grey;
+    height: 7vw;
+    width: 7vw;
+    margin: 0 .5vw;
+  }
+  .pencilChoice h4{
+    text-align: center;
+    margin: 1.25vw 0 0 0;
   }
 }
 
-@media (orientation: portrait){
-  .pencilChoice h4{
-    font-size: 4vw;
-    margin: 1vw 0 0 0;
-  }
+@media(min-aspect-ratio:9/16){
   .pencilChoice{
     border: .5vw solid grey;
     height: 6vw;
     width: 6vw;
     margin: 0 .5vw;
   }
-}
-
-/*@media(min-aspect-ratio:16/9){
   .pencilChoice h4{
-    font-size: 2vw;
-     margin: .33vw 0 0 0;
-  }
-  .pencilChoice{
-    border: .25vw solid grey;
-    height: 3vw;
-    width: 3vw;
-    margin: .25vw;
+    text-align: center;
+    margin: .5vw 0 0 0;
   }
 }
-*/
 
+@media(min-aspect-ratio:3/4){
+  .pencilChoice{
+    border: .5vw solid grey;
+    height: 5vw;
+    width: 5vw;
+    margin: 0 .5vw;
+  }
+  .pencilChoice h4{
+    text-align: center;
+    margin: .4vw 0 0 0;
+  }
+}
 
-@media(min-aspect-ratio:1/1){
+@media(min-aspect-ratio:9/10){
   .pencilChoice h4{
     font-size: 3.5vw;
      margin: 0;
