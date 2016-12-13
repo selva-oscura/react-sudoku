@@ -18,7 +18,7 @@
 
 @media(min-aspect-ratio:3/4){
 	.gamesInfo p{
-		margin: .5vh 0 0 0;
+/*		margin: .5vh 0 0 0;*/
 	}
 }
 
@@ -27,10 +27,11 @@
 		margin: 4vh auto;
   }
   .gamesInfo div{
-  	width: 25vw;
+  	width: 28vw;
+    padding-right: 3vw;
   }
 	.gamesInfo p, .gamesInfo label{
-		font-size: 3vh;
+		font-size: 2.5vh;
 	}
 }
 
