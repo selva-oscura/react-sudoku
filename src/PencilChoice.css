@@ -47,13 +47,13 @@
 @media(min-aspect-ratio:9/10){
   .pencilChoice h4{
     font-size: 3.5vw;
-     margin: 0;
+     margin: 0.5vw;
   }
   .pencilChoice{
     border: .5vw solid grey;
-    height: 4vw;
-    width: 4vw;
-    margin: .5vw .5vw 0;
+    height: 4.5vw;
+    width: 4.5vw;
+    margin: .5vw .5vw .25vw;
   }
 }
 
