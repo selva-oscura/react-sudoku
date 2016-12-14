@@ -16,19 +16,7 @@
 	margin: 2vw auto 0;
 }
 
-@media(max-aspect-ratio:9/16){
-	.app{
-		background-color:red;
-	}
-	.game-space, .non-board-space, .message-space{
-		width: 90vw;
-	}
-}
-
 @media(min-aspect-ratio:9/16){
-	.app{
-		background-color:orange;
-	}
 	.app p, .app label{
 		font-size: 3vw;
 	}
@@ -38,9 +26,6 @@
 }
 
 @media(min-aspect-ratio:3/4){
-	.app{
-		background-color:yellow;
-	}
 	.game-space, .non-board-space, .message-space{
 		width: 72vw;
 		margin: 1vw auto 0;
@@ -48,9 +33,6 @@
 }
 
 @media(min-aspect-ratio:9/10){
-	.app{
-		background-color:green;
-	}
 	.app p{
 		font-size: 4vh;
 	}
