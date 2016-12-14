@@ -1,19 +1,28 @@
 p.pencil-marks{
   margin:0;
   padding:0;
+  font-size: 2.4vw;
+  line-height: 2.4vw;
+  display: block;
+  padding-top: .5vw;
 }
 
-
-@media (orientation: landscape){
+@media(min-aspect-ratio:9/16){
   p.pencil-marks{
-    font-size: 2vh;
-    line-height: 2.2vh;
+    padding-top: .2vw;
   }
 }
 
-@media (orientation: portrait){
+@media(min-aspect-ratio:9/10){
   p.pencil-marks{
-    font-size: 2vw;
-    line-height: 2.2vw;
+    font-size: 1.5vw;
+    line-height: 1.5vw;
+  }
+}
+
+@media(min-aspect-ratio:10/9){
+  p.pencil-marks{
+    font-size: 1.8vh;
+    line-height: 2vh;
   }
 }
