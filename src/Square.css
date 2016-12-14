@@ -92,6 +92,10 @@
     height: 9vw;
     width: 9vw;
   }
+  .square p{
+    font-size: 6vw;
+    padding-top:1.5vw;
+  }
 }
 
 @media(min-aspect-ratio:9/16){
@@ -99,12 +103,20 @@
     max-height: 8vw;
     max-width: 8vw;
   }
+  .square p{
+    font-size: 5vw;
+    padding-top:1.25vw;
+  }
 }
 
 @media(min-aspect-ratio:3/4){
   .square{
     height: 7vw;
     width: 7vw;
+  }
+  .square p{
+    font-size: 4vw;
+    padding-top:1.25vw;
   }
 }
 
@@ -114,7 +126,9 @@
     width: 5vh;
   }
   .square p{
-    margin: .1vw;
+    font-size: 3.5vw;
+    padding-top:.75vw;
+    margin:0;
   }
 }
 
@@ -124,6 +138,7 @@
     width: 6vh;
   }
   .square p{
-    margin: .1vw;
+    font-size: 4vh;
+    padding-top:.5vw;
   }
 }
