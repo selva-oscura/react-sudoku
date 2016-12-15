@@ -5,21 +5,18 @@
 @media(max-aspect-ratio:9/16){
   .row{
     max-height: 10vw;
-    max-width: 90vw;
   }
 }
 
 @media(min-aspect-ratio:9/16){
   .row{
     max-height: 9vw;
-    max-width: 81vw;
   }
 }
 
 @media(min-aspect-ratio:3/4){
   .row{
     max-height: 8vw;
-    max-width: 72vw;
   }
 
 }
@@ -27,49 +24,11 @@
 @media(min-aspect-ratio:9/10){
   .row{
     max-height: 7vw;
-    max-width: 63vw;
   }
 }
 
 @media(min-aspect-ratio:4/3){
   .row{
     max-height: 7vw;
-    max-width: 63vw;
   }
 }
-
-/*@media (orientation: portrait){
-  .row{
-    max-height: 9vh;
-    width: 81vh;
-    margin: 0 auto;
-  }
-}
-
-
-
-@media(max-aspect-ratio:9/16){
-  .board{
-    font-size: 4vh;
-    max-height: 90vw;
-    max-width: 90vw;
-    margin: 4vw auto 0;
-  }
-}
-
-@media(min-aspect-ratio:9/16){
-  .board{
-    font-size: 4vh;
-    max-height: 81vw;
-    max-width: 81vw;
-    margin: 4vw auto 0;
-  }
-}
-
-@media(min-aspect-ratio:3/4){
-  .board{
-    font-size: 3vh;
-    max-height: 72vw;
-    max-width: 72vw;
-  }
-}*/
