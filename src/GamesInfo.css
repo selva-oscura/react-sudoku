@@ -4,31 +4,12 @@
 	vertical-align: top;
 }
 
-@media(max-aspect-ratio:9/16){
-	.gamesInfo p, .gamesInfo label{
-/*		font-size: 3vw;*/
-	}
-}
-
-@media(min-aspect-ratio:9/16){
-	.gamesInfo p, .gamesInfo label{
-/*		font-size: 2.5vh;*/
-	}
-}
-
-@media(min-aspect-ratio:3/4){
-	.gamesInfo p{
-/*		margin: .5vh 0 0 0;*/
-	}
-}
-
 @media(min-aspect-ratio:9/10){
   .gamesInfo{
-		margin: 4vh auto;
+		margin: 0 auto 1vh;
   }
   .gamesInfo div{
-  	width: 28vw;
-    padding-right: 3vw;
+  	width: 24vw;
   }
 	.gamesInfo p, .gamesInfo label{
 		font-size: 2.5vh;
@@ -37,11 +18,13 @@
 
 @media(min-aspect-ratio:4/3){
   .gamesInfo{
-    width: 30vw;
-		margin: 2vw 1vw;
+    width: 29vw;
   }
   .gamesInfo div{
-  	width: 15vw;
+    width: 13vw;
+  }
+  .gamesInfo div:first-child{
+    width: 16vw;
   }
 }
 
@@ -49,7 +32,6 @@
 @media(min-aspect-ratio:16/9){
   .gamesInfo{
     width: 45vw;
-		margin: 2vw 1vw;
   }
   .gamesInfo div{
   	width: 22vw;
