@@ -37,54 +37,62 @@
 		font-size: 4vh;
 	}
 	.game-space{
-		width: 66vw;
-		height: 60vh;
-		margin: 2vw auto 0;
+		width: 60vw;
 		float: left;
+		padding-left:6vw;
 	}
 	.non-board-space{
-		width: 33vw;
-		height: 60vh;
-		margin: 2vw auto 0;
+		width: 30vw;
 		float: right;
+		padding-right:4vw;
+	}
+	.game-space, .non-board-space{
+		margin: 4vw auto 0;
+		height: 68vh;
 	}
 	.message-space{
-		width: 100vw;
+		width: 80vw;
 	}
 }
 
 @media(min-aspect-ratio:4/3){
-	.app{
-		background-color:blue;
-	}
 	.game-space, .non-board-space, .message-space{
 		height: inherit;
 	}
+	.game-space, .non-board-space{
+		margin: 6vw auto 0;
+	}
 	.game-space{
-		width: 60vw;
+		width: 50vw;
+		padding-left:10vw;
 	}
 	.non-board-space, .message-space{
-		margin: 2vw auto 0;
-		width: 36vw;
+		width: 30vw;
 		float: right;
+		padding-right:10vw;
 	}
-
 }
 
 @media(min-aspect-ratio:16/9){
-	.app{
-		background-color:purple;
+	.game-space{
+		width: 35vw;		
+	}
+	.non-board-space, .message-space{
+		width: 45vw;
+	}
+	.game-space, .non-board-space{
+		margin: 6vw auto 0;
 	}
 	.game-space, .non-board-space, .message-space{
-		width: 50vw;
-		height: 50vw;
-		margin: 2vw auto 0;
+		height: 40vw;
 	}
 	.game-space{
 		float:left;
+		padding-left: 10vw;
 	}
 	.non-board-space, .message-space{
 		float: right;
+		padding-right: 10vw;
 		height: inherit;
 	}
 }
