@@ -1,11 +1,5 @@
 .board{
-  margin: 4vw auto 0;
-}
-
-@media (orientation: portrait){
-  .board{
-    font-size: 4vw;
-  }
+  margin: 0 auto;
 }
 
 @media(max-aspect-ratio:9/16){
@@ -26,7 +20,6 @@
 
 @media(min-aspect-ratio:3/4){
   .board{
-    margin: 2vw auto 0;
     font-size: 3vh;
     max-height: 72vw;
     max-width: 72vw;
@@ -35,9 +28,7 @@
 
 @media(min-aspect-ratio:9/10){
   .board{
-    margin: 4vw auto 0;
     height: 64vw;
-    padding-left: 4vw;
   }
 }
 
