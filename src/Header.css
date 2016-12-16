@@ -1,9 +1,16 @@
 .header {
   background-color: #222;
-  color: white;
+  color: #CD214F;
+  width: 100vw;
 }
 .header h2{
   margin:0;
+}
+
+@media (orientation: portrait){
+  .header h2{
+    padding: 1vw;
+  }
 }
 
 @media(max-aspect-ratio:9/16){
@@ -32,12 +39,4 @@
   .header h2{
     padding: 1vh;
   }
-
 }
-
-@media (orientation: portrait){
-  .header h2{
-    padding: 1vw;
-  }
-}
-
