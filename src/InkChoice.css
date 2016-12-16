@@ -3,82 +3,80 @@
   background-color: white;
   color: black;
   border-radius: 50%;
+  border: .5vw solid black;
+}
+
+.inkChoice{
+  text-align: center;
 }
 
 @media(max-aspect-ratio:9/16){
   .inkChoice{
-    border: .5vw solid black;
     height: 7vw;
     width: 7vw;
     margin: 0 .5vw;
   }
   .inkChoice h4{
-    text-align: center;
     margin: 1.25vw 0 0 0;
   }
 }
 
 @media(min-aspect-ratio:9/16){
   .inkChoice{
-    border: .5vw solid black;
     height: 6vw;
     width: 6vw;
     margin: 0 .5vw;
   }
   .inkChoice h4{
-    text-align: center;
-    margin: .5vw 0 0 0;
+    margin: .7vw 0 0 0;
   }
 }
 
 @media(min-aspect-ratio:3/4){
   .inkChoice{
-    border: .5vw solid black;
     height: 5vw;
     width: 5vw;
     margin: 0 .5vw;
   }
   .inkChoice h4{
-    text-align: center;
     margin: .4vw 0 0 0;
   }
 }
 
 @media(min-aspect-ratio:9/10){
-  .inkChoice h4{
-    font-size: 3.5vw;
-     margin: 0.25vw;
-  }
   .inkChoice{
-    border: .5vw solid black;
     height: 4.5vw;
     width: 4.5vw;
     margin: .5vw .5vw .25vw;
   }
+  .inkChoice h4{
+    font-size: 3.5vw;
+    margin: 0.25vw;
+  }
 }
 
 @media(min-aspect-ratio:4/3){
-  .inkChoice h4{
-    font-size: 3.5vw;
-     margin: .1vw 0 0 0;
-  }
   .inkChoice{
     border: .35vw solid black;
     height: 4vw;
     width: 4vw;
     margin: .75vw .65vw .25vw;
   }
+  .inkChoice h4{
+    font-size: 3.5vw;
+    margin: .1vw 0 0 0;
+  }
 }
 
 @media(min-aspect-ratio:16/9){
-  .inkChoice h4{
-    font-size: 2vw;
-     margin: .4vw 0 0 0;
-  }
   .inkChoice{
     border: .25vw solid black;
     height: 3vw;
     width: 3vw;
     margin: .25vw;
+  }
+  .inkChoice h4{
+    font-size: 2vw;
+    margin: .4vw 0 0 0;
   }
 }

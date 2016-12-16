@@ -3,43 +3,41 @@
   background-color: white;
   color: grey;
   border-radius: 50%;
+  border: .5vw solid grey;
+}
+.pencilChoice{
+  text-align: center;
 }
 
 @media(max-aspect-ratio:9/16){
   .pencilChoice{
-    border: .5vw solid grey;
     height: 7vw;
     width: 7vw;
     margin: 0 .5vw;
   }
   .pencilChoice h4{
-    text-align: center;
     margin: 1.25vw 0 0 0;
   }
 }
 
 @media(min-aspect-ratio:9/16){
   .pencilChoice{
-    border: .5vw solid grey;
     height: 6vw;
     width: 6vw;
     margin: 0 .5vw;
   }
   .pencilChoice h4{
-    text-align: center;
-    margin: .5vw 0 0 0;
+    margin: .7vw 0 0 0;
   }
 }
 
 @media(min-aspect-ratio:3/4){
   .pencilChoice{
-    border: .5vw solid grey;
     height: 5vw;
     width: 5vw;
     margin: 0 .5vw;
   }
   .pencilChoice h4{
-    text-align: center;
     margin: .4vw 0 0 0;
   }
 }
@@ -47,10 +45,9 @@
 @media(min-aspect-ratio:9/10){
   .pencilChoice h4{
     font-size: 3.5vw;
-     margin: 0.25vw;
+    margin: 0.25vw;
   }
   .pencilChoice{
-    border: .5vw solid grey;
     height: 4.5vw;
     width: 4.5vw;
     margin: .5vw .5vw .25vw;
