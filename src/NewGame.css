@@ -1,6 +1,10 @@
 .new-game{
 	background-color: #ffffff;
 	color: black;
+	font-size: 5vw;
+	border: .5vw solid black;
+	width: 45vw;
+	padding: 1.5vw;
   box-shadow: 0vh .5vh .5vh silver;
   transition: all 1s;
 }
@@ -10,20 +14,19 @@
   box-shadow: 0vh .5vh .5vh grey;
 }
 
+@media(min-aspect-ratio:3/4){
+	.new-game{
+		width: 30vw;
+		font-size: 3vw;
+		padding: .75vw;
+	}
+}
+
 @media (orientation: landscape){
 	.new-game{
 		font-size: 5vh;
     border: .5vh solid black;
     width: 45vh;
     padding: 1.5vh;
-	}	
-}
-
-@media (orientation: portrait){
-	.new-game{
-		font-size: 5vw;
-    border: .5vw solid black;
-		width: 45vw;
-		padding: 1.5vw;
 	}	
 }
