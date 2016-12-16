@@ -18,6 +18,7 @@
 @media(min-aspect-ratio:3/4){
   .inkChoices{
     width: 72vw;
+    margin: 2vw auto 0;
   }
 }
 
