@@ -8,17 +8,17 @@
     <link rel="manifest" href="../manifest.json">
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Hangman PWA">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#CD214F">
+    <meta name="apple-mobile-web-app-title" content="Sudoku the App">
     <link rel="apple-touch-icon" href="./public/sudoku-152x152.png">
     <!-- Add tile icon for Windows -->
     <meta name="msapplication-TileImage" content="./public/sudoku-144x144.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
+    <meta name="msapplication-TileColor" content="#CD214F">
     <title>Sudoku</title>
   </head>
   <body>
     <div id="root"></div>
-  <script type="text/javascript">  
+  <script>  
     if('serviceWorker' in navigator){
       navigator.serviceWorker
         .register('../service-worker.js')
