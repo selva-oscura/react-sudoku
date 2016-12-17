@@ -11,26 +11,29 @@ import Message from './Message';
 
 const App = React.createClass({
   getInitialState(){
-    let board = this.newBoard();
-    let remainingToBeFilled = this.removedNumbersCount(board);
-    board[0][0].selected = true;
-    return{
-      board:            board,
-      displayIntro:     true,
-      gameStatus:       "inProgress",
-      message:          "",
-      remainingToBeFilled: remainingToBeFilled,
-      scores: {
-        won:            0,
-        bestTime:       null,
-      },
-      selectedSquare:   [0,0],
-      showErrors:       false,
-      timer:            0,
+    let sudokuData = localStorage.sudokuData;
+    if(sudokuData){
+      sudokuData = JSON.parse(sudokuData);
+      return sudokuData;
+    }else{    
+      let board = this.newBoard();
+      let remainingToBeFilled = this.removedNumbersCount(board);
+      board[0][0].selected = true;
+      return{
+        board:            board,
+        displayIntro:     true,
+        gameStatus:       "inProgress",
+        message:          "",
+        remainingToBeFilled: remainingToBeFilled,
+        scores: {
+          won:            0,
+          bestTime:       null,
+        },
+        selectedSquare:   [0,0],
+        showErrors:       false,
+        timer:            0,
+      }
     }
-  },
-  dismissIntro(){
-    this.setState({displayIntro: false});
   },
   newBoard(){
     let row = this.createBaseRow();
@@ -49,7 +52,9 @@ const App = React.createClass({
     state.remainingToBeFilled = remainingToBeFilled;
     state.selectedSquare = null;
     state.timer = 0;
-    this.setState(state); 
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
+    this.setState(state);
     this.timer = setInterval(() => this.tick(), 1000);
   },
   createBaseRow(){
@@ -388,6 +393,13 @@ const App = React.createClass({
     });
     return removed;
   },
+  dismissIntro(){
+    let state = this.state;
+    state.displayIntro = false;
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
+    this.setState(state);
+  },
   selectSquare(rowIndex, colIndex){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
@@ -398,6 +410,8 @@ const App = React.createClass({
     }
     state.selectedSquare = [rowIndex, colIndex];
     state.board[rowIndex][colIndex].selected = true;
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   updateInkMark(inkMark){
@@ -445,6 +459,8 @@ const App = React.createClass({
     }else{
       state.message = "Please select a square before selecting your choice."
     }
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
@@ -462,13 +478,23 @@ const App = React.createClass({
     }else{
       state.message = "Please select a square before adding pencil marks."
     }
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   toggleShowErrors(){
-    this.setState({showErrors: !this.state.showErrors});
+    let state = this.state;
+    state.showErrors = !state.showErrors;
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
+    this.setState(state);
   },
   tick(){
-    this.setState({timer: this.state.timer+1});
+    let state = this.state;
+    state.timer +=1;
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
+    this.setState(state);
   },
   componentDidMount(){
     this.timer = setInterval(() => this.tick(), 1000);
