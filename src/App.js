@@ -21,6 +21,7 @@ const App = React.createClass({
       board[0][0].selected = true;
       return{
         board:            board,
+        displayMenu:      false,
         displayIntro:     true,
         gameStatus:       "inProgress",
         message:          "",
@@ -457,6 +458,12 @@ const App = React.createClass({
     localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
+  toggleShowMenu(){
+    let state = this.state;
+    state.displayMenu = !state.displayMenu;
+    this.setState(state);
+    console.log('show menu', state.displayMenu)
+  },
   toggleShowErrors(){
     let state = this.state;
     state.showErrors = !state.showErrors;
@@ -554,7 +561,10 @@ const App = React.createClass({
     }
     return (
       <div className="app">
-        <Header />
+        <Header 
+          displayMenu={state.displayMenu}
+          toggleShowMenu={this.toggleShowMenu}
+        />
         {mainDisplay}
       </div>
     );
