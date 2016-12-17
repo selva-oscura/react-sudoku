@@ -12,7 +12,7 @@ const ShowErrorToggle = ({showErrors, toggleShowErrors}) => {
 				<input 
 					type="checkbox" 
 					name="show-errors"
-					checked={showErrors}
+					defaultChecked={showErrors}
 					onClick={() => {
 						toggleShowErrors()
 					}
