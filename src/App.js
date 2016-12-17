@@ -13,9 +13,10 @@ const App = React.createClass({
   getInitialState(){
     let board = this.newBoard();
     let remainingToBeFilled = this.removedNumbersCount(board);
+    board[0][0].selected = true;
     return{
       board:            board,
-      displayIntro:     false,
+      displayIntro:     true,
       gameStatus:       "inProgress",
       message:          "",
       remainingToBeFilled: remainingToBeFilled,
@@ -23,10 +24,13 @@ const App = React.createClass({
         won:            0,
         bestTime:       null,
       },
-      selectedSquare:   null,
+      selectedSquare:   [0,0],
       showErrors:       false,
       timer:            0,
     }
+  },
+  dismissIntro(){
+    this.setState({displayIntro: false});
   },
   newBoard(){
     let row = this.createBaseRow();
@@ -512,7 +516,7 @@ const App = React.createClass({
     const state = this.state;
     var mainDisplay;
     if(state.displayIntro){
-      mainDisplay = <Intro />;
+      mainDisplay = <Intro dismissIntro={this.dismissIntro}/>;
     }else{
       mainDisplay = (
         <div className="body">
