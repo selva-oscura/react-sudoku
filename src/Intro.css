@@ -1,3 +1,50 @@
-.intro {
+.intro{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.1);
+	padding: 8%;
+}
+.intro-body {
   font-size: large;
+  position: relative;
+  width: 84%;
+  box-shadow: 0px 0px 4px #000000;
+  background: #ffffff;
+}
+.intro-body button{
+	font-size: 2vh;
+	font-weight: bold;
+	position: absolute;
+	right: 4px;
+	top: 6px;
+	border: 0;
+	background: transparent;
+}
+.intro-body p{
+	font-size: 2vh;
+	text-align: left;
+	padding: 2vh 4vw;
+}
+
+.intro-body p{
+	font-size: 2vh;
+	text-align: left;
+	padding: 1vh 4vw;
+}
+.intro-body p.instructions{
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-top: 4vh;
+}
+
+@media(min-aspect-ratio:3/4){
+	.intro-body p, .intro-body button{
+		font-size: 2.5vh;
+	}
+}
+
+@media(min-aspect-ratio:4/3){
+	.intro-body p, .intro-body button{
+		font-size: 3vh;
+	}
 }
