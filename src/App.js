@@ -337,31 +337,6 @@ const App = React.createClass({
               board[row][col].display = true;
             }
           }
-          // if(this.isDeterminableByOneChoice(board, row, col)){
-          //   board[row][col].display = false;
-          //   if(this.isDeterminableByOneChoice(board, counterpartRow, counterpartCol)){
-          //     board = this.removeSquare(board, row, col);
-          //     board = this.removeSquare(board, counterpartRow, counterpartCol);
-          //     if(col<7){
-          //       let skip = Math.floor(Math.random()*2);
-          //       if(skip) col +=1; 
-          //     }
-          //   }else{
-          //     board[row][col].display = true;
-          //   }
-          // }else if(this.isDeterminableByElimination(board, row, col)){
-          //   board[row][col].display = false;
-          //   if(this.isDeterminableByElimination(board, counterpartRow, counterpartCol)){
-          //     board = this.removeSquare(board, row, col);
-          //     board = this.removeSquare(board, counterpartRow, counterpartCol);
-          //     if(col<7){
-          //       let skip = Math.floor(Math.random()*2);
-          //       if(skip) col +=1; 
-          //     }            
-          //   }else{
-          //     board[row][col].display = true;
-          //   }
-          // }
         }
       }
     }
