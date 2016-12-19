@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
+import Menu from './Menu';
 import GamesInfo from './GamesInfo';
 import InkChoices from './InkChoices';
 import PencilChoices from './PencilChoices';
@@ -52,6 +53,9 @@ const App = React.createClass({
     state.message = "";
     state.remainingToBeFilled = remainingToBeFilled;
     state.selectedSquare = null;
+    if(state.timer){
+      clearInterval(this.timer);
+    }
     state.timer = 0;
     let sudokuData = JSON.stringify(state);
     localStorage.sudokuData = sudokuData;
@@ -376,6 +380,13 @@ const App = React.createClass({
     localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
+  showIntro(){
+    let state = this.state;
+    state.displayIntro = true;
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
+    this.setState(state);
+  },
   selectSquare(rowIndex, colIndex){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
@@ -471,6 +482,22 @@ const App = React.createClass({
     localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
+  restartGame(){
+    let state = this.state;
+    state.board.forEach((row)=>{
+      row.forEach((square)=>{
+        if(!square.display){
+          let pencilMarks=new Array(9).fill(false);
+          square.inkMark=null;
+          square.pencilMarks=pencilMarks;
+        }
+      });
+    });
+    state.remainingToBeFilled = this.removedNumbersCount(state.board);
+    let sudokuData = JSON.stringify(state);
+    localStorage.sudokuData = sudokuData;
+    this.setState(state);
+  },
   tick(){
     let state = this.state;
     state.timer +=1;
@@ -524,7 +551,20 @@ const App = React.createClass({
     const state = this.state;
     var mainDisplay;
     if(state.displayIntro){
-      mainDisplay = <Intro dismissIntro={this.dismissIntro}/>;
+      mainDisplay = (
+        <Intro 
+          dismissIntro={this.dismissIntro}
+        />
+      );
+    }else if(state.displayMenu){
+      mainDisplay = (
+        <Menu 
+          toggleShowMenu={this.toggleShowMenu}
+          newGame={this.newGame}
+          restartGame={this.restartGame} 
+          showIntro={this.showIntro}
+        />
+      );
     }else{
       mainDisplay = (
         <div className="body">
@@ -564,6 +604,7 @@ const App = React.createClass({
         <Header 
           displayMenu={state.displayMenu}
           toggleShowMenu={this.toggleShowMenu}
+          showIntro={this.showIntro}
         />
         {mainDisplay}
       </div>
