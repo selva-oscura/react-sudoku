@@ -2,10 +2,9 @@ import React from 'react';
 import MenuButton from './MenuButton';
 import './Header.css';
 
-const Header = ({displayMenu, toggleShowMenu}) => (
+const Header = ({toggleShowMenu}) => (
   <div className="header">
   	<MenuButton 
-  		displayMenu={displayMenu}
   		toggleShowMenu={toggleShowMenu}
   	/>
     <h2>Sudoku</h2>
