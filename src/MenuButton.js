@@ -1,14 +1,19 @@
 import React from 'react';
+import './MenuButton.css';
 
 const MenuButton = ({toggleShowMenu}) => (
-	<button 
-		className="menu-button"
+	<div className="menu-button"
 		onClick={() => {
 			toggleShowMenu()
 		}
 	}>
-		hamburger
-	</button>
+		<a>
+			<img 
+				src="./menu-button.png" 
+				alt="menu toggle"
+			/>
+		</a>
+	</div>
 )
 
 export default MenuButton;
