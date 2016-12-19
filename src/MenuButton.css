@@ -1,0 +1,37 @@
+.menu-button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: calc(3vh+2vw);
+  width: 6vh;
+}
+.menu-button img{  
+  height: 3vh;
+  width: 3vh;
+  margin-top: 1vw;
+  margin-left: 1vw;
+}
+
+@media (min-aspect-ratio: 9/16){
+  .menu-button{
+    height: 8vw;
+    width: 8vw;
+  }
+  .menu-button img{  
+    height: 6vw;
+    width: 6vw;
+  }
+}
+
+@media (min-aspect-ratio: 3/4){
+  .menu-button{
+    height: 8vh;
+    width: 8vh;
+  }
+  .menu-button img{  
+    height:5vh;
+    width: 5vh;
+    margin-top: 1.5vh;
+    margin-left: 1.5vh;
+  }  
+}
