@@ -1,0 +1,39 @@
+.menu .modal{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.1);
+}
+.menu .menu-body {
+  width: 45vw;
+  background: #000000;
+}
+
+.menu .menu-body button{
+	background-color: #000000;
+	color: #ffffff;
+	font-size: 5vw;
+	border: .5vw solid black;
+	width: 45vw;
+	padding: 1.5vw;
+  transition: background-color  1s;
+  text-align: left;
+  float:left;
+}
+
+.menu .menu-body button:hover{
+  background-color: #444444;
+}
+
+@media(min-aspect-ratio:3/4){
+	.menu .menu-body button{
+		width: 30vw;
+		font-size: 3vw;
+	}
+}
+
+@media (orientation: landscape){
+	.menu button{
+		font-size: 5vh;
+    width: 40vh;
+	}	
+}
