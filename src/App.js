@@ -12,7 +12,13 @@ import Message from './Message';
 
 const App = React.createClass({
   getInitialState(){
-    let sudokuData = localStorage.sudokuData;
+    let sudokuData;
+    if(localStorage){
+      sudokuData = localStorage.sudokuData;
+    }else{
+      var localStorage = {};
+    }
+    // let sudokuData = localStorage.sudokuData;
     if(sudokuData){
       sudokuData = JSON.parse(sudokuData);
       return sudokuData;
