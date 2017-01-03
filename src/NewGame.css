@@ -1,17 +1,17 @@
 .new-game{
-	background-color: #ffffff;
+	background-color: rgba(255,255,255,.5);
 	color: black;
 	font-size: 5vw;
 	border: .5vw solid black;
 	width: 45vw;
 	padding: 1.5vw;
-  box-shadow: 0vh .5vh .5vh silver;
+  box-shadow: 0vh .5vh .5vh rgba(0, 147, 255,.15);
   transition: all 1s;
 }
 
 .new-game:hover{
-  background-color: #dddddd;
-  box-shadow: 0vh .5vh .5vh grey;
+  background-color: rgba(0, 147, 255,.1);
+  box-shadow: 0vh .5vh .5vh rgba(0, 147, 255, .25);
 }
 
 @media(min-aspect-ratio:3/4){
