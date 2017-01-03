@@ -34,7 +34,7 @@
 
 @media(min-aspect-ratio:4/3){
   .board{
-    width: 63vw;
+    max-width: 63vw;
     height: 63vw;
   }
 }
@@ -42,7 +42,7 @@
 
 @media(min-aspect-ratio:16/9){
   .board{
+    max-width: 54vw;
     height: 54vw;
-    width: 54vw;
   }
 }
