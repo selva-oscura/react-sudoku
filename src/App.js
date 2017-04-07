@@ -58,7 +58,7 @@ const App = React.createClass({
     state.gameStatus = "inProgress";
     state.message = "";
     state.remainingToBeFilled = remainingToBeFilled;
-    state.selectedSquare = null;
+    state.selectedSquare = [0,0];
     if(state.timer){
       clearInterval(this.timer);
     }
