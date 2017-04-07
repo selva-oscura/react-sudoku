@@ -3,11 +3,14 @@
   background-color: white;
   color: black;
   border-radius: 50%;
-  border: .5vw solid black;
+  border: .5vw solid #000000;
+  text-align: center;
+  transition: border-color color .4s;
 }
 
-.inkChoice{
-  text-align: center;
+.inkChoice:hover{
+  border-color: #0147FA;
+  color: #0147FA;
 }
 
 @media(max-aspect-ratio:9/16){
@@ -51,7 +54,7 @@
   }
   .inkChoice h4{
     font-size: 3.5vw;
-    margin: 0.25vw;
+    margin: 0.35vw;
   }
 }
 
