@@ -5,37 +5,45 @@
 @media(max-aspect-ratio:9/16){
   .board{
     font-size: 4vh;
-    max-height: 90vw;
-    max-width: 90vw;
+    max-height: 91vw;
+    max-width: 91vw;
   }
 }
 
 @media(min-aspect-ratio:9/16){
   .board{
     font-size: 4vh;
-    max-height: 81vw;
-    max-width: 81vw;
+    max-height: 84vw;
+    max-width: 84vw;
   }
 }
 
 @media(min-aspect-ratio:3/4){
   .board{
     font-size: 3vh;
-    max-height: 72vw;
-    max-width: 72vw;
+    max-height: 73vw;
+    max-width: 73vw;
   }
 }
 
 @media(min-aspect-ratio:9/10){
   .board{
-    height: 64vw;
+    max-height: 64vw;
+    max-width: 64vw;
   }
 }
 
-@media(min-aspect-ratio:4/3){
+@media(min-aspect-ratio:1/1){
   .board{
-    max-width: 63vw;
-    height: 63vw;
+    max-height: 55vh;
+    max-width: 55vh;
+  }
+}
+
+@media(min-aspect-ratio:10/9){
+  .board{
+    max-width: 64vw;
+    max-height: 64vw;
   }
 }
 
