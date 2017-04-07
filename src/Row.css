@@ -1,7 +1,3 @@
-.row{
-	overflow: hidden;
-}
-
 @media(max-aspect-ratio:9/16){
   .row{
     max-height: 10vw;
