@@ -14,7 +14,7 @@
 }
 
 .game-space, .non-board-space, .message-space{
-	width: 90vw;
+	width: 92vw;
 	margin: 2vw auto 0;
 }
 
@@ -23,13 +23,17 @@
 		font-size: 3vw;
 	}
 	.game-space, .non-board-space, .message-space{
-		width: 81vw;
+		width: 84vw;
 	}
 }
 
 @media(min-aspect-ratio:3/4){
+	.app p, .app label{
+		font-size: 2.5vw;
+	}
+
 	.game-space, .non-board-space, .message-space{
-		width: 72vw;
+		width: 73vw;
 		margin: 1vw auto 0;
 	}
 }
@@ -54,8 +58,23 @@
 	}
 	.message-space{
 		width: 80vw;
+		display: inline-block;
 	}
 }
+
+@media(min-aspect-ratio:1/1){
+	.game-space{
+		max-width: 55vh;
+	}
+}
+
+@media(min-aspect-ratio:10/9){
+	.game-space{
+		max-width: 64vh;
+	}
+}
+
+
 
 @media(min-aspect-ratio:4/3){
 	.game-space, .non-board-space, .message-space{
@@ -73,6 +92,7 @@
 		float: right;
 		padding-right:10vw;
 	}
+
 }
 
 @media(min-aspect-ratio:16/9){
