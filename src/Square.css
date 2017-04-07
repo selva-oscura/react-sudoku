@@ -38,16 +38,16 @@
     border-bottom: .5vh solid #666362;
   }
   .board-left{
-    border-left: .5vh solid black;
+    border-left: 1vh solid black;
   }
   .board-right{
-    border-right: .5vh solid black;
+    border-right: 1vh solid black;
   }
   .board-top{
-    border-top: .5vh solid black;
+    border-top: 1vh solid black;
   }
   .board-bottom{
-    border-bottom: .5vh solid black;
+    border-bottom: 1vh solid black;
   }
 }
 
@@ -74,16 +74,16 @@
     border-bottom: .5vw solid #666362;
   }
   .board-left{
-    border-left: .5vw solid black;
+    border-left: 1vw solid black;
   }
   .board-right{
-    border-right: .5vw solid black;
+    border-right: 1vw solid black;
   }
   .board-top{
-    border-top: .5vw solid black;
+    border-top: 1vw solid black;
   }
   .board-bottom{
-    border-bottom: .5vw solid black;
+    border-bottom: 1vw solid black;
   }
 }
 
@@ -91,6 +91,7 @@
   .square{
     height: 9vw;
     width: 9vw;
+    background-color: red;
   }
   .square p{
     font-size: 6vw;
@@ -102,6 +103,7 @@
   .square{
     max-height: 8vw;
     max-width: 8vw;
+    background-color: orange;
   }
   .square p{
     font-size: 5vw;
@@ -113,6 +115,7 @@
   .square{
     height: 7vw;
     width: 7vw;
+    background-color: yellow;
   }
   .square p{
     font-size: 4vw;
@@ -124,6 +127,7 @@
   .square{
     height: 5vh;
     width: 5vh;
+    background-color: green;
   }
   .square p{
     font-size: 3.5vw;
@@ -132,13 +136,31 @@
   }
 }
 
+@media(min-aspect-ratio:1/1){
+  .square{
+    background-color: white;
+  }
+}
+
 @media(min-aspect-ratio:10/9){
   .square{
     height: 6vh;
     width: 6vh;
+    background-color: blue;
   }
   .square p{
     font-size: 4vh;
     padding-top:.5vw;
+  }
+}
+
+@media(min-aspect-ratio:4/3){
+  .square{
+    background-color: purple;
+  }
+}
+@media(min-aspect-ratio:16/9){
+  .square{
+    background-color: pink;
   }
 }
