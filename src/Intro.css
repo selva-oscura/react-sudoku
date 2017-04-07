@@ -3,6 +3,7 @@
 	height: 100vh;
 	background-color: rgba(0,0,0,.1);
 	padding: 8%;
+	text-align: left;
 }
 .intro-body {
   font-size: large;
@@ -10,6 +11,7 @@
   width: 84%;
   box-shadow: 0px 0px 4px #000000;
   background: #ffffff;
+  padding-bottom: 2vh;
 }
 .intro-body button{
 	font-size: 2vh;
@@ -22,19 +24,22 @@
 }
 .intro-body p{
 	font-size: 2vh;
-	text-align: left;
 	padding: 2vh 4vw;
 }
 
 .intro-body p{
 	font-size: 2vh;
-	text-align: left;
 	padding: 1vh 4vw;
 }
 .intro-body p.instructions{
 	text-transform: uppercase;
 	font-weight: bold;
 	padding-top: 4vh;
+}
+
+.intro-body ul{
+	margin-top: 0;
+	padding: 0 8vw;
 }
 
 @media(min-aspect-ratio:3/4){
