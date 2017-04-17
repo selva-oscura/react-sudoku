@@ -10,4 +10,4 @@ Built as a personal project when learning React, the project uses
 
 See it online at (https://selva-oscura.github.io/react-sudoku)
 
-![Sudoku](https://github.com/selva-oscura/react-sudoku/sudoku_screenshot.png)
+![Sudoku](https://github.com/selva-oscura/react-sudoku/blob/master/sudoku_screenshot.png)
