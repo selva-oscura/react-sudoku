@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <!-- add manifest -->
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#CD214F">
@@ -21,7 +21,7 @@
   <script>  
     if('serviceWorker' in navigator){
       navigator.serviceWorker
-        .register('../service-worker.js')
+        .register('./service-worker.js')
         .then(function(res) {console.log('Service Worker Registered', res); 
       }).catch(function(err){
         console.log('ServiceWorker registration failed', err);
