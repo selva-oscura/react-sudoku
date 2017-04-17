@@ -2,21 +2,3 @@
 	text-align: left;
 	margin:0;
 }
-
-/*@media(max-aspect-ratio:9/16){
-	.history p{
-	}
-}
-
-@media(min-aspect-ratio:9/16){
-	.history p{
-	}
-}
-
-@media(max-aspect-ratio:3/4){
-	.history p{
-		margin: .5vh 0 0 0;
-	}
-}
-
-*/
