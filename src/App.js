@@ -516,12 +516,13 @@ const App = React.createClass({
     window.addEventListener('keyup', (e) => {
       var keyCode = (window.Event) ? e.which: e.keyCode;
       var isShift = !!e.shiftKey;
+      this.setState({message:""});
       if(isShift){
         if(keyCode===48 || keyCode===88){
           this.updatePencilMarks("X");
         }else if(keyCode>=49 && keyCode<=57){
           this.updatePencilMarks(keyCode-48);
-        }else{
+        }else if(keyCode!==16) {
           let message = "Please click only 1-9 to make your choice (or clear your choice by hitting 0 or X).";
           this.setState({message});
         }
@@ -542,7 +543,7 @@ const App = React.createClass({
             selectedSquare[0] = (selectedSquare[0]<8) ? selectedSquare[0]+=1 : 8;
           }
           this.selectSquare(selectedSquare[0], selectedSquare[1]);
-        }else if(!isShift){
+        }else if(keyCode!==16) {
           let message = "Please click only 1-9 to make your choice (or clear your choice by hitting 0 or X).";
           this.setState({message});
         }
