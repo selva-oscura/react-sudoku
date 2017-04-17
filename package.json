@@ -1,6 +1,23 @@
 {
   "name": "sudoku",
   "version": "0.1.0",
+  "description": "Sudoku",
+  "homepage": "https://selva-oscura.github.io/react-sudoku",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selva-oscura/react-sudoku.git"
+  },
+  "keywords": [
+    "JS",
+    "React",
+    "create-react-app",
+    "sw-precache"
+  ],
+  "author": "Carol  St. Louis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/selva-oscura/react-sudoku/issues"
+  },
   "private": true,
   "devDependencies": {
     "react-scripts": "0.7.0",
