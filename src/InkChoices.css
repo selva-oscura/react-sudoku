@@ -8,7 +8,6 @@
   }
 }
 
-
 @media(min-aspect-ratio:9/16){
   .inkChoices{
     width: 81vw;
@@ -22,7 +21,6 @@
   }
 }
 
-
 @media(min-aspect-ratio:9/10){
   .inkChoices{
     width: 28vw;
@@ -30,14 +28,12 @@
   }
 }
 
-
 @media(min-aspect-ratio:4/3){
   .inkChoices{
     width: 30vw;
     margin: 2vw 1vw;
   }
 }
-
 
 @media(min-aspect-ratio:16/9){
   .inkChoices{
