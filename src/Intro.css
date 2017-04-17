@@ -22,15 +22,16 @@
 	border: 0;
 	background: transparent;
 }
-.intro-body p{
-	font-size: 2vh;
-	padding: 2vh 4vw;
-}
 
 .intro-body p{
 	font-size: 2vh;
 	padding: 1vh 4vw;
 }
+
+.intro-body ul{
+	font-size: 2vh;
+}
+
 .intro-body p.instructions{
 	text-transform: uppercase;
 	font-weight: bold;
@@ -49,7 +50,7 @@
 }
 
 @media(min-aspect-ratio:4/3){
-	.intro-body p, .intro-body button{
+	.intro-body p, .intro-body button, .intro-body ul{
 		font-size: 3vh;
 	}
 }
