@@ -8,6 +8,6 @@ Built as a personal project when learning React, the project uses
 	<li>service-workers (<a href="https://github.com/GoogleChrome/sw-precache">sw-precache</a></li>
 </ul>
 
-See it online at (https://selva-oscura.github.io/react-sudoku)
+See it ![online](https://selva-oscura.github.io/react-sudoku)
 
 ![Sudoku](https://github.com/selva-oscura/react-sudoku/blob/master/sudoku_screenshot.png)
