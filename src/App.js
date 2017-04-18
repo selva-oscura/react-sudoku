@@ -13,17 +13,13 @@ import Message from './Message';
 const App = React.createClass({
   getInitialState(){
     let sudokuData;
-    if(window.localStorage){
-      console.log('here')
+    if(window.localStorage && window.localStorage.sudokuData){
       sudokuData = JSON.parse(window.localStorage.sudokuData);
       console.log(sudokuData)
       return sudokuData;
     }else{
-      console.log('there')
       var localStorage = {};
-      window.localStorage = localStorage;
       let board = this.newBoard();
-
       let remainingToBeFilled = this.removedNumbersCount(board);
       board[0][0].selected = true;
       return{
