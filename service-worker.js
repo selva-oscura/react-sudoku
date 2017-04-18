@@ -4,11 +4,7 @@ const filesToCache = [
 	'./',
 	'./index.html',
 	'./favicon.ico',
-	'./sudoku-128x128.png',
-	'./sudoku-144x144.png',
-	'./sudoku-152x152.png',
-	'./sudoku-192x192.png',
-	'./sudoku-256x256.png'
+	'./menubutton.png'
 ];
 
 var dataCacheName = 'sudoku-appData-v1';
