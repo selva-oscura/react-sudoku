@@ -74,8 +74,6 @@
 	}
 }
 
-
-
 @media(min-aspect-ratio:4/3){
 	.game-space, .non-board-space, .message-space{
 		height: inherit;
