@@ -13,17 +13,17 @@ import Message from './Message';
 const App = React.createClass({
   getInitialState(){
     let sudokuData;
-    if(localStorage){
-      sudokuData = localStorage.sudokuData;
-    }else{
-      var localStorage = {};
-    }
-    // let sudokuData = localStorage.sudokuData;
-    if(sudokuData){
-      sudokuData = JSON.parse(sudokuData);
+    if(window.localStorage){
+      console.log('here')
+      sudokuData = JSON.parse(window.localStorage.sudokuData);
+      console.log(sudokuData)
       return sudokuData;
-    }else{    
+    }else{
+      console.log('there')
+      var localStorage = {};
+      window.localStorage = localStorage;
       let board = this.newBoard();
+
       let remainingToBeFilled = this.removedNumbersCount(board);
       board[0][0].selected = true;
       return{
@@ -64,7 +64,7 @@ const App = React.createClass({
     }
     state.timer = 0;
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
     this.timer = setInterval(() => this.tick(), 1000);
   },
@@ -383,14 +383,14 @@ const App = React.createClass({
     let state = this.state;
     state.displayIntro = false;
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   showIntro(){
     let state = this.state;
     state.displayIntro = true;
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   selectSquare(rowIndex, colIndex){
@@ -404,7 +404,7 @@ const App = React.createClass({
     state.selectedSquare = [rowIndex, colIndex];
     state.board[rowIndex][colIndex].selected = true;
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   updateInkMark(inkMark){
@@ -453,7 +453,7 @@ const App = React.createClass({
       state.message = "Please select a square before selecting your choice."
     }
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
@@ -472,7 +472,7 @@ const App = React.createClass({
       state.message = "Please select a square before adding pencil marks."
     }
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   toggleShowMenu(){
@@ -485,7 +485,7 @@ const App = React.createClass({
     let state = this.state;
     state.showErrors = !state.showErrors;
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   restartGame(){
@@ -501,14 +501,14 @@ const App = React.createClass({
     });
     state.remainingToBeFilled = this.removedNumbersCount(state.board);
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   tick(){
     let state = this.state;
     state.timer +=1;
     let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    window.localStorage.sudokuData = sudokuData;
     this.setState(state);
   },
   componentDidMount(){
