@@ -1,19 +1,4 @@
 .timer{
-	text-align: right;
+	text-align: left;
 	margin:0;
 }
-
-@media(min-aspect-ratio:9/10){
-	.timer{
-		text-align: left;
-		margin: .5vh 0 0 0;
-	}
-}
-
-@media(min-aspect-ratio:4/3){
-	.timer{
-		text-align: right;
-		margin: .5vh 0 0 0;
-	}
-}
-
