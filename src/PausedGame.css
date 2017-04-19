@@ -1,0 +1,44 @@
+.paused-game{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.1);
+	/*padding: 8%;*/
+	text-align: left;
+}
+.paused-game-button{
+	background-color: rgba(255,255,255,1);
+	color: black;
+	font-size: 5vw;
+	border: .5vw solid black;
+	width: 45vw;
+	padding: 1.5vw;
+  box-shadow: 0vh .5vh .5vh rgba(0, 147, 255,.15);
+  transition: all 1s;
+  margin-top: 40vh;
+  margin-left:26vw;
+}
+
+.paused-game-button:hover{
+  background-color: rgba(0, 147, 255,.1);
+  box-shadow: 0vh .5vh .5vh rgba(0, 147, 255, .25);
+}
+
+@media(min-aspect-ratio:3/4){
+	.paused-game-button{
+		width: 30vw;
+		font-size: 3vw;
+		padding: .75vw;
+		margin: 40vh 35vw;
+	}
+}
+
+@media (orientation: landscape){
+	.paused-game-button{
+		font-size: 5vh;
+    border: .5vh solid black;
+    width: 45vh;
+    padding: 1.5vh;
+    margin-top: 40vh;
+    margin-left: calc(50vw - 22.5vh);
+	}	
+}
