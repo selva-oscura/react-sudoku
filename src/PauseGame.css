@@ -1,0 +1,16 @@
+.pause-game{
+	display: block;
+	text-align: right;
+	margin: 0;
+}
+.pause-game label{
+	display: inline-block;
+}
+.pause-game input{
+	vertical-align: middle;
+}
+
+.pause-game p{
+	text-align: right;
+}
+

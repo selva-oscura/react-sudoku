@@ -1,4 +1,5 @@
 import React from 'react';
+import './PauseGame.css';
 
 const PauseGame = ({pausedGame, pausedGameToggle}) => (
 	<span
