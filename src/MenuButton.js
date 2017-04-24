@@ -9,7 +9,7 @@ const MenuButton = ({toggleShowMenu}) => (
 	}>
 		<a>
 			<img 
-				src="./menu-button.png" 
+				src="./img/menu-button.png" 
 				alt="menu toggle"
 			/>
 		</a>
