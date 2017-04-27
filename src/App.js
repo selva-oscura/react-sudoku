@@ -16,13 +16,12 @@ const App = React.createClass({
     let sudokuData = localStorage.sudokuData;
     if(sudokuData){
       sudokuData = JSON.parse(localStorage.sudokuData);
-      console.log(sudokuData)
       return sudokuData;
     }else{
       let board = this.newBoard();
       let remainingToBeFilled = this.removedNumbersCount(board);
       board[0][0].selected = true;
-      let sudokuData = {
+      sudokuData = {
         board:            board,
         displayMenu:      false,
         displayIntro:     true,
@@ -38,7 +37,7 @@ const App = React.createClass({
         showErrors:       false,
         timer:            0,
       }
-      localStorage.sudokuData = sudokuData;
+      localStorage.sudokuData = JSON.stringify(sudokuData);
       return sudokuData;
     }
   },
@@ -63,16 +62,13 @@ const App = React.createClass({
       clearInterval(this.timer);
     }
     state.timer = 0;
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
     this.timer = setInterval(() => this.tick(), 1000);
   },
   pausedGameToggle(){
     this.setState({pausedGame: !this.state.pausedGame});
-    let state = this.state;
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(this.state);
   },
   createBaseRow(){
     let row = [];
@@ -388,15 +384,13 @@ const App = React.createClass({
   dismissIntro(){
     let state = this.state;
     state.displayIntro = false;
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   showIntro(){
     let state = this.state;
     state.displayIntro = true;
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   selectSquare(rowIndex, colIndex){
@@ -409,8 +403,7 @@ const App = React.createClass({
     }
     state.selectedSquare = [rowIndex, colIndex];
     state.board[rowIndex][colIndex].selected = true;
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   updateInkMark(inkMark){
@@ -458,8 +451,7 @@ const App = React.createClass({
     }else{
       state.message = "Please select a square before selecting your choice."
     }
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   updatePencilMarks(pencilMark){
@@ -477,8 +469,7 @@ const App = React.createClass({
     }else{
       state.message = "Please select a square before adding pencil marks."
     }
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   toggleShowMenu(){
@@ -490,8 +481,7 @@ const App = React.createClass({
   toggleShowErrors(){
     let state = this.state;
     state.showErrors = !state.showErrors;
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   restartGame(){
@@ -506,8 +496,8 @@ const App = React.createClass({
       });
     });
     state.remainingToBeFilled = this.removedNumbersCount(state.board);
-    let sudokuData = JSON.stringify(state);
-    localStorage.sudokuData = sudokuData;
+    state.timer = 0;
+    localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
   tick(){
@@ -515,8 +505,7 @@ const App = React.createClass({
     if(!displayMenu && !displayIntro && !pausedGame){
       timer +=1;
       this.setState({timer});
-      let sudokuData = JSON.stringify(this.state);
-      localStorage.sudokuData = sudokuData;
+      localStorage.sudokuData = JSON.stringify(this.state);
     }
   },
   componentDidMount(){
