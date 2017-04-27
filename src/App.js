@@ -117,7 +117,6 @@ const App = React.createClass({
         }else{
           console.log('failure on swapRows, group, shuffleAlternatives[alt]', group, shuffleAlternatives[alt]);
         }
-
         return board;
       }
     }
@@ -186,14 +185,10 @@ const App = React.createClass({
     for(let row = 0; row<9; row++){
       let hash = {};
       for(let col = 0; col<9; col++){
-        // if(!hash[board[row][col].value]){
-          hash[board[row][col].value] = 1;
-        // }
+        hash[board[row][col].value] ? hash[board[row][col].value]++ : hash[board[row][col].value] = 1;
       }
       if(Object.keys(hash).length!==9){
         errorReport([{'row': row}], hash);
-        // console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
-        // this.consoleLogBoard(board);
         return false;
       }
     }
@@ -201,14 +196,10 @@ const App = React.createClass({
     for(let col = 0; col<9; col++){
       let hash = {};
       for(let row = 0; row<9; row++){
-        // if(!hash[board[row][col].value]){
-          hash[board[row][col].value] = 1;
-        // }
+        hash[board[row][col].value] ? hash[board[row][col].value]++ : hash[board[row][col].value] = 1;
       }
       if(Object.keys(hash).length!==9){
         errorReport([{'col': col}], hash);
-        // console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
-        // this.consoleLogBoard(board);
         return false;
       }
     }
@@ -218,15 +209,11 @@ const App = React.createClass({
         let hash = {};
         for(let row = 0; row<3; row++){
           for(let col = 0; col<3; col++){
-            // if(!hash[board[boxRow*3+row][boxCol*3+col].value]){
-              hash[board[boxRow*3+row][boxCol*3+col].value] = 1;
-            // }
+            hash[board[boxRow*3+row][boxCol*3+col].value] ? hash[board[boxRow*3+row][boxCol*3+col].value]++ : hash[board[boxRow*3+row][boxCol*3+col].value] = 1;
           }
         }
         if(Object.keys(hash).length!==9){
           errorReport([{"boxRow": boxRow}, {"boxCol": boxCol}], hash);
-          // console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
-          // this.consoleLogBoard(board);
           return false;
         }
       }
@@ -362,14 +349,7 @@ const App = React.createClass({
     return board;
   },
   isNumberRemovable(board, row, col){
-    // if(this.isDeterminableByOneChoice(board, row, col)){
-    //   return true;
-    // }
-    // if(this.isDeterminableByElimination(board, row, col)){
-    //   return true;
-    // }
-    // return false;
-    return this.isDeterminableByOneChoice(board, row, col) || this.isDeterminableByElimination ? true : false;
+    return this.isDeterminableByOneChoice(board, row, col) || this.isDeterminableByElimination(board, row, col) ? true : false;
   },
   removeSquare(board, row, col){
     let pencilMarks = new Array(9).fill(false);
