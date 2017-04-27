@@ -66,21 +66,17 @@ const App = React.createClass({
     this.setState(state);
     this.timer = setInterval(() => this.tick(), 1000);
   },
-  pausedGameToggle(){
-    this.setState({pausedGame: !this.state.pausedGame});
-    localStorage.sudokuData = JSON.stringify(this.state);
-  },
   createBaseRow(){
     let row = [];
     let numbers = [1,2,3,4,5,6,7,8,9];
     while(numbers.length>0){
-      let n=Math.floor(Math.random()*numbers.length);
+      let n = Math.floor(Math.random()*numbers.length);
       row.push({
         value:       numbers[n],
         display:     true,
         selected:    false,
       });
-      numbers=numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
+      numbers = numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
     return row;
   },
@@ -179,17 +175,25 @@ const App = React.createClass({
     return;
   },
   isValidBoard(board){
+    let errorReport = (details, hash) => {
+      console.log('failure in isValidBoard:\n')
+      details.forEach((problem) => console.log(problem));
+      console.log('\nhash:', hash, '\nhash length:', Object.keys(hash).length);
+      this.consoleLogBoard(board)
+    }
+
     // check all rows are valid
     for(let row = 0; row<9; row++){
       let hash = {};
       for(let col = 0; col<9; col++){
-        if(!hash[board[row][col].value]){
+        // if(!hash[board[row][col].value]){
           hash[board[row][col].value] = 1;
-        }
+        // }
       }
       if(Object.keys(hash).length!==9){
-        console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
-        this.consoleLogBoard(board);
+        errorReport([{'row': row}], hash);
+        // console.log("failure on row", row, 'hash', hash, Object.keys(hash).length);
+        // this.consoleLogBoard(board);
         return false;
       }
     }
@@ -197,13 +201,14 @@ const App = React.createClass({
     for(let col = 0; col<9; col++){
       let hash = {};
       for(let row = 0; row<9; row++){
-        if(!hash[board[row][col].value]){
+        // if(!hash[board[row][col].value]){
           hash[board[row][col].value] = 1;
-        }
+        // }
       }
       if(Object.keys(hash).length!==9){
-        console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
-        this.consoleLogBoard(board);
+        errorReport([{'col': col}], hash);
+        // console.log("failure on col", col, 'hash', hash, Object.keys(hash).length);
+        // this.consoleLogBoard(board);
         return false;
       }
     }
@@ -213,14 +218,15 @@ const App = React.createClass({
         let hash = {};
         for(let row = 0; row<3; row++){
           for(let col = 0; col<3; col++){
-            if(!hash[board[boxRow*3+row][boxCol*3+col].value]){
+            // if(!hash[board[boxRow*3+row][boxCol*3+col].value]){
               hash[board[boxRow*3+row][boxCol*3+col].value] = 1;
-            }
+            // }
           }
         }
         if(Object.keys(hash).length!==9){
-          console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
-          this.consoleLogBoard(board);
+          errorReport([{"boxRow": boxRow}, {"boxCol": boxCol}], hash);
+          // console.log("failure on boxRow", boxRow, "boxCol", boxCol,  'hash', hash, Object.keys(hash).length);
+          // this.consoleLogBoard(board);
           return false;
         }
       }
@@ -356,12 +362,14 @@ const App = React.createClass({
     return board;
   },
   isNumberRemovable(board, row, col){
-    if(this.isDeterminableByOneChoice(board, row, col)){
-      return true;
-    }else if(this.isDeterminableByElimination(board, row, col)){
-      return true;
-    }
-    return false;
+    // if(this.isDeterminableByOneChoice(board, row, col)){
+    //   return true;
+    // }
+    // if(this.isDeterminableByElimination(board, row, col)){
+    //   return true;
+    // }
+    // return false;
+    return this.isDeterminableByOneChoice(board, row, col) || this.isDeterminableByElimination ? true : false;
   },
   removeSquare(board, row, col){
     let pencilMarks = new Array(9).fill(false);
@@ -381,17 +389,21 @@ const App = React.createClass({
     });
     return removed;
   },
+  showIntro(){
+    let state = this.state;
+    state.displayIntro = true;
+    localStorage.sudokuData = JSON.stringify(state);
+    this.setState(state);
+  },
   dismissIntro(){
     let state = this.state;
     state.displayIntro = false;
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
   },
-  showIntro(){
-    let state = this.state;
-    state.displayIntro = true;
-    localStorage.sudokuData = JSON.stringify(state);
-    this.setState(state);
+  pausedGameToggle(){
+    this.setState({pausedGame: !this.state.pausedGame});
+    localStorage.sudokuData = JSON.stringify(this.state);
   },
   selectSquare(rowIndex, colIndex){
     let state = this.state;
