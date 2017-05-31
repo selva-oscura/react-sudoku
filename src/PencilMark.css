@@ -1,10 +1,12 @@
 .pencil-mark{
   display: inline-block;
 	color:grey;
+  text-shadow: 0 0 1px white;
 }
 
 .pencil-mark-selected{
 	color: black;
+  font-weight: bold;
 }
 
 .pencil-mark{
