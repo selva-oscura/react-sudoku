@@ -32,6 +32,10 @@
      "sizes": "192x192",
      "type": "image/png",
      "density": "4.0"
+    }, {
+     "src": "./img/sudoku-256x256.png",
+     "sizes": "256x256",
+     "type": "image/png",
     }
   ],
   "start_url": "./index.html",
