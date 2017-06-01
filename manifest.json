@@ -35,7 +35,7 @@
     }, {
      "src": "./img/sudoku-256x256.png",
      "sizes": "256x256",
-     "type": "image/png",
+     "type": "image/png"
     }
   ],
   "start_url": "./index.html",
