@@ -7,7 +7,6 @@ import PausedGame from './PausedGame';
 import GamesInfo from './GamesInfo';
 import InkChoices from './InkChoices';
 import PencilChoices from './PencilChoices';
-
 import Board from './Board';
 import Message from './Message';
 
