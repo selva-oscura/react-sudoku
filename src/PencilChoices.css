@@ -29,7 +29,7 @@
 @media(min-aspect-ratio:4/3){
   .pencilChoices{
     width: 30vw;
-    margin: 2vw 1vw;
+    margin: 2vw .5vw;
   }
 }
 
@@ -37,6 +37,5 @@
 @media(min-aspect-ratio:16/9){
   .pencilChoices{
     width: 45vw;
-    margin: 2vw 1vw;
   }
 }

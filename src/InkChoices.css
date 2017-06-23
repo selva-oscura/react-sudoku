@@ -31,13 +31,12 @@
 @media(min-aspect-ratio:4/3){
   .inkChoices{
     width: 30vw;
-    margin: 2vw 1vw;
+    margin: 2vw .5vw;
   }
 }
 
 @media(min-aspect-ratio:16/9){
   .inkChoices{
     width: 45vw;
-    margin: 2vw 1vw;
   }
 }
