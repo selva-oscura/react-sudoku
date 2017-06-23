@@ -2,16 +2,16 @@
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0,0,0,.1);
-	padding: 8%;
+	padding-top: 1.5em;
 	text-align: left;
 }
 .intro-body {
   font-size: large;
   position: relative;
-  width: 84%;
+  margin: 0em 1.5em 1.5em 1.5em;
   box-shadow: 0px 0px 4px #000000;
   background: #ffffff;
-  padding-bottom: 2vh;
+  padding-bottom: 1vh;
 }
 .intro-body button{
 	font-size: 2vh;
@@ -24,23 +24,24 @@
 }
 
 .intro-body p{
-	font-size: 2vh;
-	padding: 1vh 4vw;
+	font-size: 1.8vh;
+	padding: 1vh 3vw;
 }
 
 .intro-body ul{
-	font-size: 2vh;
+	font-size: 1.8vh;
+	-webkit-margin-after: .5em;
 }
 
 .intro-body p.instructions{
 	text-transform: uppercase;
 	font-weight: bold;
-	padding-top: 4vh;
+	padding-top: 3vh;
 }
 
 .intro-body ul{
 	margin-top: 0;
-	padding: 0 8vw;
+	padding: 0 6vw;
 }
 
 @media(min-aspect-ratio:3/4){
