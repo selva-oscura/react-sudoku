@@ -7,8 +7,8 @@ const filesToCache = [
 	'./img/menubutton.png'
 ];
 
-var dataCacheName = 'sudoku-appData-v1';
-var cacheName = 'sudoku-v1';
+var dataCacheName = 'sudoku-appData-v1.1';
+var cacheName = 'sudoku-v1.1';
 
 self.addEventListener('install', function(e){
 	console.log('[ServiceWorker] install');
