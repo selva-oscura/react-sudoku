@@ -5,7 +5,7 @@
 @media(max-aspect-ratio:9/16){
   .board{
     font-size: 4vh;
-    max-height: 91vw;
+    max-height: 92vw;
     max-width: 91vw;
   }
 }
@@ -35,22 +35,23 @@
 
 @media(min-aspect-ratio:1/1){
   .board{
-    max-height: 55vh;
-    max-width: 55vh;
+    max-height: 55vw;
+    max-width: 55vw;
   }
 }
 
 @media(min-aspect-ratio:10/9){
   .board{
-    max-width: 64vw;
-    max-height: 64vw;
+    max-width: 65vw;
+    max-height: 65vw;
+    height: 80vh;
   }
 }
 
 
 @media(min-aspect-ratio:16/9){
   .board{
-    max-width: 54vw;
-    height: 54vw;
+    max-width: 55vw;
+    max-height: 55vw;
   }
 }

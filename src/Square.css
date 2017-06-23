@@ -100,8 +100,8 @@
 
 @media(min-aspect-ratio:9/16){
   .square{
-    max-height: 8vw;
-    max-width: 8vw;
+    height: 8vw;
+    width: 8vw;
   }
   .square p{
     font-size: 5vw;

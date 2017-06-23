@@ -40,7 +40,7 @@
 
 @media(min-aspect-ratio:9/10){
 	.app p{
-		font-size: 4vh;
+		font-size: 3.5vh;
 	}
 	.game-space{
 		width: 60vw;
@@ -64,13 +64,13 @@
 
 @media(min-aspect-ratio:1/1){
 	.game-space{
-		max-width: 55vh;
+		max-width: 55vw;
 	}
 }
 
 @media(min-aspect-ratio:10/9){
 	.game-space{
-		max-width: 64vh;
+		max-width: 65vh;
 	}
 }
 
@@ -83,19 +83,19 @@
 	}
 	.game-space{
 		width: 50vw;
-		padding-left:10vw;
+		padding-left:9vw;
 	}
 	.non-board-space, .message-space{
 		width: 30vw;
 		float: right;
-		padding-right:10vw;
+		padding-right:9vw;
 	}
 
 }
 
 @media(min-aspect-ratio:16/9){
 	.game-space{
-		width: 35vw;		
+		width: 40vw;
 	}
 	.non-board-space, .message-space{
 		width: 45vw;
@@ -108,11 +108,11 @@
 	}
 	.game-space{
 		float:left;
-		padding-left: 10vw;
+		padding-left: 7vw;
 	}
 	.non-board-space, .message-space{
 		float: right;
-		padding-right: 10vw;
+		padding-right: 7vw;
 		height: inherit;
 	}
 }
