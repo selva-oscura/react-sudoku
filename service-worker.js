@@ -1,4 +1,4 @@
-// const VERSION = 1;
+const VERSION = "0.1.1";
 
 const filesToCache = [
 	'./',
@@ -7,8 +7,8 @@ const filesToCache = [
 	'./img/menubutton.png'
 ];
 
-var dataCacheName = 'sudoku-appData-v1.1';
-var cacheName = 'sudoku-v1.1';
+var dataCacheName = 'sudoku-appData-v' + VERSION;
+var cacheName = 'sudoku-v' + VERSION;
 
 self.addEventListener('install', function(e){
 	console.log('[ServiceWorker] install');
@@ -25,7 +25,7 @@ self.addEventListener('activate', function(e){
 	e.waitUntil(
 		caches.keys().then(function(keyList){
 			return Promise.all(keyList.map(function(key){
-				if(key !== changeName && key !== dataCacheName){
+				if(key !== cacheName && key !== dataCacheName){
 					console.log('[ServiceWorker] Removing old cache', key);
 					return caches.delete(key);
 				}
