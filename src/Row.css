@@ -1,30 +1,23 @@
-@media(max-aspect-ratio:9/16){
-  .row{
-    max-height: 10vw;
-  }
+.row{
+  display: flex;
+  flex-flow: nowrap;
 }
 
 @media(min-aspect-ratio:9/16){
   .row{
-    max-height: 9vw;
+    padding-left:3vw;
   }
 }
 
 @media(min-aspect-ratio:3/4){
   .row{
-    max-height: 8vw;
+    padding-left:2vw;
   }
 
 }
 
 @media(min-aspect-ratio:9/10){
   .row{
-    max-height: 7vw;
-  }
-}
-
-@media(min-aspect-ratio:4/3){
-  .row{
-    max-height: 7vw;
+    padding-left: 0;
   }
 }
