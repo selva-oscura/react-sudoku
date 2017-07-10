@@ -467,7 +467,6 @@ const App = React.createClass({
     let state = this.state;
     state.displayMenu = !state.displayMenu;
     this.setState(state);
-    console.log('show menu', state.displayMenu)
   },
   toggleShowErrors(){
     let state = this.state;
@@ -604,6 +603,7 @@ const App = React.createClass({
     return (
       <div className="app">
         <Header 
+          displayIntro={state.displayIntro}
           displayMenu={state.displayMenu}
           toggleShowMenu={this.toggleShowMenu}
           showIntro={this.showIntro}
