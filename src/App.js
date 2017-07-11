@@ -464,9 +464,8 @@ const App = React.createClass({
     this.setState(state);
   },
   toggleShowMenu(){
-    let state = this.state;
-    state.displayMenu = !state.displayMenu;
-    this.setState(state);
+    let displayMenu = !this.state.displayMenu;
+    this.setState({displayMenu});
   },
   toggleShowErrors(){
     let state = this.state;
