@@ -16,6 +16,9 @@ const Menu = ({toggleShowMenu, newGame, restartGame, showIntro}) => (
 				}>
 					New Game
 				</button>
+				<button>
+					Resume Game
+				</button>
 				<button 
 					onClick={() => {
 						restartGame()
