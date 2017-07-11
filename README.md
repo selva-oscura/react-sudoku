@@ -1,6 +1,7 @@
 # React-Sudoku
 
 React-Sudoku is a node-based web app with offline access.
+[![Build Status](https://travis-ci.org/selva-oscura/react-sudoku.svg?branch=master)](https://travis-ci.org/selva-oscura/react-sudoku)
 
 <p>The game was built as a personal project while learning React, the joy of data structures and algorithms (delving into all of the wonderful logic of how to make a filled-out Sudoku board, scramble the numbers a bit, and remove numbers albeit only to the extent that they can be deduced without need to resort to guessing), Progressive Web Apps, service workers, storage of state and the app shell in the browser, and Lighthouse.</p>
 
