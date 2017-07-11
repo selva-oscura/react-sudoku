@@ -12,7 +12,7 @@
 
 @media (orientation: landscape){
   .square{
-    border: .5vh solid silver;
+    border: .3vh solid silver;
     height: 8vh;
     width: 8vh;
   }
@@ -22,34 +22,34 @@
   }
 
   .box-left{
-    border-left: .5vh solid #666362;
+    border-left: .3vh solid #666362;
   }
   .box-right{
-    border-right: .5vh solid #666362;
+    border-right: .3vh solid #666362;
   }
   .box-top{
-    border-top: .5vh solid #666362;
+    border-top: .3vh solid #666362;
   }
   .box-bottom{
-    border-bottom: .5vh solid #666362;
+    border-bottom: .3vh solid #666362;
   }
   .board-left{
-    border-left: 1vh solid black;
+    border-left: .6vh solid black;
   }
   .board-right{
-    border-right: 1vh solid black;
+    border-right: .6vh solid black;
   }
   .board-top{
-    border-top: 1vh solid black;
+    border-top: .6vh solid black;
   }
   .board-bottom{
-    border-bottom: 1vh solid black;
+    border-bottom: .6vh solid black;
   }
 }
 
 @media (orientation: portrait){
   .square{
-    border: .5vw solid silver;
+    border: .3vw solid silver;
     height: 8vw;
     width: 8vw;
   }
@@ -58,28 +58,28 @@
     text-align: center;
   }
   .box-left{
-    border-left: .5vw solid #666362;
+    border-left: .3vw solid #666362;
   }
   .box-right{
-    border-right: .5vw solid #666362;
+    border-right: .3vw solid #666362;
   }
   .box-top{
-    border-top: .5vw solid #666362;
+    border-top: .3vw solid #666362;
   }
   .box-bottom{
-    border-bottom: .5vw solid #666362;
+    border-bottom: .3vw solid #666362;
   }
   .board-left{
-    border-left: 1vw solid black;
+    border-left: .6vw solid black;
   }
   .board-right{
-    border-right: 1vw solid black;
+    border-right: .6vw solid black;
   }
   .board-top{
-    border-top: 1vw solid black;
+    border-top: .6vw solid black;
   }
   .board-bottom{
-    border-bottom: 1vw solid black;
+    border-bottom: .6vw solid black;
   }
 }
 
