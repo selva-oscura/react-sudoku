@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
 import Intro from './Intro';
@@ -10,12 +10,13 @@ import PencilChoices from './PencilChoices';
 import Board from './Board';
 import Message from './Message';
 
-const App = React.createClass({
-  getInitialState(){
+class App extends Component{
+  constructor(props){
+    super(props);
     let sudokuData = localStorage.sudokuData;
     if(sudokuData){
       sudokuData = JSON.parse(localStorage.sudokuData);
-      return sudokuData;
+      this.state = sudokuData;
     }else{
       let board = this.newBoard();
       let remainingToBeFilled = this.removedNumbersCount(board);
@@ -37,16 +38,28 @@ const App = React.createClass({
         timer:            0,
       }
       localStorage.sudokuData = JSON.stringify(sudokuData);
-      return sudokuData;
+      this.state = sudokuData;
     }
-  },
+    this.dismissIntro = this.dismissIntro.bind(this);
+    this.toggleShowMenu = this.toggleShowMenu.bind(this);
+    this.toggleShowErrors = this.toggleShowErrors.bind(this);
+    this.pausedGameToggle = this.pausedGameToggle.bind(this);
+    this.newGame = this.newGame.bind(this);
+    this.restartGame = this.restartGame.bind(this);
+    this.showIntro = this.showIntro.bind(this);
+    this.selectSquare = this.selectSquare.bind(this);
+    this.updateInkMark = this.updateInkMark.bind(this);
+    this.updatePencilMarks = this.updatePencilMarks.bind(this);
+  }
+
   newBoard(){
     let row = this.createBaseRow();
     let board = this.createBasicBoard(row);
     board = this.shuffleBoard(board);
     board = this.removeNumbers(board);
     return board;
-  },
+  }
+
   newGame(){
     let state = this.state;
     let board = this.newBoard();
@@ -64,7 +77,8 @@ const App = React.createClass({
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
     this.timer = setInterval(() => this.tick(), 1000);
-  },
+  }
+
   createBaseRow(){
     let row = [];
     let numbers = [1,2,3,4,5,6,7,8,9];
@@ -78,7 +92,8 @@ const App = React.createClass({
       numbers = numbers.slice(0,n).concat(numbers.slice(n+1, numbers.length));
     }
     return row;
-  },
+  }
+
   createBasicBoard(row){
     let board = [];
     let offsets = [3,6,1,4,7,2,5,8];
@@ -93,7 +108,8 @@ const App = React.createClass({
     }else{
       console.log('error in creating board', board);
     }
-  },
+  }
+
   shuffleBoard(board){
     let shuffleAlternatives = [[0,1],[0,2],[1,2]];
     for(let shuffles=0; shuffles<40; shuffles++){
@@ -120,17 +136,20 @@ const App = React.createClass({
       }
     }
     return board;
-  },
+  }
+
   swapRows(board, rowGroup, shuffleAlternative){
     [board[rowGroup*3+shuffleAlternative[0]], board[rowGroup*3+shuffleAlternative[1]]] = [board[rowGroup*3+shuffleAlternative[1]], board[rowGroup*3+shuffleAlternative[0]]]
     return board;
-  },
+  }
+
   swapCols(board, colGroup, shuffleAlternative){
     board.forEach(function(row){
       [row[colGroup*3+shuffleAlternative[0]],row[colGroup*3+shuffleAlternative[1]]] = [row[colGroup*3+shuffleAlternative[1]],row[colGroup*3+shuffleAlternative[0]]]
     });
     return board;
-  },
+  }
+
   swapBoxColAcrossBoxes(board, rowGroup, targetCol, shuffleAlternative){
     let boxColValues = [];
     let boxColValuesForCounterpart = [];
@@ -163,7 +182,8 @@ const App = React.createClass({
       console.log('validSwap?', validSwap, boxColValues, boxColValuesForCounterpart)
     }
     return board;
-  },
+  }
+  
   consoleLogBoard(board){
     board.forEach((row) => {
       let rowContents = "";
@@ -171,7 +191,8 @@ const App = React.createClass({
       console.log(rowContents);
     });
     return;
-  },
+  }
+
   isValidBoard(board){
     let errorReport = (details, hash) => {
       console.log('failure in isValidBoard:\n')
@@ -218,7 +239,8 @@ const App = React.createClass({
       }
     }
     return true;
-  },
+  }
+
   isDeterminableByOneChoice(board, row, col){
     let hash = {};
     // check row
@@ -247,7 +269,8 @@ const App = React.createClass({
       return true;
     }
     return false;
-  },
+  }
+
   isDeterminableByElimination(board, row, col){
     // check row
     let isDeterminable = true;
@@ -297,7 +320,8 @@ const App = React.createClass({
       }
     });
     return isDeterminable;
-  },
+  }
+
   isNotAllowedInSpace(board, value, excludeRow, excludeCol, row, col){
     // check row
     for(let i = 0; i<9; i++){
@@ -322,7 +346,8 @@ const App = React.createClass({
       }
     }
     return false;
-  },
+  }
+
   removeNumbers(board){
     for(let row=0; row<5; row++){
       for(let col=0; col<9; col++){
@@ -346,17 +371,20 @@ const App = React.createClass({
       }
     }
     return board;
-  },
+  }
+
   isNumberRemovable(board, row, col){
     return this.isDeterminableByOneChoice(board, row, col) || this.isDeterminableByElimination(board, row, col) ? true : false;
-  },
+  }
+
   removeSquare(board, row, col){
     let pencilMarks = new Array(9).fill(false);
     board[row][col].display = false;
     board[row][col].inkMark = null;
     board[row][col].pencilMarks = pencilMarks;
     return board;
-  },
+  }
+
   removedNumbersCount(board){
     let removed = 0;
     board.forEach((row) => {
@@ -367,23 +395,27 @@ const App = React.createClass({
       });
     });
     return removed;
-  },
+  }
+
   showIntro(){
     let state = this.state;
     state.displayIntro = true;
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   dismissIntro(){
     let state = this.state;
     state.displayIntro = false;
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   pausedGameToggle(){
     this.setState({pausedGame: !this.state.pausedGame});
     localStorage.sudokuData = JSON.stringify(this.state);
-  },
+  }
+
   selectSquare(rowIndex, colIndex){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
@@ -396,7 +428,8 @@ const App = React.createClass({
     state.board[rowIndex][colIndex].selected = true;
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   updateInkMark(inkMark){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
@@ -444,7 +477,8 @@ const App = React.createClass({
     }
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   updatePencilMarks(pencilMark){
     let state = this.state;
     if(state.gameStatus==="gameOver"){ return; }
@@ -462,17 +496,20 @@ const App = React.createClass({
     }
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   toggleShowMenu(){
     let displayMenu = !this.state.displayMenu;
     this.setState({displayMenu});
-  },
+  }
+
   toggleShowErrors(){
     let state = this.state;
     state.showErrors = !state.showErrors;
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   restartGame(){
     let state = this.state;
     state.board.forEach((row)=>{
@@ -488,7 +525,8 @@ const App = React.createClass({
     state.timer = 0;
     localStorage.sudokuData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
+
   tick(){
     let {timer, displayMenu, displayIntro, pausedGame } = this.state;
     if(!displayMenu && !displayIntro && !pausedGame){
@@ -496,7 +534,8 @@ const App = React.createClass({
       this.setState({timer});
       localStorage.sudokuData = JSON.stringify(this.state);
     }
-  },
+  }
+
   componentDidMount(){
     this.timer = setInterval(() => this.tick(), 1000);
     window.addEventListener('keyup', (e) => {
@@ -504,7 +543,7 @@ const App = React.createClass({
       var isShift = !!e.shiftKey;
       this.setState({message:""});
       if(isShift){
-        if(keyCode===48 || keyCode===88){
+        if(keyCode===48 || keyCode===88 || keyCode===8){
           this.updatePencilMarks("X");
         }else if(keyCode>=49 && keyCode<=57){
           this.updatePencilMarks(keyCode-48);
@@ -513,7 +552,7 @@ const App = React.createClass({
           this.setState({message});
         }
       }else{
-        if(keyCode===48 || keyCode===88){
+        if(keyCode===48 || keyCode===88 || keyCode===8){
           this.updateInkMark("X");
         }else if(keyCode>=49 && keyCode<=57){
           this.updateInkMark(keyCode-48);
@@ -535,13 +574,15 @@ const App = React.createClass({
         }
       }
     });
-  },
+  }
+
   componentWillUnmount(){
     clearInterval(this.timer);
-  },
+  }
+
   render() {
-    const state = this.state;
-    var mainDisplay;
+    let state = this.state;
+    let mainDisplay;
     if(state.displayIntro){
       mainDisplay = (
         <Intro 
@@ -568,11 +609,11 @@ const App = React.createClass({
         <div className="body">
           <div className="non-board-space">
             <GamesInfo 
-              timer={state.timer}
-              scores={state.scores}
-              pausedGame={state.pausedGame}
+              timer={this.state.timer}
+              scores={this.state.scores}
+              pausedGame={this.state.pausedGame}
               pausedGameToggle={this.pausedGameToggle}
-              showErrors={state.showErrors}
+              showErrors={this.state.showErrors}
               toggleShowErrors={this.toggleShowErrors}
             />
             <InkChoices 
@@ -584,15 +625,15 @@ const App = React.createClass({
           </div>
           <div className="game-space">
             <Board 
-              board={state.board} 
+              board={this.state.board} 
               selectSquare={this.selectSquare}
-              showErrors={state.showErrors}
+              showErrors={this.state.showErrors}
             />
           </div>
           <div className="message-space">
             <Message 
-              message={state.message}
-              gameStatus={state.gameStatus}
+              message={this.state.message}
+              gameStatus={this.state.gameStatus}
               newGame={this.newGame}
             />
           </div>
@@ -602,8 +643,8 @@ const App = React.createClass({
     return (
       <div className="app">
         <Header 
-          displayIntro={state.displayIntro}
-          displayMenu={state.displayMenu}
+          displayIntro={this.state.displayIntro}
+          displayMenu={this.state.displayMenu}
           toggleShowMenu={this.toggleShowMenu}
           showIntro={this.showIntro}
         />
@@ -611,6 +652,6 @@ const App = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default App;
