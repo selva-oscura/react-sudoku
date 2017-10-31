@@ -37,8 +37,8 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["asset-manifest.json","d3587e2472376fb81e6ac85fad03baca"],["favicon.ico","1a37cb5ff8c5a553abb5757774988d5a"],["img/menu-button.gif","93e897b52b3d22726c6e0e3b8c349bef"],["img/sudoku-128x128.png","8aa93d1e04d4fda9cead0ebea95ae986"],["img/sudoku-144x144.png","e34328800fd87744bb51a15a85a4bd10"],["img/sudoku-152x152.png","9af4211aefca9f26c356cf746f364864"],["img/sudoku-192x192.png","6fb3db19505fe6ecb1c0778eaa2fd3ed"],["img/sudoku-256x256.png","e7a13cfead9aeddf0e9b9f5f6fa234a3"],["img/sudoku-512x512.png","7e50eee880355fb097a21f9a5966565c"],["index.html","e2c54dbe7ec638152bf60b6437aaaddc"],["manifest.json","4137c39bf8b52dc7a339a640249db513"],["static/css/main.749baab2.css","b6fc6746afc6019e24e66144514d4fbf"],["static/js/main.f92663b2.js","438a0d89773cbb5e7319418ce03a67b1"]];
-var cacheName = 'sw-precache-v2-sw-precache-' + (self.registration ? self.registration.scope : '');
+var precacheConfig = [["asset-manifest.json","c456b577de65941aa9e6a4ed67dced77"],["img/menu-button.gif","93e897b52b3d22726c6e0e3b8c349bef"],["img/sudoku-128x128-color.png","79c010c351092f5a8c94b70fc5faca97"],["img/sudoku-144x144-color.png","b8d4013ea9f39204d97cb21d3b255802"],["img/sudoku-152x152-color.png","25de918d89ff412e8378d8252e19012e"],["img/sudoku-192x192-color.png","45458815d6951b07865685879da128ae"],["img/sudoku-256x256-color.png","0d8223429537e33a0ce81268e6ae47d1"],["img/sudoku-512x512-color.png","4697f24410d388eaa0ecbeadb0df5ce1"],["index.html","2d826ac1311d44935f596bc5fe84edfc"],["manifest.json","dedd08215a409f85dd1a1de248dab527"],["static/css/main.46f3d3ca.css","82940f403b6352b4fa45cf3060eae305"],["static/js/main.132ce59a.js","4be89dab9dee1bce98c0e7b2fd96868a"]];
+var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
 var ignoreUrlParametersMatching = [/^utm_/];
@@ -53,6 +53,28 @@ var addDirectoryIndex = function (originalUrl, index) {
     return url.toString();
   };
 
+var cleanResponse = function (originalResponse) {
+    // If this is not a redirected response, then we don't have to do anything.
+    if (!originalResponse.redirected) {
+      return Promise.resolve(originalResponse);
+    }
+
+    // Firefox 50 and below doesn't support the Response.body stream, so we may
+    // need to read the entire body to memory as a Blob.
+    var bodyPromise = 'body' in originalResponse ?
+      Promise.resolve(originalResponse.body) :
+      originalResponse.blob();
+
+    return bodyPromise.then(function(body) {
+      // new Response() is happy when passed either a stream or a Blob.
+      return new Response(body, {
+        headers: originalResponse.headers,
+        status: originalResponse.status,
+        statusText: originalResponse.statusText
+      });
+    });
+  };
+
 var createCacheKey = function (originalUrl, paramName, paramValue,
                            dontCacheBustUrlsMatching) {
     // Create a new URL object to avoid modifying originalUrl.
@@ -61,7 +83,7 @@ var createCacheKey = function (originalUrl, paramName, paramValue,
     // If dontCacheBustUrlsMatching is not set, or if we don't have a match,
     // then add in the extra cache-busting URL parameter.
     if (!dontCacheBustUrlsMatching ||
-        !(url.toString().match(dontCacheBustUrlsMatching))) {
+        !(url.pathname.match(dontCacheBustUrlsMatching))) {
       url.search += (url.search ? '&' : '') +
         encodeURIComponent(paramName) + '=' + encodeURIComponent(paramValue);
     }
@@ -85,6 +107,8 @@ var isPathWhitelisted = function (whitelist, absoluteUrlString) {
 var stripIgnoredUrlParameters = function (originalUrl,
     ignoreUrlParametersMatching) {
     var url = new URL(originalUrl);
+    // Remove the hash; see https://github.com/GoogleChrome/sw-precache/issues/290
+    url.hash = '';
 
     url.search = url.search.slice(1) // Exclude initial '?'
       .split('&') // Split into an array of 'key=value' strings
@@ -134,7 +158,19 @@ self.addEventListener('install', function(event) {
           Array.from(urlsToCacheKeys.values()).map(function(cacheKey) {
             // If we don't have a key matching url in the cache already, add it.
             if (!cachedUrls.has(cacheKey)) {
-              return cache.add(new Request(cacheKey, {credentials: 'same-origin'}));
+              var request = new Request(cacheKey, {credentials: 'same-origin'});
+              return fetch(request).then(function(response) {
+                // Bail out of installation unless we get back a 200 OK for
+                // every request.
+                if (!response.ok) {
+                  throw new Error('Request for ' + cacheKey + ' returned a ' +
+                    'response with status ' + response.status);
+                }
+
+                return cleanResponse(response).then(function(responseToCache) {
+                  return cache.put(cacheKey, responseToCache);
+                });
+              });
             }
           })
         );
@@ -178,8 +214,8 @@ self.addEventListener('fetch', function(event) {
     // handlers a chance to handle the request if need be.
     var shouldRespond;
 
-    // First, remove all the ignored parameter and see if we have that URL
-    // in our cache. If so, great! shouldRespond will be true.
+    // First, remove all the ignored parameters and hash fragment, and see if we
+    // have that URL in our cache. If so, great! shouldRespond will be true.
     var url = stripIgnoredUrlParameters(event.request.url, ignoreUrlParametersMatching);
     shouldRespond = urlsToCacheKeys.has(url);
 
